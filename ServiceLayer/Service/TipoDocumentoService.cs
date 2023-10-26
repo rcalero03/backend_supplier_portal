@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using RepositoryLayer;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using System;
@@ -14,15 +15,13 @@ namespace ServiceLayer.Service
         private IRepository<TipoDocumento> _repository;
         EstadoService estadoService;
 
-        public TipoDocumentoService(IRepository<TipoDocumento>  repository)
+        public TipoDocumentoService(IRepository<TipoDocumento> repository)
         {
             _repository = repository;
         }
         public IEnumerable<TipoDocumento> GetAllTipoDocumentos()
         {
-            var tipoDocumentos = _repository.GetAll();
-
-            return tipoDocumentos;
+           return _repository.GetAll();
         }
         public TipoDocumento GetTipoDocumentoById(int id)
         {

@@ -646,11 +646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\DomainLayer\\DomainLayer.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
       "projectName": "DomainLayer",
-      "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\DomainLayer\\DomainLayer.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\DomainLayer\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\DomainLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

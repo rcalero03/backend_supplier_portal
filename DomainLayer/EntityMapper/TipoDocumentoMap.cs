@@ -14,7 +14,7 @@ namespace DomainLayer.EntityMapper
         public void Configure(EntityTypeBuilder<TipoDocumento> builder)
         {
             builder.HasKey(x => x.Id)
-                  .HasName("PK_IdTipoDocumento");
+                  .HasName("PK_TipoDocumentoId");
 
             builder.ToTable("Tipo_Documento");
 
@@ -26,10 +26,16 @@ namespace DomainLayer.EntityMapper
             builder.Property(x => x.Nombre)
                 .HasColumnName("Nombre")
                 .HasColumnType("varchar(100)")
-                .IsRequired();
+                .IsRequired(false);
             builder.Property(x => x.Descripcion)
                 .HasColumnName("Descripcion")
-                .HasColumnType("varchar(200)");
+                .HasColumnType("varchar(200)")
+                .IsRequired(false);
+            builder.Property(x => x.EstadoId)
+                .HasColumnName("EstadoId")
+                .HasColumnType("int")
+                .IsRequired();
+    
 
             //BaseEntity
             builder.Property(x => x.CreadoPor)
@@ -52,6 +58,11 @@ namespace DomainLayer.EntityMapper
                 .HasConstraintName("FK_TipoDocumento_Estado")
                 .OnDelete(DeleteBehavior.Restrict);
 
+            //baseEntity isRequire(false)
+            builder.Property(x => x.CreadoPor).IsRequired(false);
+            builder.Property(x => x.FechaCreacion).IsRequired(false);
+            builder.Property(x => x.ModificadoPor).IsRequired(false);
+            builder.Property(x => x.FechaModificacion).IsRequired(false);
 
         }
     }
