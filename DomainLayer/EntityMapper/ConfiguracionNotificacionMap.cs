@@ -22,11 +22,11 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("Id")
                 .HasColumnType("int")
                 .IsRequired();
-            builder.Property(x => x.dias)
+            builder.Property(x => x.Dias)
                 .HasColumnName("dias")
                 .HasColumnType("int")
                 .IsRequired(false);
-            builder.Property(x => x.hora)
+            builder.Property(x => x.Hora)
                 .HasColumnName("hora")
                 .HasColumnType("time")
                 .IsRequired(false);

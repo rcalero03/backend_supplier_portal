@@ -21,6 +21,7 @@ namespace RepositoryLayer
             modelBuilder.ApplyConfiguration(new CategoriaMap());
             modelBuilder.ApplyConfiguration(new CiudadMap());
             modelBuilder.ApplyConfiguration(new ConfiguracionNotificacionMap());
+            modelBuilder.ApplyConfiguration(new ConfiguracionGeneralMap());
             modelBuilder.ApplyConfiguration(new DocumentoMap());
             modelBuilder.ApplyConfiguration(new PaisMap());
             modelBuilder.ApplyConfiguration(new ProveedorMap());
@@ -32,6 +33,7 @@ namespace RepositoryLayer
             modelBuilder.ApplyConfiguration(new UsuarioMap());
 
             base.OnModelCreating(modelBuilder);
+
         }
 
         //Dbset todas las tablas
@@ -39,6 +41,7 @@ namespace RepositoryLayer
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Ciudad> Ciudad { get; set; }
         public DbSet<ConfiguracionNotificacion> ConfiguracionNotificacion { get; set; }
+        public DbSet<ConfiguracionGeneral> ConfiguracionGeneral { get; set; }
         public DbSet<Documento> Documento { get; set; }
         public DbSet<Estado> Estado { get; set; }
         public DbSet<Pais> Pais { get; set; }
@@ -50,6 +53,7 @@ namespace RepositoryLayer
         public DbSet<SubtipoCompra> SubtipoCompra { get; set; }
         public DbSet<TipoDocumento> TipoDocumento { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+
 
     }
 }

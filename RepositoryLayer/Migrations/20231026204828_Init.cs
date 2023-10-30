@@ -58,9 +58,9 @@ namespace RepositoryLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    grupoCompra = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    comprador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GrupoCompra = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Comprador = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: true),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -83,8 +83,8 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    dias = table.Column<int>(type: "int", nullable: false),
-                    hora = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Dias = table.Column<int>(type: "int", nullable: false),
+                    Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -103,6 +103,35 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ConfiguracionGeneral",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Codigo = table.Column<int>(type: "varchar(100)", nullable: false),
+                    Valor1 = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Valor2 = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Valor3 = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Valor4 = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Valor5 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    EstadoId = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreadoPor = table.Column<int>(type: "int", nullable: true),
+                    ModificadoPor = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfiguracionGeneral", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ConfiguracionGeneral_Estado_EstadoId",
+                        column: x => x.EstadoId,
+                        principalTable: "Estado",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tipo_Documento",
                 columns: table => new
                 {
@@ -111,7 +140,7 @@ namespace RepositoryLayer.Migrations
                     Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
                     Descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
-                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
@@ -178,7 +207,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaisId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -199,7 +228,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    requerido = table.Column<int>(type: "int", nullable: true),
+                    Requerido = table.Column<int>(type: "int", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
                     TipoDocumentoId = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -440,6 +469,11 @@ namespace RepositoryLayer.Migrations
                 column: "EstadoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ConfiguracionGeneral_EstadoId",
+                table: "ConfiguracionGeneral",
+                column: "EstadoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Documento_EstadoId",
                 table: "Documento",
                 column: "EstadoId");
@@ -518,6 +552,24 @@ namespace RepositoryLayer.Migrations
                 name: "IX_Usuario_EstadoId",
                 table: "Usuario",
                 column: "EstadoId");
+
+
+            // INSERT ESTADOS
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Activo')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Inactivo')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Revisión')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Aprobado')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Rechazado')");
+
+            // INSERT ROLES
+            migrationBuilder.Sql("INSERT INTO Rol (Codigo, Nombre) VALUES ('ADMIN', 'Rol Administrador')");
+            migrationBuilder.Sql("INSERT INTO Rol (Codigo, Nombre) VALUES ('PRO', 'Rol Proveedor')");
+            migrationBuilder.Sql("INSERT INTO Rol (Codigo, Nombre) VALUES ('INT', 'Rol Interno')");
+
+            // INSERT CONFIGURACION GENERAL
+            migrationBuilder.Sql("INSERT INTO ConfiguracionGeneral (Codigo, Valor1, Valor2, Valor3, Valor4, Valor5, EstadoId) VALUES ('JWT', 'ccn-sup-2023', 'suppliers-api', '', '', '', 1)");
+
+
         }
 
         /// <inheritdoc />
@@ -528,6 +580,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "ConfiguracionNotificacion");
+
+            migrationBuilder.DropTable(
+                name: "ConfiguracionGeneral");
 
             migrationBuilder.DropTable(
                 name: "ProveedorCategoria");

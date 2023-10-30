@@ -11,7 +11,7 @@ namespace DomainLayer.Models
     {
         public string ? Nombre { get; set; }
         public string ? Descripcion { get; set; }
-        public int ? requerido { get; set; }
+        public int ? Requerido { get; set; }
         public int EstadoId { get; set; }
         public int TipoDocumentoId { get; set; }
 
