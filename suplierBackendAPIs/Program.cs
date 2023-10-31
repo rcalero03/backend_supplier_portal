@@ -28,6 +28,8 @@ builder.Services.AddScoped<IEstadoService, EstadoService>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 //ciudad
 builder.Services.AddScoped<ICiudadService, CiudadService>();
+//usuario
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 
 

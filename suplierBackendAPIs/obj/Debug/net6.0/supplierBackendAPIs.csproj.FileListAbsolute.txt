@@ -97,3 +97,4 @@ C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\suplierBackendAPIs\obj\D
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\suplierBackendAPIs\obj\Debug\net6.0\supplierBackendAPIs.pdb
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\suplierBackendAPIs\obj\Debug\net6.0\supplierBackendAPIs.genruntimeconfig.cache
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\suplierBackendAPIs\obj\Debug\net6.0\ref\supplierBackendAPIs.dll
+C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\suplierBackendAPIs\bin\Debug\net6.0\Newtonsoft.Json.dll
