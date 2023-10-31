@@ -188,7 +188,12 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EstadoId = table.Column<int>(type: "int", nullable: false)
+                    EstadoId = table.Column<int>(type: "int", nullable: false),
+                    UserIdAzure = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreadoPor = table.Column<int>(type: "int", nullable: true),
+                    ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -557,6 +562,7 @@ namespace RepositoryLayer.Migrations
             // INSERT ESTADOS
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Activo')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Inactivo')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Pendiente')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Revisión')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Aprobado')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Rechazado')");
@@ -567,7 +573,7 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.Sql("INSERT INTO Rol (Codigo, Nombre) VALUES ('INT', 'Rol Interno')");
 
             // INSERT CONFIGURACION GENERAL
-            migrationBuilder.Sql("INSERT INTO ConfiguracionGeneral (Codigo, Valor1, Valor2, Valor3, Valor4, Valor5, EstadoId) VALUES ('JWT', 'ccn-sup-2023', 'suppliers-api', '', '', '', 1)");
+            migrationBuilder.Sql("INSERT INTO ConfiguracionGeneral (Codigo, Valor1, Valor2, Valor3, Valor4, Valor5, EstadoId) VALUES ('JWT', 'CCN_SUPPLIERS_PORTAL', 'a9e11bd1-1160-4a20-a10d-b1a11f8a448e', 'ccn-sup-2023', 'suppliers-api', '30', 1)");
 
 
         }

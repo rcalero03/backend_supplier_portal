@@ -11,6 +11,7 @@ namespace ServiceLayer.IServices
     {
         Usuario GetByEmail(string email);
 
-        string DecodeJwtTokenAzure(string token);
+        Usuario ValidateUser(JwtClaims claims);
+
     }
 }

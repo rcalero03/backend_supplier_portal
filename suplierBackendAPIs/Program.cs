@@ -28,6 +28,10 @@ builder.Services.AddScoped<IEstadoService, EstadoService>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 //ciudad
 builder.Services.AddScoped<ICiudadService, CiudadService>();
+//rol
+builder.Services.AddScoped<IRolService, RolService>();
+//auth
+builder.Services.AddScoped<IAuthService, AuthService>();
 //usuario
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 

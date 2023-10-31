@@ -37,6 +37,11 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
 
+            builder.Property(x => x.UserIdAzure)
+                .HasColumnName("UserIdAzure")
+                .HasColumnType("varchar(150)")
+                .IsRequired(false);
+
 
         //navegacion con Estado
         builder.HasOne(x => x.Estado)
