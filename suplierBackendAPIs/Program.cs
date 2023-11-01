@@ -30,7 +30,8 @@ builder.Services.AddScoped<IPaisService, PaisService>();
 builder.Services.AddScoped<ICiudadService, CiudadService>();
 //usuario
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-
+//categoria
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 
 
