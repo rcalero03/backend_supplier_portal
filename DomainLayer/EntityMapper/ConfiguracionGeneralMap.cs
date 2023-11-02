@@ -23,7 +23,6 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
 
-
             builder.Property(x => x.Codigo)
                 .HasColumnName("Codigo")
                 .HasColumnType("varchar(100)")
@@ -49,11 +48,11 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("varchar(200)")
                 .IsRequired(false);
 
-
             builder.Property(x => x.Valor5)
                 .HasColumnName("Valor5")
                 .HasColumnType("varchar(200)")
                 .IsRequired(false);
+
 
             builder.Property(x => x.EstadoId)
                 .HasColumnName("EstadoId")

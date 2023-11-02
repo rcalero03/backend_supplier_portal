@@ -49,14 +49,14 @@ namespace ServiceLayer.Service
 
             var appName = general.Valor1;
             var appId = general.Valor2;
-            
+
 
             if (appName == null || appId == null)
             {
                 return null;
             }
 
-            if ( appId != claims.AppId && appName != claims.AppDisplayName )
+            if (appId != claims.AppId && appName != claims.AppDisplayName)
             {
                 return null;
             }
@@ -89,6 +89,36 @@ namespace ServiceLayer.Service
             }
 
             return verifyUser;
+        }
+
+        public string DecodeJwtTokenAzure(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadJwtToken(token) as JwtSecurityToken;
+
+                if (jwtToken != null)
+                {
+                    // Verificar si Claims es nulo antes de intentar acceder a él
+                    if (jwtToken.Claims != null)
+                    {
+                        var emailClaim = jwtToken.Claims.FirstOrDefault(x => x.Type == "email");
+
+                        if (emailClaim != null)
+                        {
+                            return emailClaim.Value;
+                        }
+                    }
+                }
+                // Si llegamos aquí, es porque no se encontró el reclamo "email" o había otros problemas con el token.
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al decodificar el token: " + ex.Message);
+                return null;
+            }
         }
 
     }

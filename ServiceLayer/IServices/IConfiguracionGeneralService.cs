@@ -11,7 +11,6 @@ namespace ServiceLayer.IServices
 {
     public interface IConfiguracionGeneralService
     {
-
         IEnumerable<ConfiguracionGeneral> GetAllConfiguracionGenerales();
         ConfiguracionGeneralDto GetByCode(string code);
     }

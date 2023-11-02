@@ -11,8 +11,6 @@ namespace ServiceLayer.IServices
     public interface IUsuarioService
     {
         Usuario GetByEmail(string email);
-
         Usuario ValidateUser(JwtClaimsDto claims);
-
     }
 }

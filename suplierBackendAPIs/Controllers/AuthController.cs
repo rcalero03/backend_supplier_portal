@@ -5,12 +5,14 @@ using Newtonsoft.Json.Linq;
 using ServiceLayer.Service;
 using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using supplierBackendAPIs.Utilities;
 
 [Route("api/auth")]
 [ApiController]
 public class AuthController : ControllerBase
 {
     private readonly IUsuarioService _usuarioService;
+
     private readonly IAuthService _authService;
 
     public AuthController(IUsuarioService usuarioService, IAuthService authService)
@@ -83,6 +85,7 @@ public class AuthController : ControllerBase
                 data = ""
             });
         }
+
     }
 
 }
