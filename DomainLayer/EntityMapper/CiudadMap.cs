@@ -24,7 +24,7 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
             builder.Property(builder => builder.Nombre)
-                .HasColumnName("nombre")
+                .HasColumnName("Nombre")
                 .HasColumnType("varchar(100)")
                 .IsRequired(false);
             builder.Property(builder => builder.PaisId)

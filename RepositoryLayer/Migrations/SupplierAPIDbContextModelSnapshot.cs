@@ -92,13 +92,13 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("comprador")
+                    b.Property<string>("Comprador")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("descripcion")
+                    b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("grupoCompra")
+                    b.Property<string>("GrupoCompra")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -119,7 +119,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int?>("PaisId")
                         .HasColumnType("int");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -152,10 +152,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<int?>("ModificadoPor")
                         .HasColumnType("int");
 
-                    b.Property<int>("dias")
+                    b.Property<int>("Dias")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("hora")
+                    b.Property<DateTime?>("Hora")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -165,49 +165,98 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("ConfiguracionNotificacion");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ConfiguracionGeneral", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<int?>("CreadoPor")
+                    .HasColumnType("int");
+
+                b.Property<int>("EstadoId")
+                    .HasColumnType("int");
+
+                b.Property<DateTime?>("FechaCreacion")
+                    .HasColumnType("datetime2");
+
+                b.Property<DateTime?>("FechaModificacion")
+                    .HasColumnType("datetime2");
+
+                b.Property<int?>("ModificadoPor")
+                    .HasColumnType("int");
+
+                b.Property<int>("Codigo")
+                    .HasColumnType("int");
+
+                b.Property<string>("Valor1")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Valor2")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Valor3")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Valor4")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Valor5")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("Id");
+
+                b.HasIndex("EstadoId");
+
+                b.ToTable("ConfiguracionGeneral");
+
+            });
+
             modelBuilder.Entity("DomainLayer.Models.Documento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                b.Property<int?>("CreadoPor")
+                    .HasColumnType("int");
 
-                    b.Property<int?>("EstadoId")
-                        .HasColumnType("int");
+                b.Property<int?>("EstadoId")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime?>("FechaCreacion")
+                    .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaEmicion")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime?>("FechaEmicion")
+                    .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime?>("FechaModificacion")
+                    .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaVencimiento")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime?>("FechaVencimiento")
+                    .HasColumnType("datetime2");
 
-                    b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                b.Property<int?>("ModificadoPor")
+                    .HasColumnType("int");
 
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Nombre")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProveedorId")
-                        .HasColumnType("int");
+                b.Property<int?>("ProveedorId")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("EstadoId");
+                b.HasIndex("EstadoId");
 
-                    b.HasIndex("ProveedorId");
+                b.HasIndex("ProveedorId");
 
-                    b.ToTable("Documento");
-                });
+                b.ToTable("Documento");
+            });
 
             modelBuilder.Entity("DomainLayer.Models.Estado", b =>
                 {
@@ -618,6 +667,17 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Estados");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ConfiguracionGeneral", b =>
+                {                 
+                    b.HasOne("DomainLayer.Models.Estado", "Estados")
+                        .WithMany("ConfiguracionGenerales")
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+            
+                    b.Navigation("Estados");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.Documento", b =>
                 {
                     b.HasOne("DomainLayer.Models.Estado", "Estados")
@@ -780,6 +840,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Categorias");
 
                     b.Navigation("ConfiguracionNotificaciones");
+
+                    b.Navigation("ConfiguracionGenerales");
 
                     b.Navigation("Documentos");
 

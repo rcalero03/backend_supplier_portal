@@ -775,6 +775,19 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -2619,6 +2632,36 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
@@ -3623,6 +3666,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.Extensions.Configuration >= 7.0.0",
       "Microsoft.Extensions.Configuration.Json >= 7.0.0",
+      "Newtonsoft.Json >= 13.0.3",
       "RepositoryLayer >= 1.0.0",
       "ServiceLayer >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0",
@@ -3630,24 +3674,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "D:\\Users\\roberto.calero\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\suplierBackendAPIs\\supplierBackendAPIs.csproj",
+      "projectUniqueName": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\suplierBackendAPIs\\supplierBackendAPIs.csproj",
       "projectName": "supplierBackendAPIs",
-      "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\suplierBackendAPIs\\supplierBackendAPIs.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\suplierBackendAPIs\\obj\\",
+      "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\suplierBackendAPIs\\supplierBackendAPIs.csproj",
+      "packagesPath": "D:\\Users\\roberto.calero\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\suplierBackendAPIs\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "D:\\Users\\roberto.calero\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3655,21 +3698,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\DomainLayer\\DomainLayer.csproj": {
-              "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\DomainLayer\\DomainLayer.csproj"
+            "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {
+              "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj"
             },
-            "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\RepositoryLayer\\RepositoryLayer.csproj": {
-              "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\RepositoryLayer\\RepositoryLayer.csproj"
+            "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj": {
+              "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj"
             },
-            "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\ServiceLayer\\ServiceLayer.csproj": {
-              "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\suplierBackendAPIs\\ServiceLayer\\ServiceLayer.csproj"
+            "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj": {
+              "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\Nueva carpeta\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj"
             }
           }
         }
@@ -3701,6 +3743,10 @@
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

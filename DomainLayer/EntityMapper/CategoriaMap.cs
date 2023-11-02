@@ -25,13 +25,13 @@ namespace DomainLayer.EntityMapper
             builder.Property(x => x.Nombre)
                 .HasColumnName("Nombre")
                 .HasColumnType("varchar(50)");
-            builder.Property(x => x.descripcion)
+            builder.Property(x => x.Descripcion)
                 .HasColumnName("descripcion")
                 .HasColumnType("varchar(200)");
-            builder.Property(x => x.grupoCompra)
+            builder.Property(x => x.GrupoCompra)
                 .HasColumnName("grupoCompra")
                 .HasColumnType("varchar(200)");
-            builder.Property(x => x.comprador)
+            builder.Property(x => x.Comprador)
                 .HasColumnName("comprador")
                 .HasColumnType("varchar(200)");
 
@@ -51,9 +51,9 @@ namespace DomainLayer.EntityMapper
 
             //todas las propiedades nullas
             builder.Property(x => x.Nombre).IsRequired(false);
-            builder.Property(x => x.descripcion).IsRequired(false);
-            builder.Property(x => x.grupoCompra).IsRequired(false);
-            builder.Property(x => x.comprador).IsRequired(false);
+            builder.Property(x => x.Descripcion).IsRequired(false);
+            builder.Property(x => x.GrupoCompra).IsRequired(false);
+            builder.Property(x => x.Comprador).IsRequired(false);
             //baseEntity isRequire(false)
             builder.Property(x => x.CreadoPor).IsRequired(false);
             builder.Property(x => x.FechaCreacion).IsRequired(false);

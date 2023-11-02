@@ -42,7 +42,7 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("CreadoPor")
                 .HasColumnType("int");
             builder.Property(x => x.FechaCreacion)
-                .HasColumnName("fechaCreacion")
+                .HasColumnName("FechaCreacion")
                 .HasColumnType("datetime");
             builder.Property(x => x.ModificadoPor)
                 .HasColumnName("ModificadoPor")

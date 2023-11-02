@@ -15,3 +15,37 @@ C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\ServiceLayer\obj\Debug\n
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\ServiceLayer.deps.json
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\ServiceLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.AssemblyReference.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfoInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfo.cs
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CoreCompileInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CopyComplete
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.deps.json
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.AssemblyReference.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfoInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfo.cs
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CoreCompileInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CopyComplete
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll

@@ -10,3 +10,27 @@ C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\DomainLayer\obj\Debug\ne
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
 C:\Users\User\Documents\Proyectos C#\suplierBackendAPIs\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\bin\Debug\net6.0\DomainLayer.deps.json
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\bin\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\bin\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.AssemblyReference.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfoInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfo.cs
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.CoreCompileInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.deps.json
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.AssemblyReference.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfoInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfo.cs
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.CoreCompileInputs.cache
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
+D:\Users\roberto.calero\Documents\NicCoders\REGXI\Nueva carpeta\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll

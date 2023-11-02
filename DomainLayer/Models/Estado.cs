@@ -16,6 +16,7 @@ namespace DomainLayer.Models
         public virtual ICollection<TipoDocumento> ? TipoDocumentos { get; set; }
         public virtual ICollection<CatalogoDocumento> ? CatalogoDocumentos { get; set; }
         public virtual ICollection<ConfiguracionNotificacion> ? ConfiguracionNotificaciones { get; set; }
+        public virtual ICollection<ConfiguracionGeneral>? ConfiguracionGeneral { get; set; }
         public virtual ICollection<Usuario> ? Usuarios { get; set; }
         public virtual ICollection<TipoCompra> ? TipoCompras { get; set; }
         public virtual ICollection<Categoria> ? Categorias { get; set; }

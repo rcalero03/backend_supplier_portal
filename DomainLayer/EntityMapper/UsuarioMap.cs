@@ -24,11 +24,11 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
             builder.Property(x => x.Nombre)
-                .HasColumnName("usuario")
+                .HasColumnName("Nombre")
                 .HasColumnType("varchar(50)")
                 .IsRequired(false);
             builder.Property(x => x.Email)
-                .HasColumnName("email")
+                .HasColumnName("Email")
                 .HasColumnType("varchar(50)")
                 .IsRequired(false);
 
@@ -37,9 +37,31 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
 
+            builder.Property(x => x.UserIdAzure)
+                .HasColumnName("UserIdAzure")
+                .HasColumnType("varchar(150)")
+                .IsRequired(false);
 
-        //navegacion con Estado
-        builder.HasOne(x => x.Estado)
+            //BaseEntity
+            builder.Property(x => x.CreadoPor)
+                .HasColumnName("CreadoPor")
+                .HasColumnType("int")
+                .IsRequired(false);
+            builder.Property(x => x.FechaCreacion)
+                .HasColumnName("FechaCreacion")
+                .HasColumnType("datetime")
+                .IsRequired(false);
+            builder.Property(x => x.ModificadoPor)
+                .HasColumnName("ModificadoPor")
+                .HasColumnType("int")
+                .IsRequired(false);
+            builder.Property(x => x.FechaModificacion)
+                .HasColumnName("FechaModificacion")
+                .HasColumnType("datetime")
+                .IsRequired(false);
+
+            //navegacion con Estado
+            builder.HasOne(x => x.Estado)
                 .WithMany(x => x.Usuarios)
                 .HasForeignKey(x => x.EstadoId)
                 .HasConstraintName("FK_Usuario_Estado")
