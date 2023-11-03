@@ -36,6 +36,18 @@ builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 //usuario
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+//categoria
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+//catalogo documento
+builder.Services.AddScoped<ICatalogoDocumentoService, CatalogoDocumentoService>();
+//tipo compra
+builder.Services.AddScoped<ITipoCompraService, TipoCompraService>();
+//subtipo compra
+builder.Services.AddScoped<ISubtipoCompraService, SubtipoCompraService>();
+//proveedor
+builder.Services.AddScoped<IProveedorService, ProveedorService>();
+//documento
+builder.Services.AddScoped<IDocumentoService, DocumentoService>();
 
 
 

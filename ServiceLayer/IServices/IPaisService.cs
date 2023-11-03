@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using Azure;
+using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,8 @@ namespace ServiceLayer.IServices
 {
     public interface IPaisService
     {
-        List<PaisDto> GetAllPaises();
-        Pais GetPaisById(int id);
-        void InsertPais(Pais pais);
-        void UpdatePais(Pais pais);
-        void RemovePais(Pais pais);
+        ResponseDto GetAllPaises();
+        ResponseDto GetPaisById(int id);
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -18,34 +19,36 @@ namespace suplierBackendAPIs.Controllers
         [HttpGet]
         public IActionResult GetAllTipoDocumentos()
         {
-               return Ok(_tipoDocumentoService.GetAllTipoDocumentos());
+          ResponseDto response = _tipoDocumentoService.GetAllTipoDocumentos();
+               return Ok(response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetTipoDocumentoById(int id)
-        {
-            return Ok(_tipoDocumentoService.GetTipoDocumentoById(id));
+        { 
+            ResponseDto response = _tipoDocumentoService.GetTipoDocumentoById(id);
+            return Ok(response);
         }
 
         [HttpPost]
         public IActionResult InsertTipoDocumento(TipoDocumento tipoDocumento)
         {
-            _tipoDocumentoService.InsertTipoDocumento(tipoDocumento);
-            return Ok("Tipo de documento insertado correctamente");
+            ResponseDto response = _tipoDocumentoService.InsertTipoDocumento(tipoDocumento);
+            return Ok(response);
         }
 
         [HttpPut]
         public IActionResult UpdateTipoDocumento(TipoDocumento tipoDocumento)
         {
-            _tipoDocumentoService.UpdateTipoDocumento(tipoDocumento);
-            return Ok("Tipo de documento actualizado correctamente");
+             ResponseDto response = _tipoDocumentoService.UpdateTipoDocumento(tipoDocumento);
+            return Ok(response);
         }
 
         [HttpDelete]
         public IActionResult DeleteTipoDocumento(TipoDocumento tipoDocumento)
         {
-            _tipoDocumentoService.RemoveTipoDocumento(tipoDocumento);
-            return Ok("Tipo de documento eliminado correctamente");
+             ResponseDto response = _tipoDocumentoService.RemoveTipoDocumento(tipoDocumento);
+            return Ok(response);
         }
     }
 }

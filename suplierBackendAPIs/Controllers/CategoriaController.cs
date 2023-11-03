@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -18,42 +19,39 @@ namespace supplierBackendAPIs.Controllers
         [HttpGet]
         public IActionResult GetAllCategorias()
         {
-            return Ok(_categoriaService.GetAllCategorias());
+            ResponseDto response = _categoriaService.GetAllCategorias();
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCategoriaById(int id)
         {
-            return Ok(_categoriaService.GetCategoriaById(id));
+          
+            ResponseDto  response = _categoriaService.GetCategoriaById(id);
+            return Ok(response);
         }
 
         [HttpPost]
         public IActionResult InsertCategoria(Categoria categoria)
         {
-            _categoriaService.InsertCategoria(categoria);
-            var response = new {
-                status = 200,
-                message = "Categoria creada correctamente" };
+          
+            ResponseDto response = _categoriaService.InsertCategoria(categoria);
             return Ok(response);
         }
 
         [HttpPut]
         public IActionResult UpdateCategoria(Categoria categoria)
         {
-            _categoriaService.UpdateCategoria(categoria);
-            var response = new
-            {
-                status = 200,
-                message = "Categoria actualizada correctamente"
-            };
+           
+            ResponseDto response =_categoriaService.UpdateCategoria(categoria);
             return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteCategoria(int id)
         {
-            _categoriaService.DeleteCategoria(id);
-            return Ok();
+           ResponseDto response = _categoriaService.DeleteCategoria(id);
+            return Ok(response);
         }
 
 

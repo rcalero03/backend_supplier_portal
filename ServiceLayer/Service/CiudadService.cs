@@ -24,48 +24,48 @@ namespace ServiceLayer.Service
             return _repository.GetAll();
         }
 
-        public List<CiudadDto> GetCiudadById(int paisId)
+        public ResponseDto GetCiudadById(int paisId)
         {
-            List<CiudadDto> ciudadDtos = new List<CiudadDto>();
-
-            foreach (var item in GetAllCiudades())
+            try
             {
-                if(item.PaisId == paisId)
-                {
-                    CiudadDto countryDto = new CiudadDto
-                    {
-                        Id = item.Id,
-                        Nombre = item.Nombre == null ? string.Empty : item.Nombre
-                    };
+                List<CiudadDto> ciudadDtos = new List<CiudadDto>();
 
-                    ciudadDtos.Add(countryDto);
+                foreach (var item in GetAllCiudades())
+                {
+                    if (item.PaisId == paisId)
+                    {
+                        CiudadDto countryDto = new CiudadDto
+                        {
+                            Id = item.Id,
+                            Nombre = item.Nombre == null ? string.Empty : item.Nombre
+                        };
+
+                        ciudadDtos.Add(countryDto);
+
+                    }
 
                 }
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "Lista de ciudades por pais",
+                    StatusCode = 200,
+                    Data = ciudadDtos
+                };
+                return response;
 
+            }catch(Exception e)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Error al obtener la lista de ciudades por pais",
+                    StatusCode = 500,
+                    Data = e.Message
+                };
+                return response;
             }
-            return ciudadDtos;
 
-        }
-
-
-        public void InsertCiudad(Ciudad ciudad)
-        {
-            _repository.Insert(ciudad);
-            _repository.SaveChange();
-        }
-
-        public void RemoveCiudad(Ciudad ciudad)
-        {
-            var ciudadToRemove = _repository.GetById(ciudad.Id);
-            _repository.Remove(ciudadToRemove);
-            _repository.SaveChange();
-        }
-
-        public void UpdateCiudad(Ciudad ciudad)
-        {
-            var ciudadToUpdate = _repository.GetById(ciudad.Id);
-            _repository.Update(ciudadToUpdate);
-            _repository.SaveChange();
         }
 
     }

@@ -46,6 +46,7 @@ namespace RepositoryLayer.Repository
             return encuentra;
         }
 
+
         public void Insert(T entity)
         {
           if(entity == null)

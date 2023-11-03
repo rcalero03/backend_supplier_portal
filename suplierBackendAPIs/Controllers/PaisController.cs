@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -18,7 +19,8 @@ namespace supplierBackendAPIs.Controllers
         [HttpGet]
         public IActionResult GetAllPaises()
         {
-            return Ok(_paisService.GetAllPaises());
+            ResponseDto response = _paisService.GetAllPaises();
+            return Ok(response);
         }
         
     }

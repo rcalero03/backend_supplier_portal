@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace ServiceLayer.IServices
 {
     public interface ITipoDocumentoService
     {
-        IEnumerable<TipoDocumento> GetAllTipoDocumentos();
-        TipoDocumento GetTipoDocumentoById(int id);
-        void InsertTipoDocumento(TipoDocumento tipoDocumento);
-        void UpdateTipoDocumento(TipoDocumento tipoDocumento);
-        void RemoveTipoDocumento(TipoDocumento tipoDocumento);
+        ResponseDto GetAllTipoDocumentos();
+        ResponseDto GetTipoDocumentoById(int id);
+        ResponseDto InsertTipoDocumento(TipoDocumento tipoDocumento);
+        ResponseDto UpdateTipoDocumento(TipoDocumento tipoDocumento);
+        ResponseDto RemoveTipoDocumento(TipoDocumento tipoDocumento);
     }
 }

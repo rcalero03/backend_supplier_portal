@@ -19,51 +19,77 @@ namespace ServiceLayer.Service
             _paisRepository = paisRepository;
         }
 
-        public List<PaisDto> GetAllPaises()
+        public ResponseDto GetAllPaises()
         {
-            List<PaisDto> paisDtos = new List<PaisDto>();
-
-            foreach (var pais in _paisRepository.GetAll())
+            try
             {
-                // Crear un objeto PaisDto y asignar los valores
-                PaisDto paisDto = new PaisDto
+                List<PaisDto> paisDtos = new List<PaisDto>();
+
+                foreach (var pais in _paisRepository.GetAll())
+                {
+                    // Crear un objeto PaisDto y asignar los valores
+                    PaisDto paisDto = new PaisDto
+                    {
+                        nombre = pais.Nombre,
+                        id = pais.Id
+                    };
+
+                    // Agregar el objeto PaisDto a la lista
+                    paisDtos.Add(paisDto);
+                }
+                ResponseDto response = new ResponseDto
+                {
+                   Success= true,
+                   Message = "Paises encontrados",
+                   StatusCode = 200,
+                   Data = paisDtos
+                };
+                return response;    
+            }catch(Exception e)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Error al obtener los paises",
+                    StatusCode = 500,
+                    Data = e.Message
+                };
+                return response;
+            }
+        }
+
+        public ResponseDto GetPaisById(int id)
+        {
+            try
+            {
+                Pais pais = _paisRepository.GetById(id);
+                PaisDto paisDto =  new PaisDto
                 {
                     nombre = pais.Nombre,
                     id = pais.Id
                 };
-
-                // Agregar el objeto PaisDto a la lista
-                paisDtos.Add(paisDto);
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "Pais encontrado",
+                    StatusCode = 200,
+                    Data = paisDto
+                };
+                return response;
+            }catch(Exception e)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Error al obtener el pais",
+                    StatusCode = 500,
+                    Data = e.Message
+                };
+                return response;
             }
-
-            return paisDtos;
+           
         }
 
-        public Pais GetPaisById(int id)
-        {
-            return _paisRepository.GetById(id);
-        }
-
-        public void InsertPais(Pais pais)
-        {
-            _paisRepository.Insert(pais);
-            _paisRepository.SaveChange();
-        }
-
-        public void RemovePais(Pais pais)
-        {
-            var paisToRemove = _paisRepository.GetById(pais.Id);
-            _paisRepository.Remove(paisToRemove);
-            _paisRepository.SaveChange();
-        }
-
-        public void UpdatePais(Pais pais)
-        {
-            var paisToUpdate = _paisRepository.GetById(pais.Id);
-            _paisRepository.Update(paisToUpdate);
-            _paisRepository.SaveChange();
-        }
-
-
+   
     }
 }

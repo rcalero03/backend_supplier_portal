@@ -10,12 +10,12 @@ namespace ServiceLayer.IServices
 {
     public interface ICategoriaService
     {
-        IEnumerable<Categoria> GetAllCategorias();
-        CategoriaDto GetCategoriaById(int id);
-        void InsertCategoria(Categoria categoria);
-        void UpdateCategoria(Categoria categoria);
-        void RemoveCategoria(Categoria categoria);
-        void DeleteCategoria(int id);
+        ResponseDto GetAllCategorias();
+        ResponseDto GetCategoriaById(int id);
+        ResponseDto InsertCategoria(Categoria categoria);
+        ResponseDto UpdateCategoria(Categoria categoria);
+        ResponseDto RemoveCategoria(Categoria categoria);
+        ResponseDto DeleteCategoria(int id);
 
     }
 }

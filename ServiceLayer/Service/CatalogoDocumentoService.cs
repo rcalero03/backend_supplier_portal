@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using Azure;
+using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
@@ -19,51 +20,184 @@ namespace ServiceLayer.Service
             _repository = repository;
         }
 
-         public IEnumerable<CatalogoDocumento> GetAllCatalogoDocumento()
-        {
-            return _repository.GetAll();
-        }
-
-        public List<CatalogoDocumentoDto> GetCatalogoDocumentoById(int id)
-        {
-            List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-            CatalogoDocumento catalogoDocumento = _repository.GetById(id);
-            catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+         public ResponseDto GetAllCatalogoDocumento()
+        { 
+           
+            try
             {
-                Id = catalogoDocumento.Id,
-                Nombre = catalogoDocumento.Nombre == null ? string.Empty : catalogoDocumento.Nombre,
-                Descripcion = catalogoDocumento.Descripcion == null ? string.Empty : catalogoDocumento.Descripcion,
-                Requerido = catalogoDocumento.Requerido = catalogoDocumento.Requerido,
-                FechaCreacion = catalogoDocumento.FechaCreacion == null ? DateTime.Now : catalogoDocumento.FechaCreacion,
-                FechaModificacion = catalogoDocumento.FechaModificacion == null ? DateTime.Now : catalogoDocumento.FechaModificacion,
-                CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
-                ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
-                EstadoId = catalogoDocumento.EstadoId,
-                TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                IEnumerable<CatalogoDocumento> catalogoDocumentos = _repository.GetAll();
+                List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
+                foreach (var catalogoDocumento in catalogoDocumentos)
+                {
+                    catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+                    {
+                        Id = catalogoDocumento.Id,
+                        Nombre = catalogoDocumento.Nombre == null ? string.Empty : catalogoDocumento.Nombre,
+                        Descripcion = catalogoDocumento.Descripcion == null ? string.Empty : catalogoDocumento.Descripcion,
+                        Requerido = catalogoDocumento.Requerido = catalogoDocumento.Requerido,
+                        FechaCreacion = catalogoDocumento.FechaCreacion == null ? DateTime.Now : catalogoDocumento.FechaCreacion,
+                        FechaModificacion = catalogoDocumento.FechaModificacion == null ? DateTime.Now : catalogoDocumento.FechaModificacion,
+                        CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
+                        ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
+                        EstadoId = catalogoDocumento.EstadoId,
+                        TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                    });
+                }
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento encontrado",
+                    StatusCode = 200,
+                    Data = catalogoDocumentoDtos
+                };
+                return responseDto;
+            }
+            catch(Exception ex)
+            {
+                   ResponseDto responseDto = new ResponseDto
+                   {
+                    Success = false,
+                    Message = "CatalogoDocumento no encontrado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return responseDto;
+            }
 
-            });
+        }
+
+        public ResponseDto GetCatalogoDocumentoById(int id)
+        {
+            try
+            {
+                List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
+                CatalogoDocumento catalogoDocumento = _repository.GetById(id);
+                catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+                {
+                    Id = catalogoDocumento.Id,
+                    Nombre = catalogoDocumento.Nombre == null ? string.Empty : catalogoDocumento.Nombre,
+                    Descripcion = catalogoDocumento.Descripcion == null ? string.Empty : catalogoDocumento.Descripcion,
+                    Requerido = catalogoDocumento.Requerido = catalogoDocumento.Requerido,
+                    FechaCreacion = catalogoDocumento.FechaCreacion == null ? DateTime.Now : catalogoDocumento.FechaCreacion,
+                    FechaModificacion = catalogoDocumento.FechaModificacion == null ? DateTime.Now : catalogoDocumento.FechaModificacion,
+                    CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
+                    ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
+                    EstadoId = catalogoDocumento.EstadoId,
+                    TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+
+                });
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento encontrado",
+                    StatusCode = 200,
+                    Data = catalogoDocumentoDtos
+                };
+
+                return response;
+
+            }
+            catch(Exception ex)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "CatalogoDocumento no encontrado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return response;
+            }
+        
  
-            return catalogoDocumentoDtos;
-
+          
         }
 
-        public void InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento)
+        public ResponseDto InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento)
         {
-            _repository.Insert(catalogoDocumento);
-            _repository.SaveChange();
+            try
+            {
+                _repository.Insert(catalogoDocumento);
+                _repository.SaveChange();
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento insertado correctamente",
+                    StatusCode = 200,
+                    Data = catalogoDocumento
+                };
+                return response;
+
+            }catch(Exception ex)
+            {
+               ResponseDto response = new ResponseDto
+               {
+                    Success = false,
+                    Message = "CatalogoDocumento no insertado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return response;
+            }
+            
         }
 
-        public void RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento)
+        public ResponseDto RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento)
         {
-            var catalogoDocumentoToRemove = _repository.GetById(catalogoDocumento.Id);
-            _repository.Remove(catalogoDocumentoToRemove);
-            _repository.SaveChange();
+            try
+            {
+                var catalogoDocumentoToRemove = _repository.GetById(catalogoDocumento.Id);
+                _repository.Remove(catalogoDocumentoToRemove);
+                _repository.SaveChange();
+
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento eliminado correctamente",
+                    StatusCode = 200,
+                    Data = catalogoDocumento
+                };
+                return response;
+            }catch(Exception ex)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Catalogo Documento no eliminado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return response;
+            }
         }
 
-        public void UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento)
+        public ResponseDto UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento)
         {
-            _repository.Update(catalogoDocumento);
-            _repository.SaveChange();
+            try
+            {
+                _repository.Update(catalogoDocumento);
+                _repository.SaveChange();
+
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento actualizado correctamente",
+                    StatusCode = 200,
+                    Data = catalogoDocumento
+                };
+                return response;
+            }catch(Exception ex)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "CatalogoDocumento no actualizado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return response;
+            }
+           
         }
 
 

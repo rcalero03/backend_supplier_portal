@@ -1,14 +1,16 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
 namespace supplierBackendAPIs.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/CatalogoDocumento")]
     [ApiController]
     public class CatalogoDocumentoController : Controller
     {
         private readonly ICatalogoDocumentoService _catalogoDocumentoService;
+        
 
         public CatalogoDocumentoController(ICatalogoDocumentoService catalogoDocumentoService)
         {
@@ -17,44 +19,38 @@ namespace supplierBackendAPIs.Controllers
 
         [HttpGet]
         public IActionResult GetAllCatalogoDocumento()
-        {
-            return Ok(_catalogoDocumentoService.GetAllCatalogoDocumento());
+        {   
+            ResponseDto response = _catalogoDocumentoService.GetAllCatalogoDocumento();
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCatalogoDocumentoById(int id)
-        {
-            return Ok(_catalogoDocumentoService.GetCatalogoDocumentoById(id));
+        { 
+            ResponseDto response = _catalogoDocumentoService.GetCatalogoDocumentoById(id);
+            return Ok(response);
         }
 
         [HttpPost]
         public IActionResult InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento)
-        {
-            _catalogoDocumentoService.InsertCatalogoDocumento(catalogoDocumento);
-            var response = new
-            {
-                status = 200,
-                message = "CatalogoDocumento creado correctamente"
-            };
+        { 
+            
+            ResponseDto response = _catalogoDocumentoService.InsertCatalogoDocumento(catalogoDocumento);
             return Ok(response);
         }
 
         [HttpPut]
         public IActionResult UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento)
         {
-            _catalogoDocumentoService.UpdateCatalogoDocumento(catalogoDocumento);
-            var response = new
-            {
-                status = 200,
-                message = "CatalogoDocumento actualizado correctamente"
-            };
+
+            ResponseDto response = _catalogoDocumentoService.UpdateCatalogoDocumento(catalogoDocumento);
             return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public IActionResult RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento)
         {
-            _catalogoDocumentoService.RemoveCatalogoDocumento(catalogoDocumento);
+            ResponseDto response = _catalogoDocumentoService.RemoveCatalogoDocumento(catalogoDocumento);
             return Ok();
         }
 

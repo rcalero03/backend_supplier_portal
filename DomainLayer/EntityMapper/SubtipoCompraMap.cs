@@ -17,7 +17,7 @@ namespace DomainLayer.EntityMapper
             builder.HasKey(x => x.Id)
                   .HasName("PK_SubtipoCompraId");
 
-            builder.ToTable("Subtipo_Compra");
+            builder.ToTable("SubtipoCompra");
 
             builder.Property(x => x.Id)
                .HasColumnName("Id")

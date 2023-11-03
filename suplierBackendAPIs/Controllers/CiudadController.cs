@@ -1,10 +1,11 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
 namespace supplierBackendAPIs.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Ciudad")]
     [ApiController]
     public class CiudadController : Controller
     {
@@ -16,10 +17,11 @@ namespace supplierBackendAPIs.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public IActionResult GetCiudadById(int id)
+        [HttpGet("{paisid}")]
+        public IActionResult GetCiudadById(int paisid)
         {
-            return Ok(_ciudadService.GetCiudadById(id));
+            ResponseDto response = _ciudadService.GetCiudadById(paisid);
+            return Ok(response);
         }
 
     }

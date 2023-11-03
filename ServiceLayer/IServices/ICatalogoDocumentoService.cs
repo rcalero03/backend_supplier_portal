@@ -10,10 +10,10 @@ namespace ServiceLayer.IServices
 {
     public interface ICatalogoDocumentoService
     {
-        IEnumerable<CatalogoDocumento> GetAllCatalogoDocumento();
-        List<CatalogoDocumentoDto> GetCatalogoDocumentoById(int paisId);
-        void InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento);
-        void UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento);
-        void RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento);
+        ResponseDto GetAllCatalogoDocumento();
+        ResponseDto GetCatalogoDocumentoById(int paisId);
+        ResponseDto InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento);
+        ResponseDto UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento);
+        ResponseDto RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento);
     }
 }
