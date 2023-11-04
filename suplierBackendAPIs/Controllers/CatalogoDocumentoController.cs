@@ -1,10 +1,12 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
 namespace supplierBackendAPIs.Controllers
 {
+    [Authorize]
     [Route("api/CatalogoDocumento")]
     [ApiController]
     public class CatalogoDocumentoController : Controller

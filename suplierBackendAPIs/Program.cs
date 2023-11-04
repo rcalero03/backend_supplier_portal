@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer;
 using RepositoryLayer.Repository;
@@ -6,7 +8,22 @@ using ServiceLayer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAuthentication()
+    .AddOwinBearer("OwinBearer",
+    options => builder.Configuration.GerSection("OwinBearerOptions").Bind(options))
+    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAD"));
+
+builder.Services.AddAuthorization(option =>
+{
+    var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
+        JwtBearerDefaults.AuthenticationScheme,
+        "OwinBearer");
+    defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+    option.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+});
+
+// Habilitar la autenticación y autorización
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
