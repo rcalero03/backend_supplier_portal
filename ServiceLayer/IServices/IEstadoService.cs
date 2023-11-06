@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace ServiceLayer.IServices
 {
     public interface IEstadoService
     {
-        IEnumerable<Estado> GetAllEstados();
+        IEnumerable<EstadoDto> GetAllEstados();
         Estado GetEstadoById(int id);
         void InsertEstado(Estado estado);
         void UpdateEstado(Estado estado);
         void RemoveEstado(Estado estado);
-
+   
     }
 }

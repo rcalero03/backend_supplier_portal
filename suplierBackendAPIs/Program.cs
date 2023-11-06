@@ -48,6 +48,12 @@ builder.Services.AddScoped<ISubtipoCompraService, SubtipoCompraService>();
 builder.Services.AddScoped<IProveedorService, ProveedorService>();
 //documento
 builder.Services.AddScoped<IDocumentoService, DocumentoService>();
+//configuracion notificacion
+builder.Services.AddScoped<IConfiguracionNotificacionService, ConfiguracionNotificacionService>();
+//proveedor categoria
+builder.Services.AddScoped<IProveedorCategoriaService, ProveedorCategoriaService>();
+//referencia
+builder.Services.AddScoped<IReferenciaService, ReferenciaService>();
 
 
 

@@ -13,10 +13,12 @@ namespace ServiceLayer.Service
     public class TipoCompraService : ITipoCompraService
     {
         private readonly IRepository<TipoCompra> _repository;
+        private readonly IEstadoService _estadoService;
 
-        public TipoCompraService(IRepository<TipoCompra> repository)
+        public TipoCompraService(IRepository<TipoCompra> repository, IEstadoService estadoService)
         {
             _repository = repository;
+            _estadoService = estadoService;
         }
 
         public ResponseDto GetAllTipoCompra()
@@ -36,7 +38,7 @@ namespace ServiceLayer.Service
                         FechaModificacion = tipoCompra.FechaModificacion,
                         CreadoPor = tipoCompra.CreadoPor,
                         ModificadoPor = tipoCompra.ModificadoPor,
-                        EstadoId = tipoCompra.EstadoId
+                        EstadoId = tipoCompra.EstadoId,
                     });
                 }
                 ResponseDto responseDto = new ResponseDto
@@ -74,7 +76,8 @@ namespace ServiceLayer.Service
                     FechaModificacion = tipoCompra.FechaModificacion,
                     CreadoPor = tipoCompra.CreadoPor,
                     ModificadoPor = tipoCompra.ModificadoPor,
-                    EstadoId = tipoCompra.EstadoId
+                    EstadoId = tipoCompra.EstadoId,
+                   
                 };
                 ResponseDto responseDto = new ResponseDto
                 {

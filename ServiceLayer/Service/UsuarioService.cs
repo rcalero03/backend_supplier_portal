@@ -13,8 +13,8 @@ namespace ServiceLayer.Service
 {
     public class UsuarioService : IUsuarioService
     {
-        private IRepository<Usuario> _repository;
-        private IRepository<RolUsuario> _repositoryRolUser;
+        private readonly IRepository<Usuario> _repository;
+        private readonly IRepository<RolUsuario> _repositoryRolUser;
         private readonly IConfiguracionGeneralService _configurationGeneralService;
         private readonly IEstadoService _estadoService;
         private readonly IRolService _rolService;

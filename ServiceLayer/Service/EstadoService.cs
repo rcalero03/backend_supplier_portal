@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Models;
+using DomainLayer.ModelsDto;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using System;
@@ -19,15 +20,31 @@ namespace ServiceLayer.Service
             _repository = repository;
         }
 
-        public IEnumerable<Estado> GetAllEstados()
+        public IEnumerable<EstadoDto> GetAllEstados()
         {
-            return _repository.GetAll();
-            
+            try
+            {
+                IEnumerable<Estado> estados = _repository.GetAll();
+                List<EstadoDto> estadoDto = new List<EstadoDto>();
+                foreach (var estado in estados)
+                {
+                    estadoDto.Add(new EstadoDto
+                    {
+                        Id = estado.Id,
+                        Nombre = estado.Nombre, 
+                    });
+                }
+                return estadoDto;
+            }catch(Exception ex)
+            {
+               return null;
+            }
+           
         }
 
         public Estado GetEstadoById(int id)
         {
-           return _repository.GetById(id);
+              return _repository.GetById(id);
         }
 
         public void InsertEstado(Estado estado)
@@ -57,5 +74,7 @@ namespace ServiceLayer.Service
             _repository.Remove(estado1);
             _repository.SaveChange();
         }
+
     }
+
 }

@@ -9,15 +9,16 @@ namespace DomainLayer.Models
 {
     public class ProveedorCategoria : BaseEntity
     {
+        [ForeignKey("ProveedorId")]
         public Proveedor ? Proveedor { get; set; }
+        [ForeignKey("CategoriaId")]
         public Categoria ? Categoria { get; set; }
+        [ForeignKey("EstadoId")]
         public Estado ? Estado { get; set; }
 
-        [ForeignKey("ProveedorId")]
+      
         public int ? ProveedorId { get; set; }
-        [ForeignKey("CategoriaId")]
         public int ? CategoriaId { get; set; }
-        [ForeignKey("EstadoId")]
         public int ? EstadoId { get; set; }
 
 
