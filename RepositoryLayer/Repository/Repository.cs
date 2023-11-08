@@ -40,7 +40,7 @@ namespace RepositoryLayer.Repository
             if (encuentra == null)
             {
                 throw new Exception("El elemento no se encontró en la colección.");
-
+           
             }
 
             return encuentra;

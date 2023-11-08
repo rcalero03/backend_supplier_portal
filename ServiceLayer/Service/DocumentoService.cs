@@ -30,11 +30,12 @@ namespace ServiceLayer.Service
                     documentoDto.Add(new DocumentoDto
                     {
                         Id = documento.Id,
-                        Nombre = documento.Nombre,
+                        URL = documento.Nombre,
                         FechaEmicion = documento.FechaEmicion,
                         FechaVencimiento = documento.FechaVencimiento,
                         EstadoId = documento.EstadoId,
                         ProveedorId = documento.ProveedorId,
+                        CatalogoDocumentoId = documento.CatalogoDocumentoId,
                         FechaCreacion = documento.FechaCreacion,
                         FechaModificacion = documento.FechaModificacion,
                         CreadoPor = documento.CreadoPor,
@@ -70,11 +71,12 @@ namespace ServiceLayer.Service
                 DocumentoDto documentoDto = new DocumentoDto
                 {
                     Id = documento.Id,
-                    Nombre = documento.Nombre,
+                    URL = documento.Nombre,
                     FechaEmicion = documento.FechaEmicion,
                     FechaVencimiento = documento.FechaVencimiento,
                     EstadoId = documento.EstadoId,
                     ProveedorId = documento.ProveedorId,
+                    CatalogoDocumentoId = documento.CatalogoDocumentoId,
                     FechaCreacion = documento.FechaCreacion,
                     FechaModificacion = documento.FechaModificacion,
                     CreadoPor = documento.CreadoPor,

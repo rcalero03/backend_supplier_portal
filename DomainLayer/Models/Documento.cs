@@ -14,6 +14,10 @@ namespace DomainLayer.Models
         public DateTime ? FechaVencimiento { get; set; }
         public int ? EstadoId { get; set; }
         public int ? ProveedorId { get; set; }
+        public int ? CatalogoDocumentoId { get; set; }
+
+        [ForeignKey("CatalogoDocumentoId")]
+        public CatalogoDocumento ? CatalogoDocumentos { get; set; }
         [ForeignKey("EstadoId")]
         public Estado ? Estados { get; set; }
         [ForeignKey("ProveedorId")]

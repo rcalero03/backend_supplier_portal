@@ -14,7 +14,7 @@ namespace DomainLayer.EntityMapper
         public void Configure(EntityTypeBuilder<ConfiguracionNotificacion> builder)
         {
             builder.HasKey(x => x.Id)
-                  .HasName("PK_IdConfiguracionNotificacion");
+                  .HasName("PK_ConfiguracionNotificacionId");
 
             builder.ToTable("ConfiguracionNotificacion");
 

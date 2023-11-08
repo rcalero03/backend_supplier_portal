@@ -30,7 +30,7 @@ namespace ServiceLayer.Service
             {
                 List<CiudadDto> ciudadDtos = new List<CiudadDto>();
 
-                foreach (var item in GetAllCiudades())
+                foreach (var item in _repository.GetAll())
                 {
                     if (item.PaisId == paisId)
                     {

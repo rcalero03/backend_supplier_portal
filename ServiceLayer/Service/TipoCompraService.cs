@@ -107,12 +107,24 @@ namespace ServiceLayer.Service
             {
                 _repository.Insert(tipoCompra);
                 _repository.SaveChange();
+                TipoCompraDto compraDto = new TipoCompraDto
+                {
+                    Id = tipoCompra.Id,
+                    TipoCompras = tipoCompra.TipoCompras,
+                    Descripcion = tipoCompra.Descripcion,
+                    FechaCreacion = tipoCompra.FechaCreacion,
+                    FechaModificacion = tipoCompra.FechaModificacion,
+                    CreadoPor = tipoCompra.CreadoPor,
+                    ModificadoPor = tipoCompra.ModificadoPor,
+                    EstadoId = tipoCompra.EstadoId,
+                };
+
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
                     Message = "TipoCompra insertado correctamente",
                     StatusCode = 200,
-                    Data = tipoCompra
+                    Data = compraDto
                 };
                 return responseDto;
 

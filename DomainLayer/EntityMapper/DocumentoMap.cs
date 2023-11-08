@@ -15,7 +15,7 @@ namespace DomainLayer.EntityMapper
         public void Configure(EntityTypeBuilder<Documento> builder)
         {
             builder.HasKey(x => x.Id)
-                  .HasName("PK_DocumentoId");
+                  .HasName("PK_CocumentoId");
 
             builder.ToTable("Documento");
 
@@ -39,11 +39,15 @@ namespace DomainLayer.EntityMapper
             builder.Property(x => x.EstadoId)
                 .HasColumnName("EstadoId")
                 .HasColumnType("int")
-                .IsRequired(false);
+                .IsRequired();
             builder.Property(x => x.ProveedorId)
                 .HasColumnName("ProveedorId")
                 .HasColumnType("int")
-                .IsRequired(false);
+                .IsRequired();
+            builder.Property(x => x.CatalogoDocumentoId)
+                .HasColumnName("CatalogoDocumentoId")
+                .HasColumnType("int")
+                .IsRequired();
 
             //BaseEntity
             builder.Property(x => x.CreadoPor)
@@ -72,6 +76,15 @@ namespace DomainLayer.EntityMapper
                 .HasForeignKey(x => x.ProveedorId)
                 .HasConstraintName("FK_Documento_Proveedor")
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //navegacion con CatalogoDocumento
+            builder.HasOne(x => x.CatalogoDocumentos)
+                .WithMany(x => x.Documentos)
+                .HasForeignKey(x => x.CatalogoDocumentoId)
+                .HasConstraintName("FK_Documento_CatalogoDocumento")
+                .OnDelete(DeleteBehavior.Restrict);
+
+
 
         }
     }

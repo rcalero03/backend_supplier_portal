@@ -25,9 +25,9 @@ namespace ServiceLayer.Service
            
             try
             {
-                IEnumerable<CatalogoDocumento> catalogoDocumentos = _repository.GetAll();
+
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-                foreach (var catalogoDocumento in catalogoDocumentos)
+                foreach (var catalogoDocumento in _repository.GetAll())
                 {
                     catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
                     {
@@ -64,6 +64,50 @@ namespace ServiceLayer.Service
                 return responseDto;
             }
 
+        }
+        public ResponseDto getAllCatalogoDocumentoByTipoDocumentoId(int tipoDocumentoId)
+        {
+            try
+            {
+                List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
+                foreach (var i in _repository.GetAll())
+                {
+                    if(i.TipoDocumentoId == tipoDocumentoId)
+                    {
+                        catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+                        {
+                            Id = i.Id,
+                            Nombre = i.Nombre == null ? string.Empty : i.Nombre,
+                            Descripcion = i.Descripcion == null ? string.Empty : i.Descripcion,
+                            Requerido = i.Requerido = i.Requerido,
+                            FechaCreacion = i.FechaCreacion == null ? DateTime.Now : i.FechaCreacion,
+                            FechaModificacion = i.FechaModificacion == null ? DateTime.Now : i.FechaModificacion,
+                            CreadoPor = i.CreadoPor == null ? 0 : i.CreadoPor,
+                            ModificadoPor = i.ModificadoPor == null ? 0 : i.ModificadoPor,
+                            EstadoId = i.EstadoId,
+                            TipoDocumentoId = i.TipoDocumentoId
+                        });
+                    }
+                }
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = true,
+                    Message = "CatalogoDocumento encontrado",
+                    StatusCode = 200,
+                    Data = catalogoDocumentoDtos
+                };
+                return responseDto;
+            }catch(Exception ex)
+            {
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = false,
+                    Message = "CatalogoDocumento no encontrado",
+                    StatusCode = 404,
+                    Data = ex.Message
+                };
+                return responseDto;
+            }
         }
 
         public ResponseDto GetCatalogoDocumentoById(int id)
@@ -103,7 +147,7 @@ namespace ServiceLayer.Service
                 {
                     Success = false,
                     Message = "CatalogoDocumento no encontrado",
-                    StatusCode = 500,
+                    StatusCode = 404,
                     Data = ex.Message
                 };
                 return response;

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RepositoryLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace RepositoryLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdEstado", x => x.Id);
+                    table.PrimaryKey("PK_EstadoId", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,11 +30,11 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pais", x => x.Id);
+                    table.PrimaryKey("PK_PaisId", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -43,12 +43,12 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Codigo = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rol", x => x.Id);
+                    table.PrimaryKey("PK_RolId", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,19 +57,19 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GrupoCompra = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comprador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
+                    descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    grupoCompra = table.Column<string>(type: "varchar(200)", nullable: true),
+                    comprador = table.Column<string>(type: "varchar(200)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: true),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categoria", x => x.Id);
+                    table.PrimaryKey("PK_CategoriaId", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Categoria_Estado_EstadoId",
                         column: x => x.EstadoId,
@@ -78,57 +78,57 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ConfiguracionNotificacion",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Dias = table.Column<int>(type: "int", nullable: false),
-                    Hora = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EstadoId = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreadoPor = table.Column<int>(type: "int", nullable: true),
-                    ModificadoPor = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ConfiguracionNotificacion", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ConfiguracionNotificacion_Estado_EstadoId",
-                        column: x => x.EstadoId,
-                        principalTable: "Estado",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ConfiguracionGeneral",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<int>(type: "varchar(100)", nullable: false),
+                    Codigo = table.Column<string>(type: "varchar(100)", nullable: true),
                     Valor1 = table.Column<string>(type: "varchar(200)", nullable: true),
                     Valor2 = table.Column<string>(type: "varchar(200)", nullable: true),
                     Valor3 = table.Column<string>(type: "varchar(200)", nullable: true),
                     Valor4 = table.Column<string>(type: "varchar(200)", nullable: true),
-                    Valor5 = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Valor5 = table.Column<string>(type: "varchar(200)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ConfiguracionGeneral", x => x.Id);
+                    table.PrimaryKey("PK_ConfiguracionGeneralId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ConfiguracionGeneral_Estado_EstadoId",
+                        name: "FK_ConfiguracionGeneral_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConfiguracionNotificacion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    dias = table.Column<int>(type: "int", nullable: true),
+                    hora = table.Column<TimeSpan>(type: "time", nullable: true),
+                    EstadoId = table.Column<int>(type: "int", nullable: false),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    CreadoPor = table.Column<int>(type: "int", nullable: true),
+                    ModificadoPor = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfiguracionNotificacionId", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ConfiguracionNotificacion_Estado",
+                        column: x => x.EstadoId,
+                        principalTable: "Estado",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,24 +186,24 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(50)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
-                    UserIdAzure = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UserIdAzure = table.Column<string>(type: "varchar(150)", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                    table.PrimaryKey("PK_UsiarioId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Usuario_Estado_EstadoId",
+                        name: "FK_Usuario_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,17 +212,18 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PaisId = table.Column<int>(type: "int", nullable: true)
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
+                    PaisId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ciudad", x => x.Id);
+                    table.PrimaryKey("PK_CiudadId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ciudad_Pais_PaisId",
+                        name: "FK_Ciudad_Pais",
                         column: x => x.PaisId,
                         principalTable: "Pais",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,31 +232,31 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Requerido = table.Column<int>(type: "int", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    requerido = table.Column<int>(type: "int", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
                     TipoDocumentoId = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CatalogoDocumento", x => x.Id);
+                    table.PrimaryKey("PK_CatalogoDocumentoId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CatalogoDocumento_Estado_EstadoId",
+                        name: "FK_CatalogoDocumento_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CatalogoDocumento_Tipo_Documento_TipoDocumentoId",
+                        name: "FK_CatalogoDocumento_TipoDocumento",
                         column: x => x.TipoDocumentoId,
                         principalTable: "Tipo_Documento",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -269,19 +270,19 @@ namespace RepositoryLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RolUsuario", x => x.Id);
+                    table.PrimaryKey("PK_RolUsuarioId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RolUsuario_Rol_RolId",
+                        name: "FK_RolUsuario_Rol",
                         column: x => x.RolId,
                         principalTable: "Rol",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_RolUsuario_Usuario_UsuarioId",
+                        name: "FK_RolUsuario_Usuario",
                         column: x => x.UsuarioId,
                         principalTable: "Usuario",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,41 +291,41 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Identificacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdentificacionTipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactoPrimario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactoSecundario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PaginaWeb = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Movil = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Idioma = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CodigoProveedorSap = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Identificacion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    IdentificacionTipo = table.Column<string>(type: "varchar(200)", nullable: true),
+                    ContactoPrimario = table.Column<string>(type: "varchar(200)", nullable: true),
+                    ContactoSecundario = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Direccion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Telefono = table.Column<string>(type: "varchar(200)", nullable: true),
+                    PaginaWeb = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Movil = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Idioma = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Observacion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    CodigoProveedorSap = table.Column<string>(type: "varchar(200)", nullable: true),
                     CiudadId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proveedor", x => x.Id);
+                    table.PrimaryKey("PK_ProveedorId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Proveedor_Ciudad_CiudadId",
+                        name: "FK_Proveedor_Ciudad",
                         column: x => x.CiudadId,
                         principalTable: "Ciudad",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Proveedor_Estado_EstadoId",
+                        name: "FK_Proveedor_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -333,29 +334,38 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FechaEmicion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    EstadoId = table.Column<int>(type: "int", nullable: true),
-                    ProveedorId = table.Column<int>(type: "int", nullable: true),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
+                    FechaEmicion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaVencimiento = table.Column<DateTime>(type: "datetime", nullable: true),
+                    EstadoId = table.Column<int>(type: "int", nullable: false),
+                    ProveedorId = table.Column<int>(type: "int", nullable: false),
+                    CatalogoDocumentoId = table.Column<int>(type: "int", nullable: false),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Documento", x => x.Id);
+                    table.PrimaryKey("PK_CocumentoId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Documento_Estado_EstadoId",
+                        name: "FK_Documento_CatalogoDocumento",
+                        column: x => x.CatalogoDocumentoId,
+                        principalTable: "CatalogoDocumento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Documento_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Documento_Proveedor_ProveedorId",
+                        name: "FK_Documento_Proveedor",
                         column: x => x.ProveedorId,
                         principalTable: "Proveedor",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -364,28 +374,31 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProveedorId = table.Column<int>(type: "int", nullable: true),
-                    CategoriaId = table.Column<int>(type: "int", nullable: true),
-                    EstadoId = table.Column<int>(type: "int", nullable: true)
+                    ProveedorId = table.Column<int>(type: "int", nullable: false),
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
+                    EstadoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProveedorCategoria", x => x.Id);
+                    table.PrimaryKey("PK_ProveedorCategoriaId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProveedorCategoria_Categoria_CategoriaId",
+                        name: "FK_ProveedorCategoria_Categoria",
                         column: x => x.CategoriaId,
                         principalTable: "Categoria",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProveedorCategoria_Estado_EstadoId",
+                        name: "FK_ProveedorCategoria_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProveedorCategoria_Proveedor_ProveedorId",
+                        name: "FK_ProveedorCategoria_Proveedor",
                         column: x => x.ProveedorId,
                         principalTable: "Proveedor",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -394,25 +407,25 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Descripcion = table.Column<string>(type: "varchar(100)", nullable: true),
                     TipoCompraId = table.Column<int>(type: "int", nullable: false),
                     ProveedorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubtipoCompra", x => x.Id);
+                    table.PrimaryKey("PK_SubtipoCompraId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubtipoCompra_Proveedor_ProveedorId",
+                        name: "FK_SubtipoCompra_Proveedor",
                         column: x => x.ProveedorId,
                         principalTable: "Proveedor",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SubtipoCompra_TipoCompra_TipoCompraId",
+                        name: "FK_SubtipoCompra_TipoCompra",
                         column: x => x.TipoCompraId,
                         principalTable: "TipoCompra",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -421,31 +434,33 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Contacto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Contacto = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Fecha = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Telefono = table.Column<string>(type: "varchar(20)", nullable: true),
                     DocumentoId = table.Column<int>(type: "int", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: true),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    fechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
                     ModificadoPor = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Referencia", x => x.Id);
+                    table.PrimaryKey("PK_ReferenciaId", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Referencia_Documento_DocumentoId",
+                        name: "FK_Referencia_Documento",
                         column: x => x.DocumentoId,
                         principalTable: "Documento",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Referencia_Estado_EstadoId",
+                        name: "FK_Referencia_Estado",
                         column: x => x.EstadoId,
                         principalTable: "Estado",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -469,14 +484,19 @@ namespace RepositoryLayer.Migrations
                 column: "PaisId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ConfiguracionGeneral_EstadoId",
+                table: "ConfiguracionGeneral",
+                column: "EstadoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ConfiguracionNotificacion_EstadoId",
                 table: "ConfiguracionNotificacion",
                 column: "EstadoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ConfiguracionGeneral_EstadoId",
-                table: "ConfiguracionGeneral",
-                column: "EstadoId");
+                name: "IX_Documento_CatalogoDocumentoId",
+                table: "Documento",
+                column: "CatalogoDocumentoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Documento_EstadoId",
@@ -558,7 +578,6 @@ namespace RepositoryLayer.Migrations
                 table: "Usuario",
                 column: "EstadoId");
 
-
             // INSERT ESTADOS
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Activo')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Inactivo')");
@@ -582,13 +601,10 @@ namespace RepositoryLayer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CatalogoDocumento");
+                name: "ConfiguracionGeneral");
 
             migrationBuilder.DropTable(
                 name: "ConfiguracionNotificacion");
-
-            migrationBuilder.DropTable(
-                name: "ConfiguracionGeneral");
 
             migrationBuilder.DropTable(
                 name: "ProveedorCategoria");
@@ -601,9 +617,6 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "SubtipoCompra");
-
-            migrationBuilder.DropTable(
-                name: "Tipo_Documento");
 
             migrationBuilder.DropTable(
                 name: "Categoria");
@@ -621,7 +634,13 @@ namespace RepositoryLayer.Migrations
                 name: "TipoCompra");
 
             migrationBuilder.DropTable(
+                name: "CatalogoDocumento");
+
+            migrationBuilder.DropTable(
                 name: "Proveedor");
+
+            migrationBuilder.DropTable(
+                name: "Tipo_Documento");
 
             migrationBuilder.DropTable(
                 name: "Ciudad");

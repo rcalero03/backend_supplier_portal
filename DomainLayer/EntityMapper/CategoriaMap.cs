@@ -14,7 +14,7 @@ namespace DomainLayer.EntityMapper
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
            builder.HasKey(x => x.Id)
-            .HasName("PK_IdCategoria");
+            .HasName("PK_CategoriaId");
 
             builder.ToTable("Categoria");
 

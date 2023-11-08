@@ -95,12 +95,20 @@ namespace ServiceLayer.Service
             try
             {
                 _repository.Insert(subtipoCompra);
+                SubtipoCompraDto compraDto = new SubtipoCompraDto
+                {
+                    Id = subtipoCompra.Id,
+                    Descripcion = subtipoCompra.Descripcion,
+                    TipoCompraId = subtipoCompra.TipoCompraId,
+                    ProveedorId = subtipoCompra.ProveedorId
+                };
+
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
                     Message = "SubtipoCompra insertado correctamente",
                     StatusCode = 200,
-                    Data = subtipoCompra
+                    Data = compraDto
                 };
                 return responseDto;
 

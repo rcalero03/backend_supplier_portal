@@ -14,7 +14,7 @@ namespace DomainLayer.EntityMapper
         public void Configure(EntityTypeBuilder<Estado> builder)
         {
             builder.HasKey(x => x.Id)
-                  .HasName("PK_IdEstado");
+                  .HasName("PK_EstadoId");
 
             builder.ToTable("Estado");
 

@@ -12,8 +12,8 @@ using RepositoryLayer;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(SupplierAPIDbContext))]
-    [Migration("20231026204828_Init")]
-    partial class Init
+    [Migration("20231107023650_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,187 +29,303 @@ namespace RepositoryLayer.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Descripcion");
 
                     b.Property<int>("EstadoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Nombre");
+
+                    b.Property<int?>("Requerido")
+                        .HasColumnType("int")
+                        .HasColumnName("requerido");
 
                     b.Property<int>("TipoDocumentoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TipoDocumentoId");
 
-                    b.Property<int?>("requerido")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_CatalogoDocumentoId");
 
                     b.HasIndex("EstadoId");
 
                     b.HasIndex("TipoDocumentoId");
 
-                    b.ToTable("CatalogoDocumento");
+                    b.ToTable("CatalogoDocumento", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Comprador")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("comprador");
+
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("descripcion");
 
                     b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
+
+                    b.Property<string>("GrupoCompra")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("grupoCompra");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Nombre");
 
-                    b.Property<string>("comprador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("grupoCompra")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_CategoriaId");
 
                     b.HasIndex("EstadoId");
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categoria", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Ciudad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Nombre")
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nombre");
+
                     b.Property<int?>("PaisId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("PaisId");
 
-                    b.Property<string>("nombre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_CiudadId");
 
                     b.HasIndex("PaisId");
 
-                    b.ToTable("Ciudad");
+                    b.ToTable("Ciudad", (string)null);
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ConfiguracionGeneral", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Codigo")
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Codigo");
+
+                    b.Property<int?>("CreadoPor")
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
+
+                    b.Property<int>("EstadoId")
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
+
+                    b.Property<int?>("ModificadoPor")
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
+
+                    b.Property<string>("Valor1")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Valor1");
+
+                    b.Property<string>("Valor2")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Valor2");
+
+                    b.Property<string>("Valor3")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Valor3");
+
+                    b.Property<string>("Valor4")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Valor4");
+
+                    b.Property<string>("Valor5")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Valor5");
+
+                    b.HasKey("Id")
+                        .HasName("PK_ConfiguracionGeneralId");
+
+                    b.HasIndex("EstadoId");
+
+                    b.ToTable("ConfiguracionGeneral", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ConfiguracionNotificacion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
+
+                    b.Property<int?>("Dias")
+                        .HasColumnType("int")
+                        .HasColumnName("dias");
 
                     b.Property<int>("EstadoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
+
+                    b.Property<TimeSpan?>("Hora")
+                        .HasColumnType("time")
+                        .HasColumnName("hora");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
-                    b.Property<int>("dias")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("hora")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ConfiguracionNotificacionId");
 
                     b.HasIndex("EstadoId");
 
-                    b.ToTable("ConfiguracionNotificacion");
+                    b.ToTable("ConfiguracionNotificacion", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Documento", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CatalogoDocumentoId")
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("CatalogoDocumentoId");
+
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
 
                     b.Property<int?>("EstadoId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaEmicion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaEmicion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
 
                     b.Property<DateTime?>("FechaVencimiento")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaVencimiento");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nombre");
 
                     b.Property<int?>("ProveedorId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("ProveedorId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_CocumentoId");
+
+                    b.HasIndex("CatalogoDocumentoId");
 
                     b.HasIndex("EstadoId");
 
                     b.HasIndex("ProveedorId");
 
-                    b.ToTable("Documento");
+                    b.ToTable("Documento", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Estado", b =>
@@ -226,7 +342,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("Nombre");
 
                     b.HasKey("Id")
-                        .HasName("PK_IdEstado");
+                        .HasName("PK_EstadoId");
 
                     b.ToTable("Estado", (string)null);
                 });
@@ -235,110 +351,142 @@ namespace RepositoryLayer.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nombre");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_PaisId");
 
-                    b.ToTable("Pais");
+                    b.ToTable("Pais", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Proveedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CiudadId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CiudadId");
 
                     b.Property<string>("CodigoProveedorSap")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("CodigoProveedorSap");
 
                     b.Property<string>("ContactoPrimario")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("ContactoPrimario");
 
                     b.Property<string>("ContactoSecundario")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("ContactoSecundario");
 
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Descripcion");
 
                     b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Direccion");
 
                     b.Property<int>("EstadoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
 
                     b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Identificacion");
 
                     b.Property<string>("IdentificacionTipo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("IdentificacionTipo");
 
                     b.Property<string>("Idioma")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Idioma");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Movil")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Movil");
 
                     b.Property<string>("Observacion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Observacion");
 
                     b.Property<string>("PaginaWeb")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("PaginaWeb");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Telefono");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("UsuarioId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ProveedorId");
 
                     b.HasIndex("CiudadId");
 
                     b.HasIndex("EstadoId");
 
-                    b.ToTable("Proveedor");
+                    b.ToTable("Proveedor", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ProveedorCategoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CategoriaId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("CategoriaId");
 
                     b.Property<int?>("EstadoId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<int?>("ProveedorId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("ProveedorId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ProveedorCategoriaId");
 
                     b.HasIndex("CategoriaId");
 
@@ -346,25 +494,29 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ProveedorId");
 
-                    b.ToTable("ProveedorCategoria");
+                    b.ToTable("ProveedorCategoria", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Referencia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Contacto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Contacto");
 
                     b.Property<int?>("CreadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Descripcion");
 
                     b.Property<int?>("DocumentoId")
                         .HasColumnType("int");
@@ -372,99 +524,119 @@ namespace RepositoryLayer.Migrations
                     b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime")
+                        .HasColumnName("Fecha");
 
                     b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("fechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
 
                     b.Property<int?>("ModificadoPor")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nombre");
 
                     b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("Telefono");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_ReferenciaId");
 
                     b.HasIndex("DocumentoId");
 
                     b.HasIndex("EstadoId");
 
-                    b.ToTable("Referencia");
+                    b.ToTable("Referencia", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Rol", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Codigo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Codigo");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Nombre");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_RolId");
 
-                    b.ToTable("Rol");
+                    b.ToTable("Rol", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RolUsuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RolId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("RolId");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("UsuarioId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_RolUsuarioId");
 
                     b.HasIndex("RolId");
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("RolUsuario");
+                    b.ToTable("RolUsuario", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SubtipoCompra", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Descripcion");
 
                     b.Property<int>("ProveedorId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ProveedorId");
 
                     b.Property<int>("TipoCompraId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("TipoCompraId");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_SubtipoCompraId");
 
                     b.HasIndex("ProveedorId");
 
                     b.HasIndex("TipoCompraId");
 
-                    b.ToTable("SubtipoCompra");
+                    b.ToTable("SubtipoCompra", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.TipoCompra", b =>
@@ -527,7 +699,7 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<DateTime?>("FechaCreacion")
                         .HasColumnType("datetime")
-                        .HasColumnName("fechaCreacion");
+                        .HasColumnName("FechaCreacion");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime")
@@ -553,24 +725,49 @@ namespace RepositoryLayer.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CreadoPor")
+                        .HasColumnType("int")
+                        .HasColumnName("CreadoPor");
+
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Email");
 
                     b.Property<int>("EstadoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaCreacion");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime")
+                        .HasColumnName("FechaModificacion");
+
+                    b.Property<int?>("ModificadoPor")
+                        .HasColumnType("int")
+                        .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Nombre");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserIdAzure")
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("UserIdAzure");
+
+                    b.HasKey("Id")
+                        .HasName("PK_UsiarioId");
 
                     b.HasIndex("EstadoId");
 
-                    b.ToTable("Usuario");
+                    b.ToTable("Usuario", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CatalogoDocumento", b =>
@@ -578,14 +775,16 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Estado", "Estados")
                         .WithMany("CatalogoDocumentos")
                         .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_CatalogoDocumento_Estado");
 
                     b.HasOne("DomainLayer.Models.TipoDocumento", "TipoDocumentos")
                         .WithMany("CatalogoDocumentos")
                         .HasForeignKey("TipoDocumentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_CatalogoDocumento_TipoDocumento");
 
                     b.Navigation("Estados");
 
@@ -605,9 +804,24 @@ namespace RepositoryLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Models.Pais", "Pais")
                         .WithMany("Ciudades")
-                        .HasForeignKey("PaisId");
+                        .HasForeignKey("PaisId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Ciudad_Pais");
 
                     b.Navigation("Pais");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ConfiguracionGeneral", b =>
+                {
+                    b.HasOne("DomainLayer.Models.Estado", "Estados")
+                        .WithMany("ConfiguracionGeneral")
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ConfiguracionGeneral_Estado");
+
+                    b.Navigation("Estados");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ConfiguracionNotificacion", b =>
@@ -615,21 +829,37 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Estado", "Estados")
                         .WithMany("ConfiguracionNotificaciones")
                         .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ConfiguracionNotificacion_Estado");
 
                     b.Navigation("Estados");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Documento", b =>
                 {
+                    b.HasOne("DomainLayer.Models.CatalogoDocumento", "CatalogoDocumentos")
+                        .WithMany("Documentos")
+                        .HasForeignKey("CatalogoDocumentoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Documento_CatalogoDocumento");
+
                     b.HasOne("DomainLayer.Models.Estado", "Estados")
                         .WithMany("Documentos")
-                        .HasForeignKey("EstadoId");
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Documento_Estado");
 
                     b.HasOne("DomainLayer.Models.Proveedor", "Proveedores")
                         .WithMany("Documentos")
-                        .HasForeignKey("ProveedorId");
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Documento_Proveedor");
+
+                    b.Navigation("CatalogoDocumentos");
 
                     b.Navigation("Estados");
 
@@ -641,14 +871,16 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Ciudad", "Ciudad")
                         .WithMany("Proveedores")
                         .HasForeignKey("CiudadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Proveedor_Ciudad");
 
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("Proveedores")
                         .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Proveedor_Estado");
 
                     b.Navigation("Ciudad");
 
@@ -659,15 +891,24 @@ namespace RepositoryLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Models.Categoria", "Categoria")
                         .WithMany("ProveedorCategorias")
-                        .HasForeignKey("CategoriaId");
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ProveedorCategoria_Categoria");
 
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("ProveedorCategorias")
-                        .HasForeignKey("EstadoId");
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ProveedorCategoria_Estado");
 
                     b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
                         .WithMany("ProveedorCategorias")
-                        .HasForeignKey("ProveedorId");
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_ProveedorCategoria_Proveedor");
 
                     b.Navigation("Categoria");
 
@@ -680,11 +921,15 @@ namespace RepositoryLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Models.Documento", "Documento")
                         .WithMany("Referencias")
-                        .HasForeignKey("DocumentoId");
+                        .HasForeignKey("DocumentoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("FK_Referencia_Documento");
 
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("Referencias")
-                        .HasForeignKey("EstadoId");
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("FK_Referencia_Estado");
 
                     b.Navigation("Documento");
 
@@ -696,14 +941,16 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Rol", "Rol")
                         .WithMany("RolUsuarios")
                         .HasForeignKey("RolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_RolUsuario_Rol");
 
                     b.HasOne("DomainLayer.Models.Usuario", "Usuario")
                         .WithMany("RolUsuarios")
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_RolUsuario_Usuario");
 
                     b.Navigation("Rol");
 
@@ -715,14 +962,16 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
                         .WithMany("SubtipoCompras")
                         .HasForeignKey("ProveedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_SubtipoCompra_Proveedor");
 
                     b.HasOne("DomainLayer.Models.TipoCompra", "TipoCompra")
                         .WithMany("SubtipoCompras")
                         .HasForeignKey("TipoCompraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_SubtipoCompra_TipoCompra");
 
                     b.Navigation("Proveedor");
 
@@ -755,10 +1004,16 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("Usuarios")
                         .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Usuario_Estado");
 
                     b.Navigation("Estado");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.CatalogoDocumento", b =>
+                {
+                    b.Navigation("Documentos");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Categoria", b =>
@@ -781,6 +1036,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("CatalogoDocumentos");
 
                     b.Navigation("Categorias");
+
+                    b.Navigation("ConfiguracionGeneral");
 
                     b.Navigation("ConfiguracionNotificaciones");
 

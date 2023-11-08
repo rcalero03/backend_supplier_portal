@@ -15,5 +15,6 @@ namespace ServiceLayer.IServices
         ResponseDto InsertCatalogoDocumento(CatalogoDocumento catalogoDocumento);
         ResponseDto UpdateCatalogoDocumento(CatalogoDocumento catalogoDocumento);
         ResponseDto RemoveCatalogoDocumento(CatalogoDocumento catalogoDocumento);
+        ResponseDto getAllCatalogoDocumentoByTipoDocumentoId(int tipoDocumentoId);
     }
 }

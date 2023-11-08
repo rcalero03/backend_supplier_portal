@@ -10,7 +10,7 @@ namespace supplierBackendAPIs.Controllers
     public class CatalogoDocumentoController : Controller
     {
         private readonly ICatalogoDocumentoService _catalogoDocumentoService;
-        
+
 
         public CatalogoDocumentoController(ICatalogoDocumentoService catalogoDocumentoService)
         {
@@ -19,15 +19,23 @@ namespace supplierBackendAPIs.Controllers
 
         [HttpGet]
         public IActionResult GetAllCatalogoDocumento()
-        {   
+        {
             ResponseDto response = _catalogoDocumentoService.GetAllCatalogoDocumento();
             return Ok(response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCatalogoDocumentoById(int id)
-        { 
+        {
             ResponseDto response = _catalogoDocumentoService.GetCatalogoDocumentoById(id);
+            return Ok(response);
+        }
+
+      
+        [HttpGet("byTipoDocumento/{TipoDocumentoId}")]
+        public IActionResult GetCatalogoDocumentoByCatalogoDocumentoId(int TipoDocumentoId)
+        {
+            ResponseDto response = _catalogoDocumentoService.getAllCatalogoDocumentoByTipoDocumentoId(TipoDocumentoId);
             return Ok(response);
         }
 
