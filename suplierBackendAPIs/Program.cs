@@ -13,6 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// add cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDev", 
+        builder =>builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
+
+
+
 // call startup class
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -58,6 +69,7 @@ builder.Services.AddScoped<IReferenciaService, ReferenciaService>();
 
 
 var app = builder.Build();
+app.UseCors("AllowAngularDev");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

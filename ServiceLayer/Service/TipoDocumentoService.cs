@@ -29,17 +29,21 @@ namespace ServiceLayer.Service
                 List<TipoDocumentoDto> tipoDocumentoDto = new List<TipoDocumentoDto>();
                 foreach (var tipoDocumento in tipoDocumentos)
                 {
-                    tipoDocumentoDto.Add(new TipoDocumentoDto
+                   if(tipoDocumento.EstadoId == 1)
                     {
-                        Id = tipoDocumento.Id,
-                        Nombre = tipoDocumento.Nombre,
-                        Descripcion = tipoDocumento.Descripcion,
-                        FechaCreacion = tipoDocumento.FechaCreacion,
-                        FechaModificacion = tipoDocumento.FechaModificacion,
-                        CreadoPor = tipoDocumento.CreadoPor,
-                        ModificadoPor = tipoDocumento.ModificadoPor,
-                        EstadoId = tipoDocumento.EstadoId
-                    });
+                        TipoDocumentoDto tipoDocumentoDto1 = new TipoDocumentoDto
+                        {
+                            Id = tipoDocumento.Id,
+                            Nombre = tipoDocumento.Nombre,
+                            Descripcion = tipoDocumento.Descripcion,
+                            FechaCreacion = tipoDocumento.FechaCreacion,
+                            FechaModificacion = tipoDocumento.FechaModificacion,
+                            CreadoPor = tipoDocumento.CreadoPor,
+                            ModificadoPor = tipoDocumento.ModificadoPor,
+                            EstadoId = tipoDocumento.EstadoId
+                        };
+                        tipoDocumentoDto.Add(tipoDocumentoDto1);
+                    }
                 }
 
                 ResponseDto response = new ResponseDto
@@ -187,26 +191,26 @@ namespace ServiceLayer.Service
         {
             try
             {
-                var estado = _repository.GetById(tipoDocumento.Id);
-                _repository.Update(estado);
-                _repository.SaveChange();
-                TipoDocumentoDto tipoDocumentoDto = new TipoDocumentoDto
-                {
-                    Id = tipoDocumento.Id,
-                    Nombre = tipoDocumento.Nombre,
-                    Descripcion = tipoDocumento.Descripcion,
-                    FechaCreacion = tipoDocumento.FechaCreacion,
-                    FechaModificacion = tipoDocumento.FechaModificacion,
-                    CreadoPor = tipoDocumento.CreadoPor,
-                    ModificadoPor = tipoDocumento.ModificadoPor,
-                    EstadoId = tipoDocumento.EstadoId
-                };
+                    TipoDocumento documento = new TipoDocumento
+                    {
+                        Id = tipoDocumento.Id,
+                        Nombre = tipoDocumento.Nombre,
+                        Descripcion = tipoDocumento.Descripcion,
+                        FechaCreacion = tipoDocumento.FechaCreacion,
+                        FechaModificacion = DateTime.Now,
+                        CreadoPor = tipoDocumento.CreadoPor,
+                        ModificadoPor = tipoDocumento.ModificadoPor,
+                        EstadoId = tipoDocumento.EstadoId
+                    };
+                    _repository.Update(documento);
+                    _repository.SaveChange();
+
+                
                 ResponseDto response = new ResponseDto
                 {
                     Success = true,
                     Message = "TipoDocumento actualizado",
-                    StatusCode = 200,
-                    Data = tipoDocumentoDto
+                    StatusCode = 200
                 };
                 return response;
             }catch(Exception ex)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace RepositoryLayer.Repository
 {
@@ -21,7 +22,7 @@ namespace RepositoryLayer.Repository
 
         public IEnumerable<T> GetAll()
         {
-            return entities.AsEnumerable();
+            return entities.AsEnumerable().OrderByDescending(x => x.Id);
         }
 
         public void Remove(T entity)
@@ -30,7 +31,7 @@ namespace RepositoryLayer.Repository
             {
                 throw new ArgumentNullException("entity");
             }            
-            entities.Remove(entity);
+            Update(entity);
         }
 
         public T GetById(int id)
@@ -64,12 +65,13 @@ namespace RepositoryLayer.Repository
 
         public void Update(T entity)
         {
+           
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
             entities.Update(entity);
-           
+
         }
 
     }
