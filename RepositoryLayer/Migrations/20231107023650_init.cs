@@ -17,7 +17,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true)
+                    Nombre = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Codigo = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Codigo = table.Column<string>(type: "varchar(200)", nullable: true),
                     Nombre = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
@@ -57,7 +57,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(200)", nullable: true),
                     descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
                     grupoCompra = table.Column<string>(type: "varchar(200)", nullable: true),
                     comprador = table.Column<string>(type: "varchar(200)", nullable: true),
@@ -186,10 +186,10 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
-                    Email = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(200)", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),
-                    UserIdAzure = table.Column<string>(type: "varchar(150)", nullable: true),
+                    UserIdAzure = table.Column<string>(type: "varchar(1200)", nullable: true),
                     FechaCreacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime", nullable: true),
                     CreadoPor = table.Column<int>(type: "int", nullable: true),
@@ -232,7 +232,7 @@ namespace RepositoryLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(200)", nullable: true),
                     Descripcion = table.Column<string>(type: "varchar(200)", nullable: true),
                     requerido = table.Column<int>(type: "int", nullable: true),
                     EstadoId = table.Column<int>(type: "int", nullable: false),

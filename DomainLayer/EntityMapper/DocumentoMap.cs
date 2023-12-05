@@ -26,7 +26,7 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.Nombre)
                 .HasColumnName("Nombre")
-                .HasColumnType("varchar(100)")
+                .HasColumnType("varchar(250)")
                 .IsRequired(false);
             builder.Property(x => x.FechaEmicion)
                 .HasColumnName("FechaEmicion")

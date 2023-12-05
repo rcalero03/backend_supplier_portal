@@ -29,17 +29,20 @@ namespace ServiceLayer.Service
                 List<TipoCompraDto> tipoCompraDto = new List<TipoCompraDto>();
                 foreach (var tipoCompra in tipoCompras)
                 {
-                    tipoCompraDto.Add(new TipoCompraDto
+                   if(tipoCompra.EstadoId == 1)
                     {
-                        Id = tipoCompra.Id,
-                        TipoCompras = tipoCompra.TipoCompras,
-                        Descripcion = tipoCompra.Descripcion,
-                        FechaCreacion = tipoCompra.FechaCreacion,
-                        FechaModificacion = tipoCompra.FechaModificacion,
-                        CreadoPor = tipoCompra.CreadoPor,
-                        ModificadoPor = tipoCompra.ModificadoPor,
-                        EstadoId = tipoCompra.EstadoId,
-                    });
+                        tipoCompraDto.Add(new TipoCompraDto
+                        {
+                            Id = tipoCompra.Id,
+                            TipoCompras = tipoCompra.TipoCompras,
+                            Descripcion = tipoCompra.Descripcion,
+                            FechaCreacion = tipoCompra.FechaCreacion,
+                            FechaModificacion = tipoCompra.FechaModificacion,
+                            CreadoPor = tipoCompra.CreadoPor,
+                            ModificadoPor = tipoCompra.ModificadoPor,
+                            EstadoId = tipoCompra.EstadoId,
+                        });
+                    }
                 }
                 ResponseDto responseDto = new ResponseDto
                 {

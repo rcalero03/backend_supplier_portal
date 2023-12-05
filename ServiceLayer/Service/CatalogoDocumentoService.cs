@@ -29,19 +29,22 @@ namespace ServiceLayer.Service
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
                 foreach (var catalogoDocumento in _repository.GetAll())
                 {
-                    catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+                  if(catalogoDocumento.EstadoId==1)
                     {
-                        Id = catalogoDocumento.Id,
-                        Nombre = catalogoDocumento.Nombre == null ? string.Empty : catalogoDocumento.Nombre,
-                        Descripcion = catalogoDocumento.Descripcion == null ? string.Empty : catalogoDocumento.Descripcion,
-                        Requerido = catalogoDocumento.Requerido = catalogoDocumento.Requerido,
-                        FechaCreacion = catalogoDocumento.FechaCreacion == null ? DateTime.Now : catalogoDocumento.FechaCreacion,
-                        FechaModificacion = catalogoDocumento.FechaModificacion == null ? DateTime.Now : catalogoDocumento.FechaModificacion,
-                        CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
-                        ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
-                        EstadoId = catalogoDocumento.EstadoId,
-                        TipoDocumentoId = catalogoDocumento.TipoDocumentoId
-                    });
+                        catalogoDocumentoDtos.Add(new CatalogoDocumentoDto
+                        {
+                            Id = catalogoDocumento.Id,
+                            Nombre = catalogoDocumento.Nombre == null ? string.Empty : catalogoDocumento.Nombre,
+                            Descripcion = catalogoDocumento.Descripcion == null ? string.Empty : catalogoDocumento.Descripcion,
+                            Requerido = catalogoDocumento.Requerido = catalogoDocumento.Requerido,
+                            FechaCreacion = catalogoDocumento.FechaCreacion == null ? DateTime.Now : catalogoDocumento.FechaCreacion,
+                            FechaModificacion = catalogoDocumento.FechaModificacion == null ? DateTime.Now : catalogoDocumento.FechaModificacion,
+                            CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
+                            ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
+                            EstadoId = catalogoDocumento.EstadoId,
+                            TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                        });
+                    }
                 }
                 ResponseDto responseDto = new ResponseDto
                 {

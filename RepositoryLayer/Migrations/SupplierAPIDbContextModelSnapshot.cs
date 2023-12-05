@@ -56,7 +56,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.Property<int?>("Requerido")
@@ -118,7 +118,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.HasKey("Id")
@@ -335,7 +335,7 @@ namespace RepositoryLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.HasKey("Id")
@@ -565,7 +565,7 @@ namespace RepositoryLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Codigo")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Codigo");
 
                     b.Property<string>("Nombre")
@@ -732,7 +732,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("CreadoPor");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Email");
 
                     b.Property<int>("EstadoId")
@@ -752,11 +752,11 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.Property<string>("UserIdAzure")
-                        .HasColumnType("varchar(150)")
+                        .HasColumnType("varchar(1200)")
                         .HasColumnName("UserIdAzure");
 
                     b.HasKey("Id")
