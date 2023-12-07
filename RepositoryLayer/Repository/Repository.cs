@@ -25,13 +25,18 @@ namespace RepositoryLayer.Repository
             return entities.AsEnumerable().OrderByDescending(x => x.Id);
         }
 
+        public IQueryable<T> GetAllAsQueryable()
+        {
+            return entities.AsQueryable();
+        }
+
         public void Remove(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }            
-            Update(entity);
+            entities.Remove(entity);
         }
 
         public T GetById(int id)

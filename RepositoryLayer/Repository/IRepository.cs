@@ -15,5 +15,6 @@ namespace RepositoryLayer.Repository
         void Update(T entity);
         void Remove(T entity);
         void SaveChange();
+        IQueryable<T> GetAllAsQueryable();
     }
 }

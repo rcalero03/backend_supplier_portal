@@ -25,8 +25,9 @@ namespace DomainLayer.Models
         public virtual ICollection<ProveedorCategoria> ? ProveedorCategorias { get; set; }
         public virtual ICollection<SubtipoCompra> ? SubtipoCompras { get; set; }
         public virtual ICollection<Documento> ? Documentos { get; set; }
+        public virtual Usuario? Usuario { get; set; }
 
-    
+
         public int CiudadId { get; set; }
         public int UsuarioId { get; set; }
         public int EstadoId { get; set; }

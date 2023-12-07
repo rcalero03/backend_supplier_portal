@@ -12,5 +12,6 @@ namespace ServiceLayer.IServices
     {
         Usuario GetByEmail(string email);
         Usuario ValidateUser(JwtClaimsDto claims);
+        Usuario getByIdUsuario(int id);
     }
 }

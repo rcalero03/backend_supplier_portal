@@ -65,6 +65,30 @@ namespace ServiceLayer.Service
             }
         }
 
+        public TipoCompraDto GetTipoCompraDtoByIdBy(int id)
+        {
+            try
+            {
+                TipoCompra tipoCompra = _repository.GetById(id);
+                TipoCompraDto tipoCompraDto = new TipoCompraDto
+                {
+                    Id = tipoCompra.Id,
+                    TipoCompras = tipoCompra.TipoCompras,
+                    Descripcion = tipoCompra.Descripcion,
+                    FechaCreacion = tipoCompra.FechaCreacion,
+                    FechaModificacion = tipoCompra.FechaModificacion,
+                    CreadoPor = tipoCompra.CreadoPor,
+                    ModificadoPor = tipoCompra.ModificadoPor,
+                    EstadoId = tipoCompra.EstadoId,
+                };
+                return tipoCompraDto;
+
+            }catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
         public ResponseDto GetTipoCompraById(int id)
         {
             try

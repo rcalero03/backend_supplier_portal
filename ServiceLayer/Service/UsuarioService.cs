@@ -91,6 +91,11 @@ namespace ServiceLayer.Service
             return verifyUser;
         }
 
+        public Usuario getByIdUsuario(int id)
+        {
+            return _repository.GetById(id);
+        }
+
         public string DecodeJwtTokenAzure(string token)
         {
             try

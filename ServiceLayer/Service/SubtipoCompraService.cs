@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using System;
@@ -13,6 +14,9 @@ namespace ServiceLayer.Service
     public class SubtipoCompraService : ISubtipoCompraService
     {
         private readonly IRepository<SubtipoCompra> _repository;
+        private ProveedorService _repositoryProveedor;
+        private TipoCompraService _repositoryTipoCompra;
+       
         public SubtipoCompraService(IRepository<SubtipoCompra> repository)
         {
             _repository = repository; 
@@ -22,17 +26,26 @@ namespace ServiceLayer.Service
         {
             try
             {
-                IEnumerable<SubtipoCompra> subtipoCompra = _repository.GetAll();
+                List<SubtipoCompra> subtipoCompra = new List<SubtipoCompra>();
+                subtipoCompra = _repository.GetAllAsQueryable().Include(sc => sc.Proveedor)
+                                                               .ThenInclude(p => p.Usuario)
+                                                               .Include(x=>x.TipoCompra).ToList();
+
                     List<SubtipoCompraDto> subtipoCompraDto = new List<SubtipoCompraDto>();
+                  
                     foreach (var subtipoCompras in subtipoCompra)
                     {
-                        subtipoCompraDto.Add(new SubtipoCompraDto
+                         subtipoCompraDto.Add(new SubtipoCompraDto
                         {
                             Id = subtipoCompras.Id,
                             Descripcion = subtipoCompras.Descripcion,
                             TipoCompraId = subtipoCompras.TipoCompraId,
-                            ProveedorId = subtipoCompras.ProveedorId
-                        });
+                            ProveedorId = subtipoCompras.ProveedorId,
+                            Usuario = subtipoCompras.Proveedor?.Usuario?.Nombre,
+                            Provedors = subtipoCompras.Proveedor?.Descripcion,
+                            TipoCompras = subtipoCompras.TipoCompra?.TipoCompras
+
+                         });
                     }
                     ResponseDto responseDto = new ResponseDto
                     {
@@ -55,6 +68,8 @@ namespace ServiceLayer.Service
             }
            
         }
+
+        
 
         public ResponseDto GetSubtipoCompraById(int id)
         {
@@ -95,6 +110,7 @@ namespace ServiceLayer.Service
             try
             {
                 _repository.Insert(subtipoCompra);
+                _repository.SaveChange();  
                 SubtipoCompraDto compraDto = new SubtipoCompraDto
                 {
                     Id = subtipoCompra.Id,
@@ -131,6 +147,7 @@ namespace ServiceLayer.Service
             {
                 SubtipoCompra subtipoCompra = _repository.GetById(id);
                 _repository.Remove(subtipoCompra);
+               _repository.SaveChange();
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
@@ -158,6 +175,7 @@ namespace ServiceLayer.Service
             try
             {
                 _repository.Update(subtipoCompra);
+                _repository.SaveChange();
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,

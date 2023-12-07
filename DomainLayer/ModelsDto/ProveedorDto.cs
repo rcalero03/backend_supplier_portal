@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace DomainLayer.ModelsDto
         public DateTime FechaModificacion { get; set; }
         public string? CreadoPor { get; set; }
         public string? ModificadoPor { get; set; }
+        public virtual Usuario? Usuario { get; set; }
 
     }
 }

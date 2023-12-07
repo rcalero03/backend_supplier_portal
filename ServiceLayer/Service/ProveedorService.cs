@@ -13,6 +13,8 @@ namespace ServiceLayer.Service
     public class ProveedorService : IProveedorService
     {
         public readonly IRepository<Proveedor> _repository;
+        private UsuarioService _repositoryUsuario;
+        private Usuario usuario = new Usuario();
 
         public ProveedorService(IRepository<Proveedor> repository)
         {

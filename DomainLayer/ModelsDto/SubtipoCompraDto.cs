@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,9 @@ namespace DomainLayer.ModelsDto
         public string? Descripcion { get; set; }
         public int TipoCompraId { get; set; }
         public int ProveedorId { get; set; }
+        public string? TipoCompras { get; set; }
+        public string? Provedors { get; set; }
+        public string? Usuario { get; set; }
+
     }
 }
