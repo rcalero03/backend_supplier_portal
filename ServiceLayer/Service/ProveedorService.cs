@@ -46,7 +46,10 @@ namespace ServiceLayer.Service
                         CodigoProveedorSap = proveedor.CodigoProveedorSap,
                         CiudadId = proveedor.CiudadId,
                         UsuarioId = proveedor.UsuarioId,
-                        EstadoId = proveedor.EstadoId
+                        EstadoId = proveedor.EstadoId,
+                        CategoriaId = proveedor.CategoriaId,
+                        SubtipoCompraId = proveedor.SubtipoCompraId
+                        
                     });
                 }
                 ResponseDto responseDto = new ResponseDto
@@ -93,7 +96,9 @@ namespace ServiceLayer.Service
                     CodigoProveedorSap = proveedor.CodigoProveedorSap,
                     CiudadId = proveedor.CiudadId,
                     UsuarioId = proveedor.UsuarioId,
-                    EstadoId = proveedor.EstadoId
+                    EstadoId = proveedor.EstadoId,
+                    CategoriaId = proveedor.CategoriaId,
+                    SubtipoCompraId = proveedor.SubtipoCompraId
                 };
                 ResponseDto responseDto = new ResponseDto
                 {

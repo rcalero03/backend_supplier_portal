@@ -21,7 +21,6 @@ namespace DomainLayer.Models
         public virtual ICollection<TipoCompra> ? TipoCompras { get; set; }
         public virtual ICollection<Categoria> ? Categorias { get; set; }
         public virtual ICollection<Proveedor> ? Proveedores { get; set; }
-        public virtual ICollection<ProveedorCategoria> ? ProveedorCategorias { get; set; }
         public virtual ICollection<Documento> ? Documentos { get; set; }
         public virtual ICollection<Referencia> ? Referencias { get; set; }
 

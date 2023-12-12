@@ -305,7 +305,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("varchar(250)")
                         .HasColumnName("Nombre");
 
                     b.Property<int?>("ProveedorId")
@@ -335,7 +335,7 @@ namespace RepositoryLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(200)")
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("Nombre");
 
                     b.HasKey("Id")
@@ -372,6 +372,10 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int")
+                        .HasColumnName("CategoriaId");
+
                     b.Property<int>("CiudadId")
                         .HasColumnType("int")
                         .HasColumnName("CiudadId");
@@ -393,12 +397,16 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("CreadoPor");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Descripcion");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("varchar(200)")
                         .HasColumnName("Direccion");
+
+                    b.Property<string>("Empresa")
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("Empresa");
 
                     b.Property<int>("EstadoId")
                         .HasColumnType("int")
@@ -440,6 +448,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(200)")
                         .HasColumnName("PaginaWeb");
 
+                    b.Property<int>("SubtipoCompraId")
+                        .HasColumnType("int")
+                        .HasColumnName("SubtipoCompraId");
+
                     b.Property<string>("Telefono")
                         .HasColumnType("varchar(200)")
                         .HasColumnName("Telefono");
@@ -451,47 +463,17 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id")
                         .HasName("PK_ProveedorId");
 
+                    b.HasIndex("CategoriaId");
+
                     b.HasIndex("CiudadId");
 
                     b.HasIndex("EstadoId");
 
+                    b.HasIndex("SubtipoCompraId");
+
+                    b.HasIndex("UsuarioId");
+
                     b.ToTable("Proveedor", (string)null);
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.ProveedorCategoria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CategoriaId")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("CategoriaId");
-
-                    b.Property<int?>("EstadoId")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("EstadoId");
-
-                    b.Property<int?>("ProveedorId")
-                        .IsRequired()
-                        .HasColumnType("int")
-                        .HasColumnName("ProveedorId");
-
-                    b.HasKey("Id")
-                        .HasName("PK_ProveedorCategoriaId");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.HasIndex("EstadoId");
-
-                    b.HasIndex("ProveedorId");
-
-                    b.ToTable("ProveedorCategoria", (string)null);
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Referencia", b =>
@@ -538,7 +520,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.Property<string>("Telefono")
@@ -565,7 +547,7 @@ namespace RepositoryLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Codigo")
-                        .HasColumnType("varchar(200)")
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("Codigo");
 
                     b.Property<string>("Nombre")
@@ -618,18 +600,12 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("Descripcion");
 
-                    b.Property<int>("ProveedorId")
-                        .HasColumnType("int")
-                        .HasColumnName("ProveedorId");
-
                     b.Property<int>("TipoCompraId")
                         .HasColumnType("int")
                         .HasColumnName("TipoCompraId");
 
                     b.HasKey("Id")
                         .HasName("PK_SubtipoCompraId");
-
-                    b.HasIndex("ProveedorId");
 
                     b.HasIndex("TipoCompraId");
 
@@ -707,7 +683,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
                     b.HasKey("Id")
@@ -732,7 +708,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("CreadoPor");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(200)")
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("Email");
 
                     b.Property<int>("EstadoId")
@@ -752,11 +728,11 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("ModificadoPor");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("varchar(200)")
+                        .HasColumnType("varchar(50)")
                         .HasColumnName("Nombre");
 
                     b.Property<string>("UserIdAzure")
-                        .HasColumnType("varchar(1200)")
+                        .HasColumnType("varchar(150)")
                         .HasColumnName("UserIdAzure");
 
                     b.HasKey("Id")
@@ -865,6 +841,13 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.Proveedor", b =>
                 {
+                    b.HasOne("DomainLayer.Models.Categoria", "Categoria")
+                        .WithMany("Proveedores")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Proveedor_Categoria");
+
                     b.HasOne("DomainLayer.Models.Ciudad", "Ciudad")
                         .WithMany("Proveedores")
                         .HasForeignKey("CiudadId")
@@ -879,39 +862,29 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Proveedor_Estado");
 
-                    b.Navigation("Ciudad");
-
-                    b.Navigation("Estado");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.ProveedorCategoria", b =>
-                {
-                    b.HasOne("DomainLayer.Models.Categoria", "Categoria")
-                        .WithMany("ProveedorCategorias")
-                        .HasForeignKey("CategoriaId")
+                    b.HasOne("DomainLayer.Models.SubtipoCompra", "SubtipoCompra")
+                        .WithMany("Proveedores")
+                        .HasForeignKey("SubtipoCompraId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("FK_ProveedorCategoria_Categoria");
+                        .HasConstraintName("FK_Proveedor_SubtipoCompra");
 
-                    b.HasOne("DomainLayer.Models.Estado", "Estado")
-                        .WithMany("ProveedorCategorias")
-                        .HasForeignKey("EstadoId")
+                    b.HasOne("DomainLayer.Models.Usuario", "Usuario")
+                        .WithMany("Proveedores")
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("FK_ProveedorCategoria_Estado");
-
-                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
-                        .WithMany("ProveedorCategorias")
-                        .HasForeignKey("ProveedorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_ProveedorCategoria_Proveedor");
+                        .HasConstraintName("FK_Proveedor_Usuario");
 
                     b.Navigation("Categoria");
 
+                    b.Navigation("Ciudad");
+
                     b.Navigation("Estado");
 
-                    b.Navigation("Proveedor");
+                    b.Navigation("SubtipoCompra");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Referencia", b =>
@@ -956,21 +929,12 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.SubtipoCompra", b =>
                 {
-                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
-                        .WithMany("SubtipoCompras")
-                        .HasForeignKey("ProveedorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_SubtipoCompra_Proveedor");
-
                     b.HasOne("DomainLayer.Models.TipoCompra", "TipoCompra")
                         .WithMany("SubtipoCompras")
                         .HasForeignKey("TipoCompraId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_SubtipoCompra_TipoCompra");
-
-                    b.Navigation("Proveedor");
 
                     b.Navigation("TipoCompra");
                 });
@@ -1015,7 +979,7 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.Categoria", b =>
                 {
-                    b.Navigation("ProveedorCategorias");
+                    b.Navigation("Proveedores");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Ciudad", b =>
@@ -1040,8 +1004,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("Documentos");
 
-                    b.Navigation("ProveedorCategorias");
-
                     b.Navigation("Proveedores");
 
                     b.Navigation("Referencias");
@@ -1061,15 +1023,16 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.Proveedor", b =>
                 {
                     b.Navigation("Documentos");
-
-                    b.Navigation("ProveedorCategorias");
-
-                    b.Navigation("SubtipoCompras");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Rol", b =>
                 {
                     b.Navigation("RolUsuarios");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.SubtipoCompra", b =>
+                {
+                    b.Navigation("Proveedores");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.TipoCompra", b =>
@@ -1084,6 +1047,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.Usuario", b =>
                 {
+                    b.Navigation("Proveedores");
+
                     b.Navigation("RolUsuarios");
                 });
 #pragma warning restore 612, 618

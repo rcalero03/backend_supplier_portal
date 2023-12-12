@@ -25,7 +25,6 @@ namespace RepositoryLayer
             modelBuilder.ApplyConfiguration(new DocumentoMap());
             modelBuilder.ApplyConfiguration(new PaisMap());
             modelBuilder.ApplyConfiguration(new ProveedorMap());
-            modelBuilder.ApplyConfiguration(new ProveedorCategoriaMap());
             modelBuilder.ApplyConfiguration(new ReferenciaMap());
             modelBuilder.ApplyConfiguration(new RolMap());
             modelBuilder.ApplyConfiguration(new RolUsuarioMap());
@@ -46,7 +45,6 @@ namespace RepositoryLayer
         public DbSet<Estado> Estado { get; set; }
         public DbSet<Pais> Pais { get; set; }
         public DbSet<Proveedor> Proveedor { get; set; }
-        public DbSet<ProveedorCategoria> ProveedorCategoria { get; set; }
         public DbSet<Referencia> Referencias { get; set; }
         public DbSet<Rol> Rol { get; set; }
         public DbSet<RolUsuario> RolUsuario { get; set; }

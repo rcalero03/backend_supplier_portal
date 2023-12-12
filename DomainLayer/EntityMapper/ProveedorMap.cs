@@ -23,6 +23,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("int")
                 .IsRequired();
 
+            builder.Property(x => x.Empresa)
+                .HasColumnName("Empresa")
+                .HasColumnType("varchar(200)")
+                .IsRequired(false);
             builder.Property(x => x.Descripcion)
                 .HasColumnName("Descripcion")
                 .HasColumnType("varchar(200)")
@@ -84,6 +88,14 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("EstadoId")
                 .HasColumnType("int")
                 .IsRequired();
+            builder.Property(x => x.SubtipoCompraId)
+                .HasColumnName("SubtipoCompraId")
+                .HasColumnType("int")
+                .IsRequired();
+            builder.Property(x => x.CategoriaId)
+                .HasColumnName("CategoriaId")
+                .HasColumnType("int")
+                .IsRequired();
 
             //BaseEntity
             builder.Property(x => x.CreadoPor)
@@ -117,6 +129,25 @@ namespace DomainLayer.EntityMapper
                 .HasConstraintName("FK_Proveedor_Estado")
                 .OnDelete(DeleteBehavior.Restrict);
             //navegacion con usuario
+            builder.HasOne(x => x.Usuario)
+                .WithMany(x => x.Proveedores)
+                .HasForeignKey(x => x.UsuarioId)
+                .HasConstraintName("FK_Proveedor_Usuario")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //navegacion con SubtipoCompra
+            builder.HasOne(x => x.SubtipoCompra)
+                .WithMany(x => x.Proveedores)
+                .HasForeignKey(x => x.SubtipoCompraId)
+                .HasConstraintName("FK_Proveedor_SubtipoCompra")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //navegacion con Categoria
+            builder.HasOne(x => x.Categoria)
+                .WithMany(x => x.Proveedores)
+                .HasForeignKey(x => x.CategoriaId)
+                .HasConstraintName("FK_Proveedor_Categoria")
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

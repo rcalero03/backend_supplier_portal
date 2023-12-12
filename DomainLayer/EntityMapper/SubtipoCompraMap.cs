@@ -31,23 +31,12 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("TipoCompraId")
                 .HasColumnType("int")
                 .IsRequired();
-            builder.Property(x => x.ProveedorId)
-                .HasColumnName("ProveedorId")
-                .HasColumnType("int")
-                .IsRequired();
 
             //navegacion con TipoCompra
             builder.HasOne(x => x.TipoCompra)
                 .WithMany(x => x.SubtipoCompras)
                 .HasForeignKey(x => x.TipoCompraId)
                 .HasConstraintName("FK_SubtipoCompra_TipoCompra")
-                .OnDelete(DeleteBehavior.Restrict);
-
-            //navegacion con Proveedor
-            builder.HasOne(x => x.Proveedor)
-                .WithMany(x => x.SubtipoCompras)
-                .HasForeignKey(x => x.ProveedorId)
-                .HasConstraintName("FK_SubtipoCompra_Proveedor")
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

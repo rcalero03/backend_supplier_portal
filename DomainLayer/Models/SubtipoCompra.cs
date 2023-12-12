@@ -11,16 +11,12 @@ namespace DomainLayer.Models
     {
         public string ? Descripcion { get; set; }
         public int TipoCompraId { get; set; }
-        public int ProveedorId { get; set; }
-
+        public ICollection<Proveedor> ? Proveedores { get; set; }
 
 
         [ForeignKey("TipoCompraId")]
         public TipoCompra ? TipoCompra { get; set; }
-        [ForeignKey("ProveedorId")]
-        public Proveedor ? Proveedor { get; set; }
 
-       
 
         [NotMapped]
         public new DateTime? FechaCreacion { get; set; }

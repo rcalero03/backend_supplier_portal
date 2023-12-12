@@ -14,6 +14,7 @@ namespace DomainLayer.Models
         public int EstadoId { get; set; }
         public string? UserIdAzure { get; set; }
         public ICollection <RolUsuario> ? RolUsuarios { get; set; }
+        public ICollection <Proveedor> ? Proveedores { get; set; }
 
         [ForeignKey("EstadoId")]
         public  Estado ? Estado { get; set; }

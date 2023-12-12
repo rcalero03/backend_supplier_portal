@@ -12,9 +12,7 @@ namespace DomainLayer.ModelsDto
         public int Id { get; set; }
         public string? Descripcion { get; set; }
         public int TipoCompraId { get; set; }
-        public int ProveedorId { get; set; }
         public string? TipoCompras { get; set; }
-        public string? Provedors { get; set; }
         public string? Usuario { get; set; }
 
     }

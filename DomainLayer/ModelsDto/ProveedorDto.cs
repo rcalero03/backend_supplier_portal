@@ -10,6 +10,7 @@ namespace DomainLayer.ModelsDto
     public  class ProveedorDto
     {
         public int Id { get; set; }
+        public string? Empresa { get; set; }
         public string? Descripcion { get; set; }
         public string? Identificacion { get; set; }
         public string? IdentificacionTipo { get; set; }
@@ -25,6 +26,8 @@ namespace DomainLayer.ModelsDto
         public int CiudadId { get; set; }
         public int UsuarioId { get; set; }
         public int EstadoId { get; set; }
+        public int SubtipoCompraId { get; set; }
+        public int CategoriaId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaModificacion { get; set; }
         public string? CreadoPor { get; set; }

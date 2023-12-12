@@ -27,9 +27,8 @@ namespace ServiceLayer.Service
             try
             {
                 List<SubtipoCompra> subtipoCompra = new List<SubtipoCompra>();
-                subtipoCompra = _repository.GetAllAsQueryable().Include(sc => sc.Proveedor)
-                                                               .ThenInclude(p => p.Usuario)
-                                                               .Include(x=>x.TipoCompra).ToList();
+                subtipoCompra = _repository.GetAllAsQueryable()
+                                   .Include(x => x.TipoCompra).ToList();
 
                     List<SubtipoCompraDto> subtipoCompraDto = new List<SubtipoCompraDto>();
                   
@@ -40,11 +39,7 @@ namespace ServiceLayer.Service
                             Id = subtipoCompras.Id,
                             Descripcion = subtipoCompras.Descripcion,
                             TipoCompraId = subtipoCompras.TipoCompraId,
-                            ProveedorId = subtipoCompras.ProveedorId,
-                            Usuario = subtipoCompras.Proveedor?.Usuario?.Nombre,
-                            Provedors = subtipoCompras.Proveedor?.Descripcion,
                             TipoCompras = subtipoCompras.TipoCompra?.TipoCompras
-
                          });
                     }
                     ResponseDto responseDto = new ResponseDto
@@ -80,8 +75,7 @@ namespace ServiceLayer.Service
                 {
                     Id = subtipoCompra.Id,
                     Descripcion = subtipoCompra.Descripcion,
-                    TipoCompraId = subtipoCompra.TipoCompraId,
-                    ProveedorId = subtipoCompra.ProveedorId
+                    TipoCompraId = subtipoCompra.TipoCompraId
                 };
                 ResponseDto responseDto = new ResponseDto
                 {
@@ -115,8 +109,7 @@ namespace ServiceLayer.Service
                 {
                     Id = subtipoCompra.Id,
                     Descripcion = subtipoCompra.Descripcion,
-                    TipoCompraId = subtipoCompra.TipoCompraId,
-                    ProveedorId = subtipoCompra.ProveedorId
+                    TipoCompraId = subtipoCompra.TipoCompraId
                 };
 
                 ResponseDto responseDto = new ResponseDto
