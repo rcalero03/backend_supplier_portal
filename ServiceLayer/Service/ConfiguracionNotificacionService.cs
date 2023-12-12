@@ -106,6 +106,7 @@ namespace ServiceLayer.Service
             try
             {
                 _repository.Insert(ConfiguracionNotificacion);
+                _repository.SaveChange();
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
