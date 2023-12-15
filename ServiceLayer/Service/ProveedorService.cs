@@ -48,6 +48,7 @@ namespace ServiceLayer.Service
                         UsuarioId = proveedor.UsuarioId,
                         EstadoId = proveedor.EstadoId,
                         CategoriaId = proveedor.CategoriaId,
+                        Aspitante = proveedor.Aspitante,
                         SubtipoCompraId = proveedor.SubtipoCompraId
                         
                     });
@@ -97,7 +98,9 @@ namespace ServiceLayer.Service
                     CiudadId = proveedor.CiudadId,
                     UsuarioId = proveedor.UsuarioId,
                     EstadoId = proveedor.EstadoId,
+                    Aspitante = proveedor.Aspitante,
                     CategoriaId = proveedor.CategoriaId,
+
                     SubtipoCompraId = proveedor.SubtipoCompraId
                 };
                 ResponseDto responseDto = new ResponseDto

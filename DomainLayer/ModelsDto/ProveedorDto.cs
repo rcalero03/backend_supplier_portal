@@ -22,6 +22,7 @@ namespace DomainLayer.ModelsDto
         public string? Movil { get; set; }
         public string? Idioma { get; set; }
         public string? Observacion { get; set; }
+        public int? Aspirante { get; set; }
         public string? CodigoProveedorSap { get; set; }
         public int CiudadId { get; set; }
         public int UsuarioId { get; set; }

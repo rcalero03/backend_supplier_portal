@@ -44,7 +44,7 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteConfiguracionNotificacion(int id)
         {
             ResponseDto response = _configuracionNotificacion.RemoveConfiguracionNotificacion(id);

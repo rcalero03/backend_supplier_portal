@@ -25,6 +25,7 @@ namespace DomainLayer.Models
         public string? Idioma { get; set; }
         public string? Observacion { get; set; }
         public string? CodigoProveedorSap { get; set; }
+        public int? Aspitante { get; set; }
         public virtual ICollection<Documento> ? Documentos { get; set; }
 
 

@@ -75,6 +75,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("CodigoProveedorSap")
                 .HasColumnType("varchar(200)")
                 .IsRequired(false);
+            builder.Property(x => x.Aspitante)
+                .HasColumnName("Aspitante")
+                .HasColumnType("int")
+                .IsRequired(false);
 
             builder.Property(x => x.CiudadId)
                 .HasColumnName("CiudadId")

@@ -372,6 +372,10 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("Aspitante")
+                        .HasColumnType("int")
+                        .HasColumnName("Aspitante");
+
                     b.Property<int>("CategoriaId")
                         .HasColumnType("int")
                         .HasColumnName("CategoriaId");
