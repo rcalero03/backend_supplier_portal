@@ -34,6 +34,9 @@ namespace DomainLayer.EntityMapper
             builder.Property(x => x.Comprador)
                 .HasColumnName("comprador")
                 .HasColumnType("varchar(200)");
+            builder.Property(x => x.EstadoId)
+                .HasColumnName("estadoId")
+                .HasColumnType("int");
 
             //BaseEntity
                 builder.Property(x => x.CreadoPor)
@@ -59,6 +62,13 @@ namespace DomainLayer.EntityMapper
             builder.Property(x => x.FechaCreacion).IsRequired(false);
             builder.Property(x => x.ModificadoPor).IsRequired(false);
             builder.Property(x => x.FechaModificacion).IsRequired(false);
+
+            //navegacion con Estado
+            builder.HasOne(x => x.Estado)
+                .WithMany(x => x.Categorias)
+                .HasForeignKey(x => x.EstadoId)
+                .HasConstraintName("FK_Categoria_Estado")
+                .OnDelete(DeleteBehavior.Restrict);
                 
 
         }

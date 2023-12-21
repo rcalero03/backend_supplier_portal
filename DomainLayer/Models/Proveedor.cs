@@ -25,15 +25,16 @@ namespace DomainLayer.Models
         public string? Idioma { get; set; }
         public string? Observacion { get; set; }
         public string? CodigoProveedorSap { get; set; }
-        public int? Aspitante { get; set; }
+        public int? Aspirante { get; set; }
         public virtual ICollection<Documento> ? Documentos { get; set; }
+        public virtual ICollection<ProveedorCategoria> ? ProveedorCategorias { get; set; }
+        public virtual ICollection<Referencia>? Referencias { get; set; }
 
 
         public int CiudadId { get; set; }
         public int UsuarioId { get; set; }
         public int EstadoId { get; set; }
         public int SubtipoCompraId { get; set; }
-        public int CategoriaId { get; set; }
 
         [ForeignKey("CiudadId")]
         public Ciudad ? Ciudad { get; set; }
@@ -47,8 +48,6 @@ namespace DomainLayer.Models
         [ForeignKey("SubtipoCompraId")]
         public SubtipoCompra ? SubtipoCompra { get; set; }
 
-        [ForeignKey("CategoriaId")]
-        public Categoria ? Categoria { get; set; }
 
 
        

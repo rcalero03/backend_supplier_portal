@@ -59,13 +59,13 @@ namespace ServiceLayer.Service
                     Success = false,
                     Message = "TipoCompra no encontrado",
                     StatusCode = 500,
-                    Data = null
+                    Data = ex
                 };
                 return responseDto;
             }
         }
 
-        public TipoCompraDto GetTipoCompraDtoByIdBy(int id)
+        public TipoCompraDto? GetTipoCompraDtoByIdBy(int id)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace ServiceLayer.Service
                 };
                 return tipoCompraDto;
 
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 return null;
             }

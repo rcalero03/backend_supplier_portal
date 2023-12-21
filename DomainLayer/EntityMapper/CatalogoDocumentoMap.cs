@@ -57,14 +57,14 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("datetime");
 
             //navegacion con Estado
-            builder.HasOne(x => x.Estados)
+            builder.HasOne(x => x.Estado)
                 .WithMany(x => x.CatalogoDocumentos)
                 .HasForeignKey(x => x.EstadoId)
                 .HasConstraintName("FK_CatalogoDocumento_Estado")
                 .OnDelete(DeleteBehavior.Restrict);
 
             //navegacion con TipoDocumento
-            builder.HasOne(x => x.TipoDocumentos)
+            builder.HasOne(x => x.TipoDocumento)
                 .WithMany(x => x.CatalogoDocumentos)
                 .HasForeignKey(x => x.TipoDocumentoId)
                 .HasConstraintName("FK_CatalogoDocumento_TipoDocumento")

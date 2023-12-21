@@ -42,6 +42,14 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("Telefono")
                 .HasColumnType("varchar(20)")
                 .IsRequired(false);
+            builder.Property(x => x.EstadoId)
+                .HasColumnName("EstadoId")
+                .HasColumnType("int")
+                .IsRequired();
+            builder.Property(x => x.ProveedorId)
+                .HasColumnName("ProveedorId")
+                .HasColumnType("int")
+                .IsRequired();
 
             //BaseEntity
 
@@ -62,18 +70,18 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("datetime")
                 .IsRequired(false);
 
-            //navegacion con Documento
-            builder.HasOne(x => x.Documento)
-                .WithMany(x => x.Referencias)
-                .HasForeignKey(x => x.DocumentoId)
-                .HasConstraintName("FK_Referencia_Documento")
-                .OnDelete(DeleteBehavior.Restrict);
-
             //navegacion con Estado
             builder.HasOne(x => x.Estado)
                 .WithMany(x => x.Referencias)
                 .HasForeignKey(x => x.EstadoId)
                 .HasConstraintName("FK_Referencia_Estado")
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //navegacion con Proveedor
+            builder.HasOne(x => x.Proveedor)
+                .WithMany(x => x.Referencias)
+                .HasForeignKey(x => x.ProveedorId)
+                .HasConstraintName("FK_Referencia_Proveedor")
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

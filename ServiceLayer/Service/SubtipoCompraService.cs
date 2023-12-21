@@ -14,8 +14,6 @@ namespace ServiceLayer.Service
     public class SubtipoCompraService : ISubtipoCompraService
     {
         private readonly IRepository<SubtipoCompra> _repository;
-        private ProveedorService _repositoryProveedor;
-        private TipoCompraService _repositoryTipoCompra;
        
         public SubtipoCompraService(IRepository<SubtipoCompra> repository)
         {

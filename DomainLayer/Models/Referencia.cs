@@ -14,11 +14,12 @@ namespace DomainLayer.Models
         public string ? Contacto { get; set; }
         public DateTime ? Fecha { get; set; }
         public string ? Telefono { get; set; }
-        public int ? DocumentoId { get; set; }
         public int ? EstadoId { get; set; }
+        public int ? ProveedorId { get; set; }
 
-        [ForeignKey("DocumentoId")]
-        public Documento ? Documento { get; set; }
+        [ForeignKey("ProveedorId")]
+        public Proveedor ? Proveedor { get; set; }
+      
         [ForeignKey("EstadoId")]
         public Estado ? Estado { get; set; }
     }

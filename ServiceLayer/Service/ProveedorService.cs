@@ -32,6 +32,7 @@ namespace ServiceLayer.Service
                     proveedorDto.Add(new Proveedor
                     {
                         Id = proveedor.Id,
+                        Empresa = proveedor.Empresa,
                         Descripcion = proveedor.Descripcion,
                         Identificacion = proveedor.Identificacion,
                         IdentificacionTipo = proveedor.IdentificacionTipo,
@@ -47,8 +48,7 @@ namespace ServiceLayer.Service
                         CiudadId = proveedor.CiudadId,
                         UsuarioId = proveedor.UsuarioId,
                         EstadoId = proveedor.EstadoId,
-                        CategoriaId = proveedor.CategoriaId,
-                        Aspitante = proveedor.Aspitante,
+                        Aspirante = proveedor.Aspirante,
                         SubtipoCompraId = proveedor.SubtipoCompraId
                         
                     });
@@ -83,6 +83,7 @@ namespace ServiceLayer.Service
                 Proveedor proveedorDto = new Proveedor
                 {
                     Id = proveedor.Id,
+                    Empresa = proveedor.Empresa,
                     Descripcion = proveedor.Descripcion,
                     Identificacion = proveedor.Identificacion,
                     IdentificacionTipo = proveedor.IdentificacionTipo,
@@ -98,8 +99,7 @@ namespace ServiceLayer.Service
                     CiudadId = proveedor.CiudadId,
                     UsuarioId = proveedor.UsuarioId,
                     EstadoId = proveedor.EstadoId,
-                    Aspitante = proveedor.Aspitante,
-                    CategoriaId = proveedor.CategoriaId,
+                    Aspirante = proveedor.Aspirante,
 
                     SubtipoCompraId = proveedor.SubtipoCompraId
                 };
@@ -145,9 +145,9 @@ namespace ServiceLayer.Service
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = false,
-                    Message = "Proveedor no insertado correctamente",
+                    Message = "Proveedor no insertado",
                     StatusCode = 500,
-                    Data = ex.Message
+                    Data = ex
                 };
                 return responseDto;
             }

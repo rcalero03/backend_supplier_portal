@@ -10,7 +10,7 @@ namespace ServiceLayer.IServices
 {
     public interface IEstadoService
     {
-        IEnumerable<EstadoDto> GetAllEstados();
+        IEnumerable<EstadoDto>? GetAllEstados();
         Estado GetEstadoById(int id);
         void InsertEstado(Estado estado);
         void UpdateEstado(Estado estado);

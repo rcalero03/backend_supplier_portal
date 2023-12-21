@@ -22,7 +22,7 @@ namespace ServiceLayer.Service
         }
 
 
-        public JwtClaimsDto DecodeJwtTokenAzure(string token)
+        public JwtClaimsDto? DecodeJwtTokenAzure(string token)
         {
             try
             {

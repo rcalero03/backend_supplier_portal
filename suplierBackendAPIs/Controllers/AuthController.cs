@@ -82,7 +82,7 @@ public class AuthController : ControllerBase
             {
                 status = "200",
                 message = "Server error",
-                data = ""
+                data = ex
             });
         }
 

@@ -50,7 +50,7 @@ namespace DomainLayer.EntityMapper
                 .HasColumnType("datetime");
 
             //navegacion con Estado
-            builder.HasOne(x => x.Estados)
+            builder.HasOne(x => x.Estado)
                 .WithMany(x => x.ConfiguracionNotificaciones)
                 .HasForeignKey(x => x.EstadoId)
                 .HasConstraintName("FK_ConfiguracionNotificacion_Estado")

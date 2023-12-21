@@ -32,6 +32,10 @@ namespace ServiceLayer.Service
                         Id = referencia.Id,
                         Nombre = referencia.Nombre,
                         Descripcion = referencia.Descripcion,
+                        Contacto = referencia.Contacto,
+                        Telefono = referencia.Telefono,
+                        Fecha = referencia.Fecha,
+                        ProveedorId = referencia.ProveedorId,
                         FechaCreacion = referencia.FechaCreacion,
                         FechaModificacion = referencia.FechaModificacion,
                         CreadoPor = referencia.CreadoPor,
@@ -55,7 +59,7 @@ namespace ServiceLayer.Service
                     Success = false,
                     Message = "Referencia no encontrado",
                     StatusCode = 500,
-                    Data = null
+                    Data = ex
                 };
                 return response;
             }
@@ -71,6 +75,10 @@ namespace ServiceLayer.Service
                     Id = referencia.Id,
                     Nombre = referencia.Nombre,
                     Descripcion = referencia.Descripcion,
+                    Contacto = referencia.Contacto,
+                    Telefono = referencia.Telefono,
+                    Fecha = referencia.Fecha,
+                    ProveedorId = referencia.ProveedorId,
                     FechaCreacion = referencia.FechaCreacion,
                     FechaModificacion = referencia.FechaModificacion,
                     CreadoPor = referencia.CreadoPor,

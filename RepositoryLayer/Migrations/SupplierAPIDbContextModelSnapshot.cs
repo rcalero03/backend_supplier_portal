@@ -99,7 +99,8 @@ namespace RepositoryLayer.Migrations
                         .HasColumnName("descripcion");
 
                     b.Property<int?>("EstadoId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("estadoId");
 
                     b.Property<DateTime?>("FechaCreacion")
                         .HasColumnType("datetime")
@@ -372,13 +373,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Aspitante")
+                    b.Property<int?>("Aspirante")
                         .HasColumnType("int")
                         .HasColumnName("Aspitante");
-
-                    b.Property<int>("CategoriaId")
-                        .HasColumnType("int")
-                        .HasColumnName("CategoriaId");
 
                     b.Property<int>("CiudadId")
                         .HasColumnType("int")
@@ -467,8 +464,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id")
                         .HasName("PK_ProveedorId");
 
-                    b.HasIndex("CategoriaId");
-
                     b.HasIndex("CiudadId");
 
                     b.HasIndex("EstadoId");
@@ -478,6 +473,29 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Proveedor", (string)null);
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ProveedorCategoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("ProveedorCategoria");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Referencia", b =>
@@ -501,11 +519,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(200)")
                         .HasColumnName("Descripcion");
 
-                    b.Property<int?>("DocumentoId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("EstadoId")
-                        .HasColumnType("int");
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("EstadoId");
 
                     b.Property<DateTime?>("Fecha")
                         .HasColumnType("datetime")
@@ -527,6 +544,11 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(200)")
                         .HasColumnName("Nombre");
 
+                    b.Property<int?>("ProveedorId")
+                        .IsRequired()
+                        .HasColumnType("int")
+                        .HasColumnName("ProveedorId");
+
                     b.Property<string>("Telefono")
                         .HasColumnType("varchar(20)")
                         .HasColumnName("Telefono");
@@ -534,9 +556,9 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id")
                         .HasName("PK_ReferenciaId");
 
-                    b.HasIndex("DocumentoId");
-
                     b.HasIndex("EstadoId");
+
+                    b.HasIndex("ProveedorId");
 
                     b.ToTable("Referencia", (string)null);
                 });
@@ -749,30 +771,32 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.CatalogoDocumento", b =>
                 {
-                    b.HasOne("DomainLayer.Models.Estado", "Estados")
+                    b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("CatalogoDocumentos")
                         .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_CatalogoDocumento_Estado");
 
-                    b.HasOne("DomainLayer.Models.TipoDocumento", "TipoDocumentos")
+                    b.HasOne("DomainLayer.Models.TipoDocumento", "TipoDocumento")
                         .WithMany("CatalogoDocumentos")
                         .HasForeignKey("TipoDocumentoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_CatalogoDocumento_TipoDocumento");
 
-                    b.Navigation("Estados");
+                    b.Navigation("Estado");
 
-                    b.Navigation("TipoDocumentos");
+                    b.Navigation("TipoDocumento");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Categoria", b =>
                 {
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("Categorias")
-                        .HasForeignKey("EstadoId");
+                        .HasForeignKey("EstadoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("FK_Categoria_Estado");
 
                     b.Navigation("Estado");
                 });
@@ -803,19 +827,19 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ConfiguracionNotificacion", b =>
                 {
-                    b.HasOne("DomainLayer.Models.Estado", "Estados")
+                    b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("ConfiguracionNotificaciones")
                         .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_ConfiguracionNotificacion_Estado");
 
-                    b.Navigation("Estados");
+                    b.Navigation("Estado");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Documento", b =>
                 {
-                    b.HasOne("DomainLayer.Models.CatalogoDocumento", "CatalogoDocumentos")
+                    b.HasOne("DomainLayer.Models.CatalogoDocumento", "CatalogoDocumento")
                         .WithMany("Documentos")
                         .HasForeignKey("CatalogoDocumentoId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -829,29 +853,22 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Documento_Estado");
 
-                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedores")
+                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
                         .WithMany("Documentos")
                         .HasForeignKey("ProveedorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_Documento_Proveedor");
 
-                    b.Navigation("CatalogoDocumentos");
+                    b.Navigation("CatalogoDocumento");
 
                     b.Navigation("Estados");
 
-                    b.Navigation("Proveedores");
+                    b.Navigation("Proveedor");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Proveedor", b =>
                 {
-                    b.HasOne("DomainLayer.Models.Categoria", "Categoria")
-                        .WithMany("Proveedores")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_Proveedor_Categoria");
-
                     b.HasOne("DomainLayer.Models.Ciudad", "Ciudad")
                         .WithMany("Proveedores")
                         .HasForeignKey("CiudadId")
@@ -880,8 +897,6 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Proveedor_Usuario");
 
-                    b.Navigation("Categoria");
-
                     b.Navigation("Ciudad");
 
                     b.Navigation("Estado");
@@ -891,23 +906,40 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ProveedorCategoria", b =>
+                {
+                    b.HasOne("DomainLayer.Models.Categoria", "Categoria")
+                        .WithMany("ProveedorCategorias")
+                        .HasForeignKey("CategoriaId");
+
+                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
+                        .WithMany("ProveedorCategorias")
+                        .HasForeignKey("ProveedorId");
+
+                    b.Navigation("Categoria");
+
+                    b.Navigation("Proveedor");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.Referencia", b =>
                 {
-                    b.HasOne("DomainLayer.Models.Documento", "Documento")
-                        .WithMany("Referencias")
-                        .HasForeignKey("DocumentoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("FK_Referencia_Documento");
-
                     b.HasOne("DomainLayer.Models.Estado", "Estado")
                         .WithMany("Referencias")
                         .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
                         .HasConstraintName("FK_Referencia_Estado");
 
-                    b.Navigation("Documento");
+                    b.HasOne("DomainLayer.Models.Proveedor", "Proveedor")
+                        .WithMany("Referencias")
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Referencia_Proveedor");
 
                     b.Navigation("Estado");
+
+                    b.Navigation("Proveedor");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RolUsuario", b =>
@@ -983,17 +1015,12 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.Categoria", b =>
                 {
-                    b.Navigation("Proveedores");
+                    b.Navigation("ProveedorCategorias");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Ciudad", b =>
                 {
                     b.Navigation("Proveedores");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.Documento", b =>
-                {
-                    b.Navigation("Referencias");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Estado", b =>
@@ -1027,6 +1054,10 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.Proveedor", b =>
                 {
                     b.Navigation("Documentos");
+
+                    b.Navigation("ProveedorCategorias");
+
+                    b.Navigation("Referencias");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.Rol", b =>
