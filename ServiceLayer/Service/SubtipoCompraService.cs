@@ -188,6 +188,46 @@ namespace ServiceLayer.Service
             }
         }
 
+        public ResponseDto getSubtipoCompraByTipoCompraId(int id)
+        {
+            try
+            {
+                List<SubtipoCompra> subtipoCompra = new List<SubtipoCompra>();
+                subtipoCompra = _repository.GetAll().Where(x => x.TipoCompraId == id).ToList();
+
+                List<SubtipoCompraDto> subtipoCompraDto = new List<SubtipoCompraDto>();
+
+                foreach (var subtipoCompras in subtipoCompra)
+                {
+                  subtipoCompraDto.Add(new SubtipoCompraDto
+                  {
+                        Id = subtipoCompras.Id,
+                        Descripcion = subtipoCompras.Descripcion,
+                        TipoCompraId = subtipoCompras.TipoCompraId,
+                    });
+                }
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = true,
+                    Message = "SubtipoCompra encontrado",
+                    StatusCode = 200,
+                    Data = subtipoCompraDto
+                };
+                return responseDto;
+            }
+            catch (Exception ex)
+            {
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = false,
+                    Message = "SubtipoCompra no encontrado o no hay registros que mostrar",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return responseDto;
+            }
+        }
+
 
 
 

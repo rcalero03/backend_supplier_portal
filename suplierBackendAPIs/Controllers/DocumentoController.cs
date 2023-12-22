@@ -37,6 +37,13 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpGet("getAllDocumentBySuppliersActive/{proveedorId}")]
+        public IActionResult getAllDocumentBySuppliersActive(int proveedorId)
+        {
+            ResponseDto response = _documentoService.getAllDocumentoSupplierActive(proveedorId);
+            return Ok(response);
+        }
+
 
         [HttpPost]
         public IActionResult InsertDocumento(Documento documento)

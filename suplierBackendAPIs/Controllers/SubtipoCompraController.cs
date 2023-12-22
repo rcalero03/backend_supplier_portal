@@ -30,6 +30,13 @@ namespace supplierBackendAPIs.Controllers
                 return Ok(responseDto);
           }
 
+        [HttpGet("getAllSubtipoCompraByTipoCompraId/{id}")]
+        public IActionResult getSubtipoCompraByTipoCompraId(int id)
+        {
+                    ResponseDto responseDto = _subtipoCompraService.getSubtipoCompraByTipoCompraId(id);
+                    return Ok(responseDto);
+         }
+
         [HttpPost]
           public IActionResult AddSubtipoCompra(SubtipoCompra subtipoCompra)
         {

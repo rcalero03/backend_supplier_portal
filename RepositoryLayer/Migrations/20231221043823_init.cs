@@ -585,6 +585,7 @@ namespace RepositoryLayer.Migrations
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Revisión')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Aprobado')");
             migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Rechazado')");
+            migrationBuilder.Sql("INSERT INTO Estado (Nombre) VALUES ('Expirado')");
 
             // INSERT ROLES
             migrationBuilder.Sql("INSERT INTO Rol (Codigo, Nombre) VALUES ('ADMIN', 'Rol Administrador')");
