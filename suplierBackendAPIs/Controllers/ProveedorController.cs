@@ -51,6 +51,13 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpGet("getSuppliersByUserId/{id}")]
+        public IActionResult getSuppliersByUserId(int id)
+        {
+            ResponseDto response = _proveedorService.getSuppliersByUserId(id);
+            return Ok(response);
+        }
+
 
     }
 }

@@ -15,5 +15,6 @@ namespace ServiceLayer.IServices
         ResponseDto InsertProveedor(Proveedor proveedor);
         ResponseDto UpdateProveedor(Proveedor proveedor);
         ResponseDto RemoveProveedor(int id);
+        ResponseDto getSuppliersByUserId(int id);
     }
 }

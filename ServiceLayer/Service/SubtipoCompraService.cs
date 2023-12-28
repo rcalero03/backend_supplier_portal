@@ -62,8 +62,6 @@ namespace ServiceLayer.Service
            
         }
 
-        
-
         public ResponseDto GetSubtipoCompraById(int id)
         {
             try
