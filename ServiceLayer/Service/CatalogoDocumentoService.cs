@@ -1,6 +1,7 @@
 ﻿using Azure;
 using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using System;
@@ -27,7 +28,7 @@ namespace ServiceLayer.Service
             {
 
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-                foreach (var catalogoDocumento in _repository.GetAll())
+                foreach (var catalogoDocumento in _repository.GetAllAsQueryable().Include(x=>x.TipoDocumento))
                 {
                   if(catalogoDocumento.EstadoId==1)
                     {
@@ -42,7 +43,8 @@ namespace ServiceLayer.Service
                             CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
                             ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
                             EstadoId = catalogoDocumento.EstadoId,
-                            TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                            TipoDocumentoId = catalogoDocumento.TipoDocumentoId,
+                            TipoDocumentoName = catalogoDocumento.TipoDocumento.Nombre
                         });
                     }
                 }
@@ -88,7 +90,8 @@ namespace ServiceLayer.Service
                             CreadoPor = i.CreadoPor == null ? 0 : i.CreadoPor,
                             ModificadoPor = i.ModificadoPor == null ? 0 : i.ModificadoPor,
                             EstadoId = i.EstadoId,
-                            TipoDocumentoId = i.TipoDocumentoId
+                            TipoDocumentoId = i.TipoDocumentoId,
+                            TipoDocumentoName = i.TipoDocumento.Nombre
                         });
                     }
                 }
@@ -130,7 +133,8 @@ namespace ServiceLayer.Service
                     CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
                     ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
                     EstadoId = catalogoDocumento.EstadoId,
-                    TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                    TipoDocumentoId = catalogoDocumento.TipoDocumentoId,
+                    TipoDocumentoName = catalogoDocumento.TipoDocumento.Nombre
 
                 });
                 ResponseDto response = new ResponseDto
