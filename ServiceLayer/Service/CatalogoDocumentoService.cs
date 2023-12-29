@@ -42,7 +42,7 @@ namespace ServiceLayer.Service
                             CreadoPor = catalogoDocumento.CreadoPor == null ? 0 : catalogoDocumento.CreadoPor,
                             ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
                             EstadoId = catalogoDocumento.EstadoId,
-                            TipoDocumentoId = catalogoDocumento.TipoDocumentoId
+                            TipoDocumentoId = catalogoDocumento.TipoDocumentoId,
                         });
                     }
                 }
