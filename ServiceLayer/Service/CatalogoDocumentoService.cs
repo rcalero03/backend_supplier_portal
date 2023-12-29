@@ -75,7 +75,7 @@ namespace ServiceLayer.Service
             try
             {
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-                foreach (var i in _repository.GetAll())
+                foreach (var i in _repository.GetAll().Where(x=>x.EstadoId == 1))
                 {
                     if(i.TipoDocumentoId == tipoDocumentoId)
                     {
@@ -91,7 +91,7 @@ namespace ServiceLayer.Service
                             ModificadoPor = i.ModificadoPor == null ? 0 : i.ModificadoPor,
                             EstadoId = i.EstadoId,
                             TipoDocumentoId = i.TipoDocumentoId,
-                            TipoDocumentoName = i.TipoDocumento.Nombre
+                            TipoDocumentoName = i.TipoDocumento?.Nombre
                         });
                     }
                 }
