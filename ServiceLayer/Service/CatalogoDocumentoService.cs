@@ -44,10 +44,7 @@ namespace ServiceLayer.Service
                             ModificadoPor = catalogoDocumento.ModificadoPor == null ? 0 : catalogoDocumento.ModificadoPor,
                             EstadoId = catalogoDocumento.EstadoId,
                             TipoDocumentoId = catalogoDocumento.TipoDocumentoId,
-<<<<<<< HEAD
-=======
                             TipoDocumentoName = catalogoDocumento.TipoDocumento.Nombre
->>>>>>> f75f45315f91202521f7aa2b21765c5df2d357f1
                         });
                     }
                 }
@@ -78,7 +75,7 @@ namespace ServiceLayer.Service
             try
             {
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-                foreach (var i in _repository.GetAll())
+                foreach (var i in _repository.GetAll().Where(x=>x.EstadoId == 1))
                 {
                     if(i.TipoDocumentoId == tipoDocumentoId)
                     {
@@ -94,7 +91,7 @@ namespace ServiceLayer.Service
                             ModificadoPor = i.ModificadoPor == null ? 0 : i.ModificadoPor,
                             EstadoId = i.EstadoId,
                             TipoDocumentoId = i.TipoDocumentoId,
-                            TipoDocumentoName = i.TipoDocumento.Nombre
+                            TipoDocumentoName = i.TipoDocumento?.Nombre
                         });
                     }
                 }
