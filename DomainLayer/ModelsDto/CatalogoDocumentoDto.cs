@@ -18,5 +18,6 @@ namespace DomainLayer.ModelsDto
         public int ? ModificadoPor { get; set; }
         public int ? EstadoId { get; set; }
         public int ? TipoDocumentoId { get; set; }
+        public string? TipoDocumentoName { get; set; }
     }
 }
