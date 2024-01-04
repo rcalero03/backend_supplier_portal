@@ -39,7 +39,7 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateCategoria(Categoria categoria)
         {
            

@@ -100,3 +100,39 @@ C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\RepositoryLayer\obj
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.sourcelink.json
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+D:\Users\jerry.melendez\Documents\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.sourcelink.json
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+C:\xampp\htdocs\backend_supplier_portal\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
