@@ -1,0 +1,73 @@
+﻿using DomainLayer.Models;
+using ServiceLayer.IServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MimeKit;
+using MailKit.Net.Smtp;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+
+
+namespace ServiceLayer.Service
+{
+    public class EmailService : IEmailService
+    {
+        private readonly SmtpSettings _smtpSettings;
+        
+
+        public EmailService ()
+        {
+            //var builder = new ConfigurationBuilder()
+            //.SetBasePath(Directory.GetCurrentDirectory())
+            //.AddJsonFile("appsettings.json");
+
+            //IConfigurationRoot configuration = builder.Build();
+
+            //_smtpSettings = new SmtpSettings(configuration[""])
+        }
+
+        public async Task SendEmailAsynAsync(MailRequest request)
+        {
+            try
+            {
+                var message = new MimeMessage();
+
+                //message.From.Add(new MailboxAddress(_smtpSettings.SenderName, _smtpSettings.SenderEmail));
+                //message.To.Add(new MailboxAddress("", request.Email));
+                //message.Subject = request.Subject;
+                //message.Body = new TextPart("html") { Text = request.Body };
+
+                //using (var client = new SmtpClient())
+                //{
+                //    await client.ConnectAsync(_smtpSettings.Server);
+                //    await client.AuthenticateAsync(_smtpSettings.UserName, _smtpSettings.Password);
+                //    await client.SendAsync(message);
+                //    await client.DisconnectAsync(true);
+                //}
+
+                message.From.Add(new MailboxAddress("mjerrymoises@gmail.com", "mjerrymoises@gmail.com"));
+                message.To.Add(new MailboxAddress("", request.Email));
+                message.Subject = request.Subject;
+                message.Body = new TextPart("html") { Text = request.Body };
+
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync("smtp.gmail.com", 587, false);
+                    await client.AuthenticateAsync("mjerrymoises@gmail.com", "ftnwlbezfvcbvfws");
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                }
+
+                Console.WriteLine("Correo enviado exitosamente");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+    }
+}

@@ -110,7 +110,7 @@ namespace ServiceLayer.Service
         {
             try
             {
-                IEnumerable<Referencia> referencias = _repository.GetAll().Where(x => x.ProveedorId == id);
+                IEnumerable<Referencia> referencias = _repository.GetAll().Where(x => x.ProveedorId == id).OrderBy(x => x.Id);
                 List<ReferenciaDto> referenciaDto = new List<ReferenciaDto>();
                 foreach (var referencia in referencias)
                 {

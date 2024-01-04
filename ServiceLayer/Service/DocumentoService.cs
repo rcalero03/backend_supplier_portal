@@ -2,6 +2,7 @@
 using DomainLayer.ModelsDto;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
+using ServiceLayer.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace ServiceLayer.Service
     public class DocumentoService : IDocumentoService
     {
         public readonly IRepository<Documento> _repository;
+        public readonly IRepository<Proveedor> _proveedorRepository;
+        public readonly IRepository<CatalogoDocumento> _catalogoDocumentoRepository;
+        public readonly IRepository<Estado> _estadoRepository;
 
         public DocumentoService(IRepository<Documento> repository)
         {
@@ -280,6 +284,69 @@ namespace ServiceLayer.Service
 
         }
 
+        public ResponseDto updateDocumenStatus(int documentId, int status)
+        {
+            try
+            {
+                var documento = _repository.GetById(documentId);
 
+                if (documento != null)
+                {
+                    documento.EstadoId = status;
+                    _repository.Update(documento);
+                    _repository.SaveChange();
+
+                    ResponseDto responseDto = new ResponseDto
+                    {
+                        Success = true,
+                        Message = "Estado del documento actualizado correctamente",
+                        StatusCode = 200,
+                        Data = documento
+                    };
+
+                    var Proveedor = _proveedorRepository.GetById(documento.ProveedorId ?? default(int));
+                    var CatalogoDocumento = _catalogoDocumentoRepository.GetById(documento.CatalogoDocumentoId ?? default(int));
+                    var Estado = _estadoRepository.GetById(documento?.EstadoId ?? default(int));
+
+                    MailRequest mail = new MailRequest();
+
+                    mail.Subject = "Test email";
+                    mail.Email = "jerrymelendez0@gmail.com";
+                    mail.Body = "<h2>Hola \""+Proveedor.Empresa+"\"</h2>" +
+                        " <br> <p>Se informa que el documento <strong>"+CatalogoDocumento.Nombre+"</strong> ha pasado al estado de <strong>"+Estado.Nombre+"</strong></p>" +
+                        "";
+
+                    var EmailService = new EmailService();
+
+                    EmailService.SendEmailAsynAsync(mail);
+                    
+                    return responseDto;
+                    
+                }
+                else
+                {
+                    ResponseDto responseDto = new ResponseDto
+                    {
+                        Success = false,
+                        Message = "Documento no encontrado",
+                        StatusCode = 500,
+                        Data = documento
+                    };
+
+                    return responseDto;
+                }
+            }
+            catch(Exception ex)
+            {
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Documento no actualizado correctamente",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return responseDto;
+            }
+        }
     }
 }
