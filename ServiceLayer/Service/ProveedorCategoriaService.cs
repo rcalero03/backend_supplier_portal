@@ -65,19 +65,20 @@ namespace ServiceLayer.Service
             try
             {
                 IEnumerable<ProveedorCategoria> proveedorCategorias = _repository.GetAllAsQueryable()
-                                                                      .Include(x => x.Proveedor).Include(y=>y.Categoria);
-                List<ProveedorCategoriaDto> proveedorCategoriaDto = new List<ProveedorCategoriaDto>();
+                                                                      .Include(y=>y.Categoria);
+                List<CategoriaDto> CategoriaDto = new List<CategoriaDto>();
                 foreach (var proveedorCategoria in proveedorCategorias)
                 {
                     if(proveedorCategoria.ProveedorId == proveedorId)
                     {
-                        proveedorCategoriaDto.Add(new ProveedorCategoriaDto
+                        CategoriaDto.Add(new CategoriaDto
                         {
+                            //este ID corresponde al ID de la tabla ProveedorCategoria, mas no al ID de la tabla Categoria
                             Id = proveedorCategoria.Id,
-                            ProveedorId = proveedorCategoria.ProveedorId,
-                            CategoriaId = proveedorCategoria.CategoriaId,
-                            Proveedor = proveedorCategoria.Proveedor?.Empresa,
-                            Categoria = proveedorCategoria.Categoria?.Nombre
+                            Nombre = proveedorCategoria.Categoria?.Nombre,
+                            Descripcion = proveedorCategoria.Categoria?.Descripcion,
+                            GrupoCompra = proveedorCategoria.Categoria?.GrupoCompra,
+                            Comprador = proveedorCategoria.Categoria?.Comprador,
                         });
                     }
                 }
@@ -86,7 +87,7 @@ namespace ServiceLayer.Service
                     Success = true,
                     Message = "ProveedorCategoria encontrado",
                     StatusCode = 200,
-                    Data = proveedorCategoriaDto
+                    Data = CategoriaDto
                 };
                 return responseDto;
             }
@@ -106,17 +107,32 @@ namespace ServiceLayer.Service
         public ResponseDto InsertProveedorCategoria(ProveedorCategoria ProveedorCategoria)
         {
             try
-            {
-                _repository.Insert(ProveedorCategoria);
-                _repository.SaveChange();
-                ResponseDto responseDto = new ResponseDto
+            { 
+                if(_repository.GetAllAsQueryable().Any(x => x.ProveedorId == ProveedorCategoria.ProveedorId && x.CategoriaId == ProveedorCategoria.CategoriaId))
                 {
-                    Success = true,
-                    Message = "ProveedorCategoria insertado correctamente",
-                    StatusCode = 200,
-                    Data = ProveedorCategoria
-                };
-                return responseDto;
+                    ResponseDto responseDto = new ResponseDto
+                    {
+                        Success = false,
+                        Message = "El proveedor ya posee la categoria",
+                        StatusCode = 500,
+                        Data = null
+                    };
+                    return responseDto;
+                }
+                else
+                {
+                    _repository.Insert(ProveedorCategoria);
+                    _repository.SaveChange();
+                    ResponseDto responseDto = new ResponseDto
+                    {
+                        Success = true,
+                        Message = "Proveedor Categoria insertado correctamente",
+                        StatusCode = 200,
+                        Data = ProveedorCategoria
+                    };
+                    return responseDto;
+                }
+              
             }catch(Exception ex)
             {
                 ResponseDto responseDto = new ResponseDto
