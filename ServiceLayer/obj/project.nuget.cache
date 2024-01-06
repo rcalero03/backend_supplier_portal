@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ly8nFUqe8vEItCWpwXD4TaKBenksJlV+MyfeenKeTYbXEoZ/OLtqStZrxjLRqjw59UYy6zedN75Csg1eHrT5eg==",
+  "dgSpecHash": "vOWq0Bg8iD+EppT+UNwfCIffwHzi2XLRsCFc7AUZQ8auAC7+gJqh8fJrsXhDZ3aUJdoVbj+fs+avlExJak6EUw==",
   "success": true,
   "projectFilePath": "C:\\xampp\\htdocs\\regxi\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\mjerr\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\mailkit\\4.3.0\\mailkit.4.3.0.nupkg.sha512",
+    "C:\\Users\\mjerr\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\mjerr\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
@@ -44,6 +46,7 @@
     "C:\\Users\\mjerr\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\system.formats.asn1\\7.0.0\\system.formats.asn1.7.0.0.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.24.0\\system.identitymodel.tokens.jwt.6.24.0.nupkg.sha512",
+    "C:\\Users\\mjerr\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\mjerr\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

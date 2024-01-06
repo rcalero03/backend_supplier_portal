@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using ServiceLayer.Service;
@@ -14,13 +15,14 @@ namespace ServiceLayer.Service
     public class DocumentoService : IDocumentoService
     {
         public readonly IRepository<Documento> _repository;
-        public readonly IRepository<Proveedor> _proveedorRepository;
-        public readonly IRepository<CatalogoDocumento> _catalogoDocumentoRepository;
+        public readonly IRepository<Usuario> _usuarioRepository;
         public readonly IRepository<Estado> _estadoRepository;
 
-        public DocumentoService(IRepository<Documento> repository)
+        public DocumentoService(IRepository<Documento> repository, IRepository<Usuario> usuarioRepository, IRepository<Estado> estadoRepository)
         {
             _repository = repository;
+            _usuarioRepository = usuarioRepository;
+            _estadoRepository = estadoRepository;
         }
 
         public ResponseDto GetAllDocumento()
@@ -288,38 +290,57 @@ namespace ServiceLayer.Service
         {
             try
             {
-                var documento = _repository.GetById(documentId);
+                //var documento = _repository.GetById(documentId);
+                var documento = new Documento();
+                var usuario = new Usuario();
+                var estado = new Estado();
+                foreach (var document in _repository.GetAllAsQueryable().Include(x => x.Proveedor).Include(x => x.CatalogoDocumento).Where(x => x.Id == documentId))
+                {
+                    documento = document;
+                }
 
                 if (documento != null)
                 {
+                    usuario = _usuarioRepository.GetById(documento.Proveedor.UsuarioId);
+                    estado = _estadoRepository.GetById(status);
                     documento.EstadoId = status;
                     _repository.Update(documento);
                     _repository.SaveChange();
+
+                    MailRequest mail = new MailRequest();
+
+                    mail.Subject = "Test email";
+                    mail.Email = usuario.Email;
+                    mail.Body = "<!DOCTYPE html>" +
+                                "<html lang=\"en\">" +
+                                "<head>" +
+                                    "<meta charset=\"UTF-8\">" +
+                                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                                    "<title>Document</title>" +
+                                "</head>" +
+                                "<body style=\"text-align: center;\">" +
+                                    "<img src=\"https://www.ccn.com.ni/wp-content/uploads/2015/08/LogoVertical.png\" alt=\"ccn\" style=\"height: 200px; width: auto;\">" +
+                                    "<h2>Hola "+documento.Proveedor.Empresa+"</h2>" +
+                                    "<p>Se informa que el documento "+documento.CatalogoDocumento.Nombre+" ha pasado al estado de <strong>"+estado.Nombre+"</strong></p>" +
+                                    "<p>Le invitamos que actualize el documento en el portal</p>" +
+                                "</body>" +
+                                "<footer style=\"background-color: rgb(89, 161, 255); position: absolute; bottom: 0; width: 100%; height: 50px;\">" +
+                                    "<label style=\"color: white; font-size: 24px;\">Terminos y condiciones</label>" +
+                                "</footer>" +
+                                "</html>";
+
+                    var EmailService = new EmailService();
+
+                    EmailService.SendEmailAsynAsync(mail);
 
                     ResponseDto responseDto = new ResponseDto
                     {
                         Success = true,
                         Message = "Estado del documento actualizado correctamente",
                         StatusCode = 200,
-                        Data = documento
+                        //Data = documento
                     };
 
-                    var Proveedor = _proveedorRepository.GetById(documento.ProveedorId ?? default(int));
-                    var CatalogoDocumento = _catalogoDocumentoRepository.GetById(documento.CatalogoDocumentoId ?? default(int));
-                    var Estado = _estadoRepository.GetById(documento?.EstadoId ?? default(int));
-
-                    MailRequest mail = new MailRequest();
-
-                    mail.Subject = "Test email";
-                    mail.Email = "jerrymelendez0@gmail.com";
-                    mail.Body = "<h2>Hola \""+Proveedor.Empresa+"\"</h2>" +
-                        " <br> <p>Se informa que el documento <strong>"+CatalogoDocumento.Nombre+"</strong> ha pasado al estado de <strong>"+Estado.Nombre+"</strong></p>" +
-                        "";
-
-                    var EmailService = new EmailService();
-
-                    EmailService.SendEmailAsynAsync(mail);
-                    
                     return responseDto;
                     
                 }
@@ -330,7 +351,7 @@ namespace ServiceLayer.Service
                         Success = false,
                         Message = "Documento no encontrado",
                         StatusCode = 500,
-                        Data = documento
+                        //Data = documento
                     };
 
                     return responseDto;

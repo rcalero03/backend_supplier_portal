@@ -10,6 +10,10 @@ using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Microsoft.Identity;
+using Microsoft.AspNetCore.Builder;
+
+
 
 
 namespace ServiceLayer.Service
@@ -17,17 +21,14 @@ namespace ServiceLayer.Service
     public class EmailService : IEmailService
     {
         private readonly SmtpSettings _smtpSettings;
-        
 
         public EmailService ()
         {
-            //var builder = new ConfigurationBuilder()
-            //.SetBasePath(Directory.GetCurrentDirectory())
-            //.AddJsonFile("appsettings.json");
 
-            //IConfigurationRoot configuration = builder.Build();
+            //IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
+            //IConfigurationRoot root = builder.Build();
 
-            //_smtpSettings = new SmtpSettings(configuration[""])
+            //Console.WriteLine($"Hello, {root["weather"]} world!");
         }
 
         public async Task SendEmailAsynAsync(MailRequest request)
