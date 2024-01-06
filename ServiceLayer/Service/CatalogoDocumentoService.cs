@@ -28,7 +28,7 @@ namespace ServiceLayer.Service
             {
 
                 List<CatalogoDocumentoDto> catalogoDocumentoDtos = new List<CatalogoDocumentoDto>();
-                foreach (var catalogoDocumento in _repository.GetAllAsQueryable().Include(x=>x.TipoDocumento))
+                foreach (var catalogoDocumento in _repository.GetAllAsQueryable().Include(x=>x.TipoDocumento).OrderByDescending(x=>x.Id))
                 {
                   if(catalogoDocumento.EstadoId==1)
                     {

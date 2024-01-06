@@ -26,7 +26,7 @@ namespace ServiceLayer.Service
             {
                 List<SubtipoCompra> subtipoCompra = new List<SubtipoCompra>();
                 subtipoCompra = _repository.GetAllAsQueryable()
-                                   .Include(x => x.TipoCompra).ToList();
+                                   .Include(x => x.TipoCompra).OrderByDescending(x=>x.Id).ToList();
 
                     List<SubtipoCompraDto> subtipoCompraDto = new List<SubtipoCompraDto>();
                   
