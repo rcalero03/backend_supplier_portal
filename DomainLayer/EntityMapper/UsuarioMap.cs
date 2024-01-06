@@ -31,6 +31,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("Email")
                 .HasColumnType("varchar(50)")
                 .IsRequired(false);
+            builder.Property(x => x.isAdmin)
+                .HasColumnName("isAdmin")
+                .HasColumnType("bit")
+                .IsRequired(false);
 
             builder.Property(x => x.EstadoId)
                 .HasColumnName("EstadoId")

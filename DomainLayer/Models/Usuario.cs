@@ -13,6 +13,7 @@ namespace DomainLayer.Models
         public string? Email { get; set; }
         public int EstadoId { get; set; }
         public string? UserIdAzure { get; set; }
+        public bool? isAdmin { get; set; }
         public ICollection <RolUsuario> ? RolUsuarios { get; set; }
         public ICollection <Proveedor> ? Proveedores { get; set; }
 

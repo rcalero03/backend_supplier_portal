@@ -11,6 +11,8 @@ namespace DomainLayer.ModelsDto
         public string? Nombre { get; set; }
         public string? Email { get; set; }
         public int? EstadoId { get; set; }
+        public string? UserIdAzure { get; set; }
+        public bool? isAdmin { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public DateTime? FechaModificacion { get; set; }
         public int? CreadoPor { get; set; }

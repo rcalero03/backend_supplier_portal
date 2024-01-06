@@ -10,8 +10,8 @@ namespace ServiceLayer.IServices
 {
     public interface IUsuarioService
     {
-        ResponseDto GetByEmail(string email);
-        ResponseDto InsertUsuario(Usuario usuario);
+        ResponseDto GetByEmail(loginDto loginDto);
+        // ResponseDto InsertUsuario(Usuario usuario);
         //Usuario ValidateUser(JwtClaimsDto claims);
         //Usuario getByIdUsuario(int id);
         //ResponseDto validateUsuario(UsuarioDto usuarioDto);

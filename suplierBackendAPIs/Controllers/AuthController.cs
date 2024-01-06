@@ -17,19 +17,13 @@ public class AuthController : ControllerBase
         _usuarioService = usuarioService;
     }
     
-    [HttpGet("login")]
-    public IActionResult validateUsuario(string email, bool tipo)
+    [HttpPost("login")]
+    public IActionResult validateUsuario(loginDto loginDto)
     {
-        ResponseDto response = _usuarioService.GetByEmail(email);
+        ResponseDto response = _usuarioService.GetByEmail(loginDto);
         return Ok(response);
     }
 
-    [HttpPost("register")]
-    public IActionResult Register(Usuario usuario)
-    {
-        ResponseDto response = _usuarioService.InsertUsuario(usuario);
-        return Ok(response);
-    }
 
     //public IActionResult Authenticate([FromBody] Object data)
     //{

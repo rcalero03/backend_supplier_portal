@@ -761,6 +761,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(150)")
                         .HasColumnName("UserIdAzure");
 
+                    b.Property<bool?>("isAdmin")
+                        .HasColumnType("bit")
+                        .HasColumnName("isAdmin");
+
                     b.HasKey("Id")
                         .HasName("PK_UsiarioId");
 

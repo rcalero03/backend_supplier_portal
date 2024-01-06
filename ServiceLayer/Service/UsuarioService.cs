@@ -35,77 +35,45 @@ namespace ServiceLayer.Service
             _rolService = rolService;
         }
 
-        public ResponseDto GetByEmail(string email)
+        public ResponseDto GetByEmail(loginDto login)
         {
-            if (_repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == email) != null)
+            if (_repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == login.Username) != null)
             {
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
-                    Message = "Proveedor ya existe",
+                    Message = "Usuario ya existe",
                     StatusCode = 200,
-                    Data = _repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == email)
+                    Data = _repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == login.Username)
                 };
                 return responseDto;
             }
             else
             {
+
+                Usuario usuario = new Usuario();
+                usuario.Email = login.Username;
+                usuario.Nombre = login.Name;
+                usuario.isAdmin = login.isAdmin;
+                usuario.EstadoId = 1;
+                usuario.UserIdAzure = login.LocalAccountId;
+                usuario.FechaCreacion = DateTime.Now;
+
+                _repository.Insert(usuario);
+                _repository.SaveChange();
+
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = false,
-                    Message = "Proveedor no existe",
+                    Message = "Proveedor no existe por lo que se procedio crear",
                     StatusCode = 200,
-                    Data = null
+                    Data = _repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == login.Username)
                 };
                 return responseDto;
             }
         }
 
-        public ResponseDto InsertUsuario(Usuario usuario)
-        {
-            try
-            {
-                if (_repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == usuario.Email) != null)
-                {
-                    ResponseDto responseDto = new ResponseDto
-                    {
-                        Success = true,
-                        Message = "Proveedor ya existe",
-                        StatusCode = 200,
-                        Data = _repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == usuario.Email)
-                    };
-                    return responseDto;
-                }
-                else
-                {
-                    _repository.Insert(usuario);
-                    _repository.SaveChange();
-
-                    ResponseDto responseDto = new ResponseDto
-                    {
-                        Success = true,
-                        Message = "Proveedor creado",
-                        StatusCode = 200,
-                        Data = usuario
-                    };
-                    return responseDto;
-                }
-
-                  
-            }
-            catch (Exception ex)
-            {
-                ResponseDto responseDto = new ResponseDto
-                {
-                    Success = false,
-                    Message = "Proveedor no creado",
-                    StatusCode = 200,
-                    Data = ex.Message
-                };
-                return responseDto;
-            }
-            
-        }   
+       
 
         //public Usuario? ValidateUser(JwtClaimsDto claims)
         //{
