@@ -15,5 +15,6 @@ namespace ServiceLayer.IServices
         ResponseDto InsertSubtipoCompra(SubtipoCompra SubtipoCompra);
         ResponseDto UpdateSubtipoCompra(SubtipoCompra SubtipoCompra);
         ResponseDto RemoveSubtipoCompra(int id);
+        ResponseDto getSubtipoCompraByTipoCompraId(int id);
     }
 }

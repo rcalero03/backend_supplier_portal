@@ -64,6 +64,8 @@ builder.Services.AddScoped<IConfiguracionNotificacionService, ConfiguracionNotif
 //proveedor categoria
 //referencia
 builder.Services.AddScoped<IReferenciaService, ReferenciaService>();
+//proveedor categoria
+builder.Services.AddScoped<IProveedorCategoriaService, ProveedorCategoriaService>();
 
 
 

@@ -13,7 +13,7 @@ namespace DomainLayer.Models
         public TimeSpan ? Hora { get; set; }
         public int EstadoId { get; set; }
         [ForeignKey("EstadoId")]
-        public Estado ? Estados { get; internal set; }
+        public Estado ? Estado { get; internal set; }
 
     }
 }

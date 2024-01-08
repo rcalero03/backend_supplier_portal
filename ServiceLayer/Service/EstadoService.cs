@@ -20,7 +20,7 @@ namespace ServiceLayer.Service
             _repository = repository;
         }
 
-        public IEnumerable<EstadoDto> GetAllEstados()
+        public IEnumerable<EstadoDto>? GetAllEstados()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace ServiceLayer.Service
                     });
                 }
                 return estadoDto;
-            }catch(Exception ex)
+            }catch(Exception)
             {
                return null;
             }

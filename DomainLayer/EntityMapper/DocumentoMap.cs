@@ -48,6 +48,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("CatalogoDocumentoId")
                 .HasColumnType("int")
                 .IsRequired();
+            builder.Property(x => x.Observacion)
+                .HasColumnName("Observacion")
+                .HasColumnType("varchar(250)")
+                .IsRequired(false);
 
             //BaseEntity
             builder.Property(x => x.CreadoPor)
@@ -71,14 +75,14 @@ namespace DomainLayer.EntityMapper
                 .OnDelete(DeleteBehavior.Restrict);
 
             //navegacion con Proveedor
-            builder.HasOne(x => x.Proveedores)
+            builder.HasOne(x => x.Proveedor)
                 .WithMany(x => x.Documentos)
                 .HasForeignKey(x => x.ProveedorId)
                 .HasConstraintName("FK_Documento_Proveedor")
                 .OnDelete(DeleteBehavior.Restrict);
 
             //navegacion con CatalogoDocumento
-            builder.HasOne(x => x.CatalogoDocumentos)
+            builder.HasOne(x => x.CatalogoDocumento)
                 .WithMany(x => x.Documentos)
                 .HasForeignKey(x => x.CatalogoDocumentoId)
                 .HasConstraintName("FK_Documento_CatalogoDocumento")

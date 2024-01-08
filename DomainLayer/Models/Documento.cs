@@ -15,14 +15,14 @@ namespace DomainLayer.Models
         public int ? EstadoId { get; set; }
         public int ? ProveedorId { get; set; }
         public int ? CatalogoDocumentoId { get; set; }
+        public string ? Observacion { get; set; }
 
         [ForeignKey("CatalogoDocumentoId")]
-        public CatalogoDocumento ? CatalogoDocumentos { get; set; }
+        public CatalogoDocumento ? CatalogoDocumento { get; set; }
         [ForeignKey("EstadoId")]
         public Estado ? Estados { get; set; }
         [ForeignKey("ProveedorId")]
-        public Proveedor ? Proveedores { get; set; }
-        public ICollection<Referencia> ? Referencias { get; set; }
+        public Proveedor ? Proveedor { get; set; }
 
     }
 }

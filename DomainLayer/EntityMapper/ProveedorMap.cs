@@ -75,6 +75,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("CodigoProveedorSap")
                 .HasColumnType("varchar(200)")
                 .IsRequired(false);
+            builder.Property(x => x.Aspirante)
+                .HasColumnName("Aspitante")
+                .HasColumnType("int")
+                .IsRequired(false);
 
             builder.Property(x => x.CiudadId)
                 .HasColumnName("CiudadId")
@@ -90,10 +94,6 @@ namespace DomainLayer.EntityMapper
                 .IsRequired();
             builder.Property(x => x.SubtipoCompraId)
                 .HasColumnName("SubtipoCompraId")
-                .HasColumnType("int")
-                .IsRequired();
-            builder.Property(x => x.CategoriaId)
-                .HasColumnName("CategoriaId")
                 .HasColumnType("int")
                 .IsRequired();
 
@@ -142,12 +142,6 @@ namespace DomainLayer.EntityMapper
                 .HasConstraintName("FK_Proveedor_SubtipoCompra")
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //navegacion con Categoria
-            builder.HasOne(x => x.Categoria)
-                .WithMany(x => x.Proveedores)
-                .HasForeignKey(x => x.CategoriaId)
-                .HasConstraintName("FK_Proveedor_Categoria")
-                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

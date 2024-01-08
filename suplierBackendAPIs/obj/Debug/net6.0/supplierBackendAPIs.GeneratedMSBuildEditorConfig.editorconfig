@@ -9,11 +9,19 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = supplierBackendAPIs
 build_property.RootNamespace = supplierBackendAPIs
+<<<<<<< HEAD
 build_property.ProjectDir = C:\xampp\htdocs\backend_supplier_portal\suplierBackendAPIs\
+=======
+build_property.ProjectDir = C:\xampp\htdocs\regxi\backend_supplier_portal\suplierBackendAPIs\
+>>>>>>> 45a2a743d7db4d58b87e28e9de2dc969bc172b8a
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\xampp\htdocs\backend_supplier_portal\suplierBackendAPIs
+=======
+build_property.MSBuildProjectDirectory = C:\xampp\htdocs\regxi\backend_supplier_portal\suplierBackendAPIs
+>>>>>>> 45a2a743d7db4d58b87e28e9de2dc969bc172b8a
 build_property._RazorSourceGeneratorDebug = 

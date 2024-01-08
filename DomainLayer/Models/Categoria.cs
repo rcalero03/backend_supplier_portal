@@ -14,6 +14,6 @@ namespace DomainLayer.Models
         public string ? Comprador { get; set; }
         public int ? EstadoId { get; set; }
         public Estado ? Estado { get; set; }
-        public virtual ICollection<Proveedor> ? Proveedores { get; set; }
+        public IEnumerable<ProveedorCategoria> ? ProveedorCategorias { get; set; }
     }
 }

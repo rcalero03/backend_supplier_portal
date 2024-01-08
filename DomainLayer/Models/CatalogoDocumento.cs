@@ -16,9 +16,9 @@ namespace DomainLayer.Models
         public int TipoDocumentoId { get; set; }
 
         [ForeignKey("EstadoId")]
-        public Estado ? Estados { get;  set; }
+        public Estado ? Estado { get;  set; }
         [ForeignKey("TipoDocumentoId")]
-        public TipoDocumento ? TipoDocumentos { get; set; }
+        public TipoDocumento ? TipoDocumento { get; set; }
         public ICollection<Documento> ? Documentos { get; set; }
     }
 }

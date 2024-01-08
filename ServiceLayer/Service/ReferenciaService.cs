@@ -32,6 +32,10 @@ namespace ServiceLayer.Service
                         Id = referencia.Id,
                         Nombre = referencia.Nombre,
                         Descripcion = referencia.Descripcion,
+                        Contacto = referencia.Contacto,
+                        Telefono = referencia.Telefono,
+                        Fecha = referencia.Fecha,
+                        ProveedorId = referencia.ProveedorId,
                         FechaCreacion = referencia.FechaCreacion,
                         FechaModificacion = referencia.FechaModificacion,
                         CreadoPor = referencia.CreadoPor,
@@ -55,7 +59,7 @@ namespace ServiceLayer.Service
                     Success = false,
                     Message = "Referencia no encontrado",
                     StatusCode = 500,
-                    Data = null
+                    Data = ex
                 };
                 return response;
             }
@@ -71,6 +75,10 @@ namespace ServiceLayer.Service
                     Id = referencia.Id,
                     Nombre = referencia.Nombre,
                     Descripcion = referencia.Descripcion,
+                    Contacto = referencia.Contacto,
+                    Telefono = referencia.Telefono,
+                    Fecha = referencia.Fecha,
+                    ProveedorId = referencia.ProveedorId,
                     FechaCreacion = referencia.FechaCreacion,
                     FechaModificacion = referencia.FechaModificacion,
                     CreadoPor = referencia.CreadoPor,
@@ -97,6 +105,52 @@ namespace ServiceLayer.Service
                 return response;
             }
         }
+
+        public ResponseDto GetReferenciaByProveedorId(int id)
+        {
+            try
+            {
+                IEnumerable<Referencia> referencias = _repository.GetAll().Where(x => x.ProveedorId == id).OrderBy(x => x.Id);
+                List<ReferenciaDto> referenciaDto = new List<ReferenciaDto>();
+                foreach (var referencia in referencias)
+                {
+                    referenciaDto.Add(new ReferenciaDto
+                    {
+                        Id = referencia.Id,
+                        Nombre = referencia.Nombre,
+                        Descripcion = referencia.Descripcion,
+                        Contacto = referencia.Contacto,
+                        Telefono = referencia.Telefono,
+                        Fecha = referencia.Fecha,
+                        ProveedorId = referencia.ProveedorId,
+                        FechaCreacion = referencia.FechaCreacion,
+                        FechaModificacion = referencia.FechaModificacion,
+                        CreadoPor = referencia.CreadoPor,
+                        ModificadoPor = referencia.ModificadoPor,
+                        EstadoId = referencia.EstadoId,
+                    });
+                }
+                ResponseDto response = new ResponseDto
+                {
+                    Success = true,
+                    Message = "Referencia encontrado",
+                    StatusCode = 200,
+                    Data = referenciaDto
+                };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Referencia no encontrado",
+                    StatusCode = 500,
+                    Data = ex
+                };
+                return response;
+            }
+        }   
 
         public ResponseDto InsertReferencia(Referencia referencia)
         {

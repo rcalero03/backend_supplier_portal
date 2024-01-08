@@ -22,17 +22,21 @@ namespace DomainLayer.ModelsDto
         public string? Movil { get; set; }
         public string? Idioma { get; set; }
         public string? Observacion { get; set; }
+        public int? Aspirante { get; set; }
         public string? CodigoProveedorSap { get; set; }
-        public int CiudadId { get; set; }
         public int UsuarioId { get; set; }
         public int EstadoId { get; set; }
+        public int CiudadId { get; set; }
         public int SubtipoCompraId { get; set; }
         public int CategoriaId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaModificacion { get; set; }
-        public string? CreadoPor { get; set; }
-        public string? ModificadoPor { get; set; }
+        public int? CreadoPor { get; set; }
+        public int? ModificadoPor { get; set; }
         public virtual Usuario? Usuario { get; set; }
+        public int? PaisId { get; set; }
+        public int? TipoCompraId { get; set; }
+
 
     }
 }

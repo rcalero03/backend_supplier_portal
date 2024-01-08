@@ -70,6 +70,7 @@ C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\DomainLayer\obj\Deb
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll
+<<<<<<< HEAD
 D:\Users\jerry.melendez\Documents\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.deps.json
 D:\Users\jerry.melendez\Documents\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.dll
 D:\Users\jerry.melendez\Documents\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.pdb
@@ -96,3 +97,18 @@ C:\xampp\htdocs\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer
 C:\xampp\htdocs\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
 C:\xampp\htdocs\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
 C:\xampp\htdocs\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll
+=======
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.deps.json
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.AssemblyReference.cache
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfoInputs.cache
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.AssemblyInfo.cs
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.sourcelink.json
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.dll
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\refint\DomainLayer.dll
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\DomainLayer.pdb
+C:\xampp\htdocs\regxi\backend_supplier_portal\DomainLayer\obj\Debug\net6.0\ref\DomainLayer.dll
+>>>>>>> 45a2a743d7db4d58b87e28e9de2dc969bc172b8a

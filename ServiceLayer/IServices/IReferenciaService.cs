@@ -15,5 +15,6 @@ namespace ServiceLayer.IServices
         ResponseDto InsertReferencia(Referencia referencia);
         ResponseDto UpdateReferencia(Referencia referencia);
         ResponseDto RemoveReferencia(int id);
+        ResponseDto GetReferenciaByProveedorId(int id);
     }
 }

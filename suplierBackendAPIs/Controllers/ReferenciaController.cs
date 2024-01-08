@@ -30,6 +30,13 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetReferenciaByProveedorId/{id}")]
+        public IActionResult GetReferenciaByProveedorId(int id)
+        {
+            ResponseDto response = _referenciaService.GetReferenciaByProveedorId(id);
+            return Ok(response);
+        }
+
         [HttpPost]
         public IActionResult InsertReferencia(Referencia referencia)
         {

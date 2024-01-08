@@ -30,6 +30,21 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpGet("getAllDocumentBySuppliers/{proveedorId}")]
+        public IActionResult getAllDocumentBySuppliers(int proveedorId)
+        {
+            ResponseDto response = _documentoService.getAllDocumentBySuppliers(proveedorId);
+            return Ok(response);
+        }
+
+        [HttpGet("getAllDocumentBySuppliersActive/{proveedorId}")]
+        public IActionResult getAllDocumentBySuppliersActive(int proveedorId)
+        {
+            ResponseDto response = _documentoService.getAllDocumentoSupplierActive(proveedorId);
+            return Ok(response);
+        }
+
+
         [HttpPost]
         public IActionResult InsertDocumento(Documento documento)
         {
@@ -51,8 +66,12 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
-
-
+        [HttpPut("updateDocumenStatus")]
+        public IActionResult updateDocumenStatus(StatusDocument statusDocument)
+        {
+            ResponseDto response = _documentoService.updateDocumenStatus(statusDocument);
+            return Ok(response);
+        }
       
     }
 }

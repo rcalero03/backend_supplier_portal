@@ -96,7 +96,7 @@ namespace ServiceLayer.Service
             return _repository.GetById(id);
         }
 
-        public string DecodeJwtTokenAzure(string token)
+        public string? DecodeJwtTokenAzure(string token)
         {
             try
             {

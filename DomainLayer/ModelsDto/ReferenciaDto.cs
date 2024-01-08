@@ -14,7 +14,7 @@ namespace DomainLayer.ModelsDto
         public string? Contacto { get; set; }
         public DateTime? Fecha { get; set; }
         public string? Telefono { get; set; }
-        public int? DocumentoId { get; set; }
+        public int? ProveedorId { get; set; }
         public int? EstadoId { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public DateTime? FechaModificacion { get; set; }

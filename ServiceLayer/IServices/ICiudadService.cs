@@ -12,6 +12,6 @@ namespace ServiceLayer.IServices
     {
         IEnumerable<Ciudad> GetAllCiudades();
         ResponseDto GetCiudadById(int paisId);
-       
+
     }
 }

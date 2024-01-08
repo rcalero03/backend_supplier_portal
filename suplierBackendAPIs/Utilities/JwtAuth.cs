@@ -31,7 +31,7 @@ namespace supplierBackendAPIs.Utilities
 
         }
 
-        public string DecodeJwtTokenAzure(string token)
+        public string? DecodeJwtTokenAzure(string token)
         {
             try
             {
