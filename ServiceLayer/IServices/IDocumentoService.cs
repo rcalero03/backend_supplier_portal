@@ -17,6 +17,6 @@ namespace ServiceLayer.IServices
         ResponseDto RemoveDocumento(int id);
         ResponseDto getAllDocumentBySuppliers(int proveedorId);
         ResponseDto getAllDocumentoSupplierActive(int proveedorId);
-        ResponseDto updateDocumenStatus(int documentoId, int status);
+        ResponseDto updateDocumenStatus(StatusDocument statusDocument);
     }
 }

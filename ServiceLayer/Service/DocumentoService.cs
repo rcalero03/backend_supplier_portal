@@ -286,7 +286,7 @@ namespace ServiceLayer.Service
 
         }
 
-        public ResponseDto updateDocumenStatus(int documentId, int status)
+        public ResponseDto updateDocumenStatus(StatusDocument statusDocument)
         {
             try
             {
@@ -294,7 +294,7 @@ namespace ServiceLayer.Service
                 var documento = new Documento();
                 var usuario = new Usuario();
                 var estado = new Estado();
-                foreach (var document in _repository.GetAllAsQueryable().Include(x => x.Proveedor).Include(x => x.CatalogoDocumento).Where(x => x.Id == documentId))
+                foreach (var document in _repository.GetAllAsQueryable().Include(x => x.Proveedor).Include(x => x.CatalogoDocumento).Where(x => x.Id == statusDocument.DocumentoId))
                 {
                     documento = document;
                 }
@@ -302,31 +302,44 @@ namespace ServiceLayer.Service
                 if (documento != null)
                 {
                     usuario = _usuarioRepository.GetById(documento.Proveedor.UsuarioId);
-                    estado = _estadoRepository.GetById(status);
-                    documento.EstadoId = status;
+                    estado = _estadoRepository.GetById(statusDocument.EstadoId);
+                    documento.EstadoId = statusDocument.EstadoId;
                     _repository.Update(documento);
                     _repository.SaveChange();
 
                     MailRequest mail = new MailRequest();
 
+                    var statusMessage = estado.Nombre == "Aprobado" ? "por lo tanto no se requieren realizar mas acciones." :
+                        estado.Nombre == "Rechazado" ? "por inconsistencias en el documento solicitado, favor revisar y adjuntar el documento correcto " +
+                        "por medio de este enlace: <a href=\"http://localhost:4200/pages/suppliers-module\">Adjuntar documento</a>" : "";
+                    var nota = estado.Nombre == "Rechazado" ? "<p>**Nota: No corregir su documento puede generar demoras en el proceso de su pago. **</p>" : "";
+
                     mail.Subject = "Test email";
                     mail.Email = usuario.Email;
                     mail.Body = "<!DOCTYPE html>" +
-                                "<html lang=\"en\">" +
-                                "<head>" +
-                                    "<meta charset=\"UTF-8\">" +
-                                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
-                                    "<title>Document</title>" +
-                                "</head>" +
-                                "<body style=\"text-align: center;\">" +
-                                    "<img src=\"https://www.ccn.com.ni/wp-content/uploads/2015/08/LogoVertical.png\" alt=\"ccn\" style=\"height: 200px; width: auto;\">" +
-                                    "<h2>Hola "+documento.Proveedor.Empresa+"</h2>" +
-                                    "<p>Se informa que el documento "+documento.CatalogoDocumento.Nombre+" ha pasado al estado de <strong>"+estado.Nombre+"</strong></p>" +
-                                    "<p>Le invitamos que actualize el documento en el portal</p>" +
-                                "</body>" +
-                                "<footer style=\"background-color: rgb(89, 161, 255); position: absolute; bottom: 0; width: 100%; height: 50px;\">" +
-                                    "<label style=\"color: white; font-size: 24px;\">Terminos y condiciones</label>" +
-                                "</footer>" +
+                                "<html lang=\"en\"> " +
+                                    "<head>" +
+                                        "<meta charset=\"UTF-8\">" +
+                                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                                        "<title></title>" +
+                                    "</head>" +
+                                    "<body style=\"text-align: justify;\">" +
+                                        "<div style=\"width: 90%; height: auto; border: gray 2px solid; font-family: sans-serif; padding: 20px; margin-left: 2.5%;\">" +
+                                            "<p>" +
+                                                "Estimado proveedor <span style=\"color: red\">"+usuario.Nombre+"</span>, codigo <span style=\"color: red\">"+documento.Proveedor.CodigoProveedorSap+"</span> <br><br>" +
+                                                "Le informamos que el documento &quot;<span style=\"color: rgb(57, 150, 249); font-style: oblique;\">"+documento.CatalogoDocumento.Nombre+"</span>&quot; cargado en la pagina " +
+                                                "web de proveedores ha sido <strong>"+estado.Nombre+"</strong> " + statusMessage +
+                                            "</p>" +
+                                            nota +
+                                            "<p>" +
+                                                "Este correo es generado en forma automatica, favor no responder." +
+                                            "</p>" +
+                                            "<p>" +
+                                                "Atentamente, <br><br>" +
+                                                "Grupo CCN" +
+                                            "</p>" +
+                                        "</div>" +
+                                    "</body>" +
                                 "</html>";
 
                     var EmailService = new EmailService();
