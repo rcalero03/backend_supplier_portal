@@ -10,5 +10,6 @@ namespace DomainLayer.ModelsDto
     {
         public int DocumentoId { get; set; }
         public int EstadoId { get; set; }
+        public string Observacion { get; set; }
     }
 }

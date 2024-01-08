@@ -48,6 +48,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("CatalogoDocumentoId")
                 .HasColumnType("int")
                 .IsRequired();
+            builder.Property(x => x.Observacion)
+                .HasColumnName("Observacion")
+                .HasColumnType("varchar(250)")
+                .IsRequired(false);
 
             //BaseEntity
             builder.Property(x => x.CreadoPor)

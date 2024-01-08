@@ -304,6 +304,7 @@ namespace ServiceLayer.Service
                     usuario = _usuarioRepository.GetById(documento.Proveedor.UsuarioId);
                     estado = _estadoRepository.GetById(statusDocument.EstadoId);
                     documento.EstadoId = statusDocument.EstadoId;
+                    documento.Observacion = statusDocument.Observacion;
                     _repository.Update(documento);
                     _repository.SaveChange();
 

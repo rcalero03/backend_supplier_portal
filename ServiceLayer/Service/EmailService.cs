@@ -50,7 +50,7 @@ namespace ServiceLayer.Service
                 //    await client.DisconnectAsync(true);
                 //}
 
-                message.From.Add(new MailboxAddress("mjerrymoises@gmail.com", "mjerrymoises@gmail.com"));
+                message.From.Add(new MailboxAddress("rmorck03@gmail.com", "rmorck03@gmail.com"));
                 message.To.Add(new MailboxAddress("", request.Email));
                 message.Subject = request.Subject;
                 message.Body = new TextPart("html") { Text = request.Body };
@@ -58,7 +58,7 @@ namespace ServiceLayer.Service
                 using (var client = new SmtpClient())
                 {
                     await client.ConnectAsync("smtp.gmail.com", 587, false);
-                    await client.AuthenticateAsync("mjerrymoises@gmail.com", "ftnwlbezfvcbvfws");
+                    await client.AuthenticateAsync("rmorck03@gmail.com", "vjbadgukzhhqvzvd");
                     await client.SendAsync(message);
                     await client.DisconnectAsync(true);
                 }
