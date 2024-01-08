@@ -13,6 +13,7 @@ namespace ServiceLayer.IServices
     {
         ResponseDto GetAllPaises();
         ResponseDto GetPaisById(int id);
+        Pais getPaisById(int Id);
 
     }
 }

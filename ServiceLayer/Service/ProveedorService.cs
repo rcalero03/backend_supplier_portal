@@ -14,47 +14,69 @@ namespace ServiceLayer.Service
     public class ProveedorService : IProveedorService
     {
         public readonly IRepository<Proveedor> _repository;
-        private UsuarioService _repositoryUsuario;
+        public readonly IRepository<TipoDocumento> _tipoDocumentoRepository;
+     
+        //ivate UsuarioService _repositoryUsuario;
         private Usuario usuario = new Usuario();
+        private PaisService _repositoryPais;
+        private TipoCompraService _repositoryTipoCompra;
         private SubtipoCompraService _repositorySubtipoCompra;
         private ICiudadService _repositoryCiudad;
 
-        public ProveedorService(IRepository<Proveedor> repository)
+        public ProveedorService(IRepository<Proveedor> repository, IRepository<TipoDocumento> tipoDocumentoRepository)
         {
             _repository = repository;
+            _tipoDocumentoRepository = tipoDocumentoRepository;
         }
 
         public ResponseDto GetAllProveedor()
         {            
             try
             {
-                IEnumerable<Proveedor> proveedores = _repository.GetAll();
-                List<Proveedor> proveedorDto = new List<Proveedor>();
+                IEnumerable<Proveedor> proveedores = _repository.GetAllAsQueryable()
+                    .Include(x=>x.Ciudad).ThenInclude(c=>c.Pais)
+                    .Include(x=>x.SubtipoCompra).ThenInclude(y=>y.TipoCompra)
+                    .Include(x=>x.Usuario)
+                    .ToList();
+                
+                List<ProveedorDto> proveedorDto = new List<ProveedorDto>();
                 foreach (var proveedor in proveedores)
                 {
-                    proveedorDto.Add(new Proveedor
-                    {
-                        Id = proveedor.Id,
-                        Empresa = proveedor.Empresa,
-                        Descripcion = proveedor.Descripcion,
-                        Identificacion = proveedor.Identificacion,
-                        IdentificacionTipo = proveedor.IdentificacionTipo,
-                        ContactoPrimario = proveedor.ContactoPrimario,
-                        ContactoSecundario = proveedor.ContactoSecundario,
-                        Direccion = proveedor.Direccion,
-                        Telefono = proveedor.Telefono,
-                        PaginaWeb = proveedor.PaginaWeb,
-                        Movil = proveedor.Movil,
-                        Idioma = proveedor.Idioma,
-                        Observacion = proveedor.Observacion,
-                        CodigoProveedorSap = proveedor.CodigoProveedorSap,
-                        CiudadId = proveedor.CiudadId,
-                        UsuarioId = proveedor.UsuarioId,
-                        EstadoId = proveedor.EstadoId,
-                        Aspirante = proveedor.Aspirante,
-                        SubtipoCompraId = proveedor.SubtipoCompraId
-                        
-                    });
+                    int IdDocumento = Convert.ToInt32(proveedor.IdentificacionTipo);
+                    string TipoDocumentoName = _tipoDocumentoRepository.GetById(IdDocumento).Nombre.ToString();
+                    
+                        proveedorDto.Add(new ProveedorDto
+                        {
+                            Id = proveedor.Id,
+                            Empresa = proveedor.Empresa,
+                            Descripcion = proveedor.Descripcion,
+                            Identificacion = proveedor.Identificacion,
+                            IdentificacionTipo = TipoDocumentoName,
+                            ContactoPrimario = proveedor.ContactoPrimario,
+                            ContactoSecundario = proveedor.ContactoSecundario,
+                            Direccion = proveedor.Direccion,
+                            Telefono = proveedor.Telefono,
+                            PaginaWeb = proveedor.PaginaWeb,
+                            Movil = proveedor.Movil,
+                            Idioma = proveedor.Idioma,
+                            Observacion = proveedor.Observacion,
+                            CodigoProveedorSap = proveedor.CodigoProveedorSap,
+                            CiudadId = proveedor.CiudadId,
+                            UsuarioId = proveedor.UsuarioId,
+                            EstadoId = proveedor.EstadoId,
+                            Aspirante = proveedor.Aspirante,
+                            SubtipoCompraId = proveedor.SubtipoCompraId,
+                            PaisId = proveedor.Ciudad?.PaisId,
+                            TipoCompraId = proveedor.SubtipoCompra?.TipoCompraId,
+                            CreadoPor = proveedor.CreadoPor,
+                            ModificadoPor = proveedor.ModificadoPor,
+                            PaisNombre = proveedor?.Ciudad?.Pais?.Nombre,
+                            TipoCompraNombre = proveedor?.SubtipoCompra?.TipoCompra?.Descripcion,
+                            CiudadNombre = proveedor?.Ciudad?.Nombre,
+                            SubtipoCompraNombre = proveedor?.SubtipoCompra?.Descripcion,
+                            EmailUsuario = proveedor?.Usuario?.Email
+                        });
+                      
                 }
                 ResponseDto responseDto = new ResponseDto
                 {
@@ -77,6 +99,8 @@ namespace ServiceLayer.Service
                 return responseDto;
             }
         }
+
+      
 
         public ResponseDto getSuppliersByUserId(int id)
         {

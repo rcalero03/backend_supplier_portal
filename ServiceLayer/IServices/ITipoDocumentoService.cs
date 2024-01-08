@@ -15,6 +15,7 @@ namespace ServiceLayer.IServices
         ResponseDto InsertTipoDocumento(TipoDocumento tipoDocumento);
         ResponseDto UpdateTipoDocumento(TipoDocumento tipoDocumento);
         ResponseDto RemoveTipoDocumento(TipoDocumento tipoDocumento);
+        string getTipoDocumentoById(int Id);
 
     }
 }

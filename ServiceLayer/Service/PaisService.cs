@@ -90,6 +90,11 @@ namespace ServiceLayer.Service
            
         }
 
+        public Pais getPaisById(int Id)
+        {
+            return _paisRepository.GetById(Id);
+        }
+
    
     }
 }

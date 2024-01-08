@@ -68,6 +68,13 @@ namespace ServiceLayer.Service
             }   
           
         }
+
+        public string getTipoDocumentoById(int Id)
+        {
+            TipoDocumento tipoDocumento = _repository.GetById(Id);
+            return tipoDocumento.Nombre ?? "";
+        }
+
         public ResponseDto GetTipoDocumentoById(int id)
         {
             try

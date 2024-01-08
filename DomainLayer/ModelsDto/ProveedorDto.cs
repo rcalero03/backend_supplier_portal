@@ -36,6 +36,11 @@ namespace DomainLayer.ModelsDto
         public virtual Usuario? Usuario { get; set; }
         public int? PaisId { get; set; }
         public int? TipoCompraId { get; set; }
+        public string? PaisNombre { get; set; }
+        public string? TipoCompraNombre { get; set; }
+        public string? CiudadNombre { get; set; }
+        public string? SubtipoCompraNombre { get; set; }
+        public string? EmailUsuario { get; set; }
 
 
     }
