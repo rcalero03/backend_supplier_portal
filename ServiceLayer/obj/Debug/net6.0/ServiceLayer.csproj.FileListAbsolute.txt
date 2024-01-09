@@ -100,44 +100,6 @@ C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\ServiceLayer\obj\De
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
-<<<<<<< HEAD
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.deps.json
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.dll
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.pdb
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.dll
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.dll
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.pdb
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.pdb
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.AssemblyReference.cache
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfoInputs.cache
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfo.cs
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CoreCompileInputs.cache
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.sourcelink.json
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CopyComplete
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.dll
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
-D:\Users\jerry.melendez\Documents\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.deps.json
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.pdb
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\DomainLayer.pdb
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\RepositoryLayer.pdb
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.AssemblyReference.cache
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfoInputs.cache
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.AssemblyInfo.cs
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CoreCompileInputs.cache
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.sourcelink.json
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.csproj.CopyComplete
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
-C:\xampp\htdocs\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
-=======
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.deps.json
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.dll
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\bin\Debug\net6.0\ServiceLayer.pdb
@@ -156,4 +118,3 @@ C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\Serv
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\refint\ServiceLayer.dll
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ServiceLayer.pdb
 C:\xampp\htdocs\regxi\backend_supplier_portal\ServiceLayer\obj\Debug\net6.0\ref\ServiceLayer.dll
->>>>>>> 45a2a743d7db4d58b87e28e9de2dc969bc172b8a
