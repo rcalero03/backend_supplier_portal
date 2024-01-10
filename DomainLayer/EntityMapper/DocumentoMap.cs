@@ -36,6 +36,10 @@ namespace DomainLayer.EntityMapper
                 .HasColumnName("FechaVencimiento")
                 .HasColumnType("datetime")
                 .IsRequired(false);
+            builder.Property(x => x.Observacion)
+                .HasColumnName("Observacion")
+                .HasColumnType("varchar(250)")
+                .IsRequired(false);
             builder.Property(x => x.EstadoId)
                 .HasColumnName("EstadoId")
                 .HasColumnType("int")

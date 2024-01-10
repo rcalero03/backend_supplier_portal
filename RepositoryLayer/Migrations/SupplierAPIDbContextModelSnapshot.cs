@@ -309,6 +309,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("Nombre");
 
+                    b.Property<string>("Observacion")
+                        .HasColumnType("varchar(250)")
+                        .HasColumnName("Observacion");
+
                     b.Property<int?>("ProveedorId")
                         .IsRequired()
                         .HasColumnType("int")

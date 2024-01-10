@@ -12,6 +12,7 @@ namespace DomainLayer.ModelsDto
         public string? URL { get; set; }
         public DateTime? FechaEmicion { get; set; }
         public DateTime? FechaVencimiento { get; set; }
+        public string? Observacion { get; set; }
         public int? EstadoId { get; set; }
         public int? ProveedorId { get; set; }
         public int ? CatalogoDocumentoId { get; set; }

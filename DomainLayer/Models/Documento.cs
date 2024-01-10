@@ -15,6 +15,7 @@ namespace DomainLayer.Models
         public int ? EstadoId { get; set; }
         public int ? ProveedorId { get; set; }
         public int ? CatalogoDocumentoId { get; set; }
+        public string ? Observacion { get; set; }
 
         [ForeignKey("CatalogoDocumentoId")]
         public CatalogoDocumento ? CatalogoDocumento { get; set; }

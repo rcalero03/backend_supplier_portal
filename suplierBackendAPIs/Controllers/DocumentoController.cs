@@ -66,6 +66,13 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpPut("updateDocumenStatus")]
+        public IActionResult updateDocumenStatus(StatusDocumentDto statusDocument)
+        {
+            ResponseDto response = _documentoService.updateDocumenStatus(statusDocument);
+            return Ok(response);
+        }
+
 
 
       
