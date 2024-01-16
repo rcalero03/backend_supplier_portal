@@ -78,11 +78,16 @@ namespace supplierBackendAPIs.Controllers
         {
             ResponseDto response = _documentoService.updateStatusDocumentAproved(Id);
             return Ok(response);
+        }
 
+        [HttpPut("statusDocumentExpired/{Id}")]
+        public IActionResult updateStatusDocumentExpired(int Id)
+        {
+            _documentoService.updateDocumentStatusExpired(Id);
+            return Ok();
 
         }
 
 
-      
     }
 }
