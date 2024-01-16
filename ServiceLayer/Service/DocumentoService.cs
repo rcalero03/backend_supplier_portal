@@ -285,7 +285,42 @@ namespace ServiceLayer.Service
 
         }
 
-        public ResponseDto updateDocumenStatus(StatusDocumentDto statusDocument)
+        public ResponseDto updateStatusDocumentAproved(int IdDocument)
+        {
+            try
+            {
+                Documento documento = new Documento();
+                var estado = new Estado();
+                estado = _estadoRepository.GetAll().FirstOrDefault(x => x.Nombre == "Aprobado");
+                documento = _repository.GetById(IdDocument);
+
+                documento.EstadoId = estado?.Id;
+
+                _repository.Update(documento);
+                _repository.SaveChange();
+
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = true,
+                    Message = "Estado del documento actualizado correctamente",
+                    StatusCode = 200,
+                    //Data = documento
+                };
+
+                return responseDto;
+            }catch(Exception ex)
+            {
+                ResponseDto response = new ResponseDto
+                {
+                    Success = false,
+                    Message = ex.Message,
+                    StatusCode = 500
+                };
+                return response;
+            }
+        }
+
+        public ResponseDto updateDocumenStatusRefused(StatusDocumentDto statusDocument)
         {
             try
             {
