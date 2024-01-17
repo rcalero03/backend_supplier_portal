@@ -1,9 +1,11 @@
-﻿using DomainLayer.Models;
+﻿using Azure;
+using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -318,6 +320,77 @@ namespace ServiceLayer.Service
                     StatusCode = 500
                 };
                 return response;
+            }
+        }
+
+        public void documentToExpired(int IdDocument)
+        {
+            Documento documento = new Documento();
+            var usuario = new Usuario();
+            var estado = new Estado();
+            foreach (var document in _repository.GetAllAsQueryable().Include(x => x.Proveedor).Include(x => x.CatalogoDocumento).Where(x => x.Id == IdDocument))
+            {
+                documento = document;
+            }
+            if (documento != null)
+            {
+                usuario = _usuarioRepository.GetById(documento.Proveedor.UsuarioId);
+                estado = _estadoRepository.GetAll().FirstOrDefault(x => x.Nombre == "Expirado");
+                _repository.Update(documento);
+                _repository.SaveChange();
+
+                DateTime fechadoc = Convert.ToDateTime(documento.FechaEmicion);
+                DateTime fechaActual = DateTime.Now;
+                TimeSpan diferecia = fechaActual - fechadoc;
+                //numero de dias
+                int dias = (int)diferecia.Days;
+
+                MailRequestDto mail = new MailRequestDto();
+
+                var statusMessage = estado?.Nombre == "Aprobado" ? "por lo tanto no se requieren realizar mas acciones." :
+                    estado?.Nombre == "Rechazado" ? "por inconsistencias en el documento solicitado, favor revisar y adjuntar el documento correcto " +
+                    "por medio de este enlace: <a href=\"http://localhost:4200/pages/suppliers-module\">Adjuntar documento</a>" : "";
+                var nota = estado.Nombre == "Rechazado" ? "<p>**Nota: No corregir su documento puede generar demoras en el proceso de su pago. **</p>" : "";
+                var observacion = "<p> **Numero de dias a vencer: **</p> ";
+                var vinculo = "http://localhost:4200/";
+
+                mail.Subject = "Test email";
+                mail.Email = usuario.Email;
+                mail.Body = "<!DOCTYPE html>" +
+                            "<html lang=\"en\"> " +
+                                "<head>" +
+                                    "<meta charset=\"UTF-8\">" +
+                                    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                                    "<title></title>" +
+                                "</head>" +
+                                "<body style=\"text-align: justify;\">" +
+                                    "<div style=\"width: 90%; height: auto; border: gray 2px solid; font-family: sans-serif; padding: 20px; margin-left: 2.5%;\">" +
+                                        "<p>" +
+                                            "Estimado proveedor <span style=\"color: red\">" + usuario?.Nombre + "</span>, codigo <span style=\"color: red\">" + documento.Proveedor.CodigoProveedorSap + "</span> <br><br>" +
+                                            "Le informamos que el documento &quot;<span style=\"color: rgb(57, 150, 249); font-style: oblique;\">" + documento?.CatalogoDocumento?.Nombre + "</span>&quot; cargado en la pagina " +
+                                            "web de proveedores esta pronto ha <strong>" + estado.Nombre + "</strong> " + " le solicitamos adjuntar el documento vigente, usando el siguiente" + "</span> <br><br>" + "vínculo:" +
+                                            "<a href=" + vinculo + ">Adjuntar documento.</a>" +
+                                        "</p>" +
+                                            nota +
+                                        "</p>" +
+                                        "<p>" +
+                                            "Observación: <strong>" + observacion +" "+ dias +
+                                        "</p>" +
+                                        "<p>" +
+                                            "Este correo es generado en forma automatica, favor no responder." +
+                                        "</p>" +
+                                        "<p>" +
+                                            "Atentamente, <br><br>" +
+                                            "Grupo CCN" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</body>" +
+                            "</html>";
+
+                var EmailService = new EmailService();
+
+                EmailService.SentEmailAsync(mail);
+
             }
         }
 

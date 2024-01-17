@@ -88,6 +88,13 @@ namespace supplierBackendAPIs.Controllers
 
         }
 
+        [HttpPut("documentToExpired/{Id}")]
+        public IActionResult documentToExpired(int Id)
+        {
+            _documentoService.documentToExpired(Id);
+            return Ok();
+        }
+
 
     }
 }
