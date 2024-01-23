@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AVK6ZGNhojxOO8BazQ4k+dfjKlBqsDUc36OmLCEGuIE=",
+  "Source": "supplierBackendAPIs",
+  "BasePath": "_content/supplierBackendAPIs",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

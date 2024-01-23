@@ -41,6 +41,7 @@ namespace DomainLayer.ModelsDto
         public string? CiudadNombre { get; set; }
         public string? SubtipoCompraNombre { get; set; }
         public string? EmailUsuario { get; set; }
+        public string ? IdentificacionTipoId { get; set; }
 
 
     }

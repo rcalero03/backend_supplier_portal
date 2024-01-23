@@ -37,6 +37,7 @@ namespace ServiceLayer.Service
                     .Include(x=>x.Ciudad).ThenInclude(c=>c.Pais)
                     .Include(x=>x.SubtipoCompra).ThenInclude(y=>y.TipoCompra)
                     .Include(x=>x.Usuario)
+                    .Where(x=>x.EstadoId == 1)
                     .ToList();
                 
                 List<ProveedorDto> proveedorDto = new List<ProveedorDto>();
@@ -74,7 +75,10 @@ namespace ServiceLayer.Service
                             TipoCompraNombre = proveedor?.SubtipoCompra?.TipoCompra?.Descripcion,
                             CiudadNombre = proveedor?.Ciudad?.Nombre,
                             SubtipoCompraNombre = proveedor?.SubtipoCompra?.Descripcion,
-                            EmailUsuario = proveedor?.Usuario?.Email
+                            EmailUsuario = proveedor?.Usuario?.Email,
+                            FechaModificacion = (DateTime)proveedor.FechaModificacion,
+                            FechaCreacion = (DateTime)proveedor.FechaCreacion,
+                            IdentificacionTipoId = proveedor.IdentificacionTipo
                         });
                       
                 }

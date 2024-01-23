@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\Deploy</_PublishTargetUrl>
+    <History>True|2024-01-23T03:44:08.2956800Z;True|2024-01-18T18:04:45.8473379-06:00;True|2024-01-18T17:58:28.6089957-06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=sqldesaccn%3bDatabase=supplierAPIsDB%3bUser Id=PortalDeProveedoresApp%3bPassword=~2c2c+5Q3Hgw%3bTrusted_Connection=False%3bEncrypt=True%3bTrustServerCertificate=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
