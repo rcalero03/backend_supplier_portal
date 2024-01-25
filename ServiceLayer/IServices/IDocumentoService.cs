@@ -20,6 +20,7 @@ namespace ServiceLayer.IServices
         ResponseDto updateDocumenStatusRefused(StatusDocumentDto statusDocument);
         ResponseDto updateStatusDocumentAproved(int IdDocument);
         void updateDocumentStatusExpired(int IdDocument);
-        void documentToExpired(int IdDocument);
+        Task DocumentToExpiredAsync(int IdDocument);
+        ResponseDto reportDocument(ReportDocumentDto reportDocument);
     }
 }

@@ -20,6 +20,10 @@ namespace DomainLayer.ModelsDto
         public DateTime? FechaModificacion { get; set; }
         public int ? CreadoPor { get; set; }
         public int ? ModificadoPor { get; set; }
+        public string? TipoDocumento { get; set; }
+        public string? CatalogoDocumentoNombre {  get; set; }
+        public string? EstadoNomobre { get; set; }
+        public string? ProveedorNombre { get; set; }
 
     }
 }

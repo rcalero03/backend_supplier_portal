@@ -7,7 +7,9 @@ using ServiceLayer.IServices;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
@@ -19,12 +21,17 @@ namespace ServiceLayer.Service
         public readonly IRepository<Documento> _repository;
         public readonly IRepository<Usuario> _usuarioRepository;
         public readonly IRepository<Estado> _estadoRepository;
+        public readonly IRepository<TipoDocumento> _tipoDocumentoRepository;
 
-        public DocumentoService(IRepository<Documento> repository, IRepository<Usuario> usuarioRepository , IRepository<Estado> estadoRepository)
+        public DocumentoService(IRepository<Documento> repository,
+            IRepository<Usuario> usuarioRepository ,
+            IRepository<Estado> estadoRepository,
+            IRepository<TipoDocumento> tipoDocumentoRepository)
         {
             _repository = repository;
             _usuarioRepository = usuarioRepository;
             _estadoRepository = estadoRepository;
+            _tipoDocumentoRepository = tipoDocumentoRepository;
         }
 
         public ResponseDto GetAllDocumento()
@@ -323,7 +330,7 @@ namespace ServiceLayer.Service
             }
         }
 
-        public void documentToExpired(int IdDocument)
+        public async Task DocumentToExpiredAsync(int IdDocument)
         {
             Documento documento = new Documento();
             var usuario = new Usuario();
@@ -336,8 +343,6 @@ namespace ServiceLayer.Service
             {
                 usuario = _usuarioRepository.GetById(documento.Proveedor.UsuarioId);
                 estado = _estadoRepository.GetAll().FirstOrDefault(x => x.Nombre == "Expirado");
-                _repository.Update(documento);
-                _repository.SaveChange();
 
                 DateTime fechadoc = Convert.ToDateTime(documento.FechaEmicion);
                 DateTime fechaActual = DateTime.Now;
@@ -345,18 +350,17 @@ namespace ServiceLayer.Service
                 //numero de dias
                 int dias = (int)diferecia.Days;
 
-                MailRequestDto mail = new MailRequestDto();
-
                 var statusMessage = estado?.Nombre == "Aprobado" ? "por lo tanto no se requieren realizar mas acciones." :
-                    estado?.Nombre == "Rechazado" ? "por inconsistencias en el documento solicitado, favor revisar y adjuntar el documento correcto " +
-                    "por medio de este enlace: <a href=\"http://localhost:4200/pages/suppliers-module\">Adjuntar documento</a>" : "";
+                   estado?.Nombre == "Rechazado" ? "por inconsistencias en el documento solicitado, favor revisar y adjuntar el documento correcto " +
+                   "por medio de este enlace: <a href=\"http://localhost:4200/pages/suppliers-module\">Adjuntar documento</a>" : "";
                 var nota = estado.Nombre == "Rechazado" ? "<p>**Nota: No corregir su documento puede generar demoras en el proceso de su pago. **</p>" : "";
                 var observacion = "<p> **Numero de dias a vencer: **</p> ";
                 var vinculo = "http://localhost:4200/";
 
-                mail.Subject = "Test email";
-                mail.Email = usuario.Email;
-                mail.Body = "<!DOCTYPE html>" +
+                var to =  usuario.Email ;
+                var from = "rmorck03@gmail.com";
+                var subject = "DOCUMENTO A DIAS DE EXPIRAR";
+                var body = "<!DOCTYPE html>" +
                             "<html lang=\"en\"> " +
                                 "<head>" +
                                     "<meta charset=\"UTF-8\">" +
@@ -374,7 +378,7 @@ namespace ServiceLayer.Service
                                             nota +
                                         "</p>" +
                                         "<p>" +
-                                            "Observación: <strong>" + observacion +" "+ dias +
+                                            "Observación: <strong>" + observacion + " " + dias +
                                         "</p>" +
                                         "<p>" +
                                             "Este correo es generado en forma automatica, favor no responder." +
@@ -387,9 +391,45 @@ namespace ServiceLayer.Service
                                 "</body>" +
                             "</html>";
 
-                var EmailService = new EmailService();
 
-                EmailService.SentEmailAsync(mail);
+
+                var apiUrl = "https://sdesarrollo02.ccn.com.ni/mailapp/api/v2/Email";
+
+                // Realiza la solicitud POST a la API
+
+                var handler = new HttpClientHandler();
+                handler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+                var client = new HttpClient(handler);
+
+                using ( client = new HttpClient())
+                {
+                    try
+                    {
+                        var content = new MultipartFormDataContent();
+                        content.Add(new StringContent(to), "To");
+                        content.Add(new StringContent(from), "From");
+                        content.Add(new StringContent("CCN"), "DisplayName");
+                        content.Add(new StringContent("DOCUMENTO A DIAS DE EXPIRAR"), "Subject");
+                        content.Add(new StringContent(body, Encoding.UTF8, "text/html"), "Body");
+
+                        var response = await client.PostAsync(apiUrl, content);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            Console.WriteLine("La solicitud fue exitosa");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Error en la solicitud: {response.StatusCode}");
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al realizar la solicitud: {ex.Message}");
+                    }
+                }
 
             }
         }
@@ -565,6 +605,55 @@ namespace ServiceLayer.Service
                 return responseDto;
             }
         }
+
+        public  ResponseDto reportDocument(ReportDocumentDto reportDocument)
+        {
+            IEnumerable<Documento> documentos = _repository.GetAllAsQueryable().
+                Include(x=>x.Proveedor).ThenInclude(y=>y.Usuario)
+                .Include(y=>y.CatalogoDocumento).ThenInclude(y => y.TipoDocumento)
+                .Include(x=>x.Estados)
+                .Where(x=>x.EstadoId == reportDocument.EstadoId && x.ProveedorId == reportDocument.ProveedorId);
+
+            List<DocumentoDto> documentoDtos = new List<DocumentoDto>();
+
+            foreach (Documento documento in documentos)
+            {
+                
+                documentoDtos.Add(new DocumentoDto
+                {
+                    Id = documento.Id,
+                    URL = documento.Nombre,
+                    FechaEmicion = documento.FechaEmicion,
+                    FechaVencimiento = documento.FechaVencimiento,
+                    Observacion = documento.Observacion,
+                    EstadoId = documento.EstadoId,
+                    ProveedorId = documento.ProveedorId,
+                    CatalogoDocumentoId = documento.CatalogoDocumentoId,
+                    FechaCreacion = documento.FechaCreacion,
+                    FechaModificacion = documento.FechaModificacion,
+                    CreadoPor = documento.CreadoPor,
+                    ModificadoPor = documento.ModificadoPor,
+                    TipoDocumento = documento.CatalogoDocumento.TipoDocumento.Nombre,
+                    CatalogoDocumentoNombre = documento.CatalogoDocumento.Nombre,
+                    EstadoNomobre = documento.Estados.Nombre,
+                    ProveedorNombre = documento.Proveedor.Usuario.Nombre,
+                });
+            }
+            if(documentoDtos == null || documentoDtos.Count == 0){
+                var mensaje = "No se encontraron registros";
+            }
+
+            ResponseDto responseDto = new ResponseDto
+            {
+                Success = true,
+                Message = documentoDtos == null || documentoDtos.Count == 0 ? "No se encontro registro" : "Registros Encontrados",
+                StatusCode = 200,
+                Data = documentoDtos
+            };
+
+            return responseDto;
+        }
+
 
 
     }

@@ -15,6 +15,8 @@ namespace ServiceLayer.IServices
         void InsertEstado(Estado estado);
         void UpdateEstado(Estado estado);
         void RemoveEstado(Estado estado);
-   
+        ResponseDto stateDocument();
+
+
     }
 }

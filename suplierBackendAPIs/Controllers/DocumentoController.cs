@@ -91,8 +91,14 @@ namespace supplierBackendAPIs.Controllers
         [HttpPut("documentToExpired/{Id}")]
         public IActionResult documentToExpired(int Id)
         {
-            _documentoService.documentToExpired(Id);
+            _documentoService.DocumentToExpiredAsync(Id);
             return Ok();
+        }
+
+        [HttpGet("ReportDocument")]
+        public IActionResult GetDocument(ReportDocumentDto reportDocument) {
+           ResponseDto responseDto = _documentoService.reportDocument(reportDocument);
+            return Ok(responseDto);
         }
 
 

@@ -42,6 +42,44 @@ namespace ServiceLayer.Service
            
         }
 
+        public ResponseDto stateDocument()
+        {
+            try
+            {
+                IEnumerable<Estado> estados = _repository.GetAll();
+                List<EstadoDto> estadoDto = new List<EstadoDto>();
+                foreach (var estado in estados)
+                {
+                    if(estado.Nombre == "Revisión" || estado.Nombre =="Aprobado" || estado.Nombre == "Rechazado" || estado.Nombre==" Expirado")
+                    {
+                        estadoDto.Add(new EstadoDto
+                        {
+                            Id=estado.Id,
+                            Nombre=estado.Nombre,
+                        });
+                    }
+                }
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = true,
+                    Message = "Documento encontrado",
+                    StatusCode = 200,
+                    Data = estadoDto
+                };
+                return responseDto;
+            }catch(Exception ex)
+            {
+                ResponseDto responseDto = new ResponseDto
+                {
+                    Success = false,
+                    Message = "Documento no encontrado",
+                    StatusCode = 500,
+                    Data = ex.Message
+                };
+                return responseDto;
+            }
+}
+
         public Estado GetEstadoById(int id)
         {
               return _repository.GetById(id);
