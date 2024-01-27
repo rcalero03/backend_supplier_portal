@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {}
+    "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {
+    "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
+        "projectUniqueName": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
         "projectName": "DomainLayer",
-        "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\obj\\",
+        "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
+        "packagesPath": "D:\\Users\\roberto.calero\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "D:\\Users\\roberto.calero\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +25,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

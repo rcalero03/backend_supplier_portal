@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace DomainLayer.ModelsDto
 {
     public class loginDto
     {
+        public ClaimsIdentity? email;
+
         public string? LocalAccountId { get; set; }//USUARIO DE AZURE
         public string? Name { get; set; }//NOOMBRE DEL USUARIO
         public string? Username { get; set; }//EMAIL DEL USUARIO

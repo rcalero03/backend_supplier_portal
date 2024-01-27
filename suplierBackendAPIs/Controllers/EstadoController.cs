@@ -1,4 +1,5 @@
 ﻿using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit.Cryptography;
 using ServiceLayer.IServices;
@@ -6,6 +7,7 @@ using ServiceLayer.IServices;
 namespace supplierBackendAPIs.Controllers
 {
     [Route("api/Estado")]
+    [Authorize]
     public class EstadoController : Controller
     {
         public readonly IEstadoService _estadoService;
