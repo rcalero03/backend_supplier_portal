@@ -617,3 +617,4 @@ D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier_portal\suplie
 D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier_portal\suplierBackendAPIs\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
 D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier_portal\suplierBackendAPIs\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Users\roberto.calero\Documents\NicCoders\REGXI\backend_supplier_portal\suplierBackendAPIs\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

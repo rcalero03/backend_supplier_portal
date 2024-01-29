@@ -2873,23 +2873,24 @@
     ]
   },
   "packageFolders": {
-    "D:\\Users\\roberto.calero\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
       "projectName": "ServiceLayer",
-      "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
-      "packagesPath": "D:\\Users\\roberto.calero\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\ServiceLayer\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\ServiceLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\Users\\roberto.calero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2897,17 +2898,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {
-              "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj"
+            "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj"
             },
-            "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj": {
-              "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj"
+            "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj"
             }
           }
         }

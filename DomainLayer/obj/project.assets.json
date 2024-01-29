@@ -640,23 +640,24 @@
     ]
   },
   "packageFolders": {
-    "D:\\Users\\roberto.calero\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
       "projectName": "DomainLayer",
-      "projectPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
-      "packagesPath": "D:\\Users\\roberto.calero\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\roberto.calero\\Documents\\NicCoders\\REGXI\\backend_supplier_portal\\DomainLayer\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Proyectos C#\\backend_supplier_portal\\backend_supplier_portal\\DomainLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "D:\\Users\\roberto.calero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -664,6 +665,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
