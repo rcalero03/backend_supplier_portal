@@ -62,7 +62,7 @@ namespace ServiceLayer.Service
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
-                    Message = "Documento encontrado",
+                    Message = "Estados Encontrados",
                     StatusCode = 200,
                     Data = estadoDto
                 };

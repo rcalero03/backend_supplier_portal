@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -7,6 +8,7 @@ namespace supplierBackendAPIs.Controllers
 {
     [Route("api/TipoCompra")]
     [ApiController]
+    [Authorize]
     public class TipoCompraController : Controller
     {
         public readonly ITipoCompraService _tipoCompraService;

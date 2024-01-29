@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -7,6 +8,7 @@ namespace supplierBackendAPIs.Controllers
 {
     [Route("api/Documento")]
     [ApiController]
+    [Authorize]
     public class DocumentoController : Controller
     {
         public readonly IDocumentoService _documentoService;

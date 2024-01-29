@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -7,6 +8,7 @@ namespace supplierBackendAPIs.Controllers
 {
     [Route("api/CatalogoDocumento")]
     [ApiController]
+    [Authorize]
     public class CatalogoDocumentoController : Controller
     {
         private readonly ICatalogoDocumentoService _catalogoDocumentoService;
@@ -61,8 +63,6 @@ namespace supplierBackendAPIs.Controllers
             ResponseDto response = _catalogoDocumentoService.RemoveCatalogoDocumento(catalogoDocumento);
             return Ok();
         }
-
-      
 
     }
 }

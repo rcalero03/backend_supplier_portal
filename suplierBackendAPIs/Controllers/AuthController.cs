@@ -6,90 +6,65 @@ using ServiceLayer.Service;
 using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using supplierBackendAPIs.Utilities;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 [Route("api/auth")]
 [ApiController]
 public class AuthController : ControllerBase
 {
     private readonly IUsuarioService _usuarioService;
-    public AuthController(IUsuarioService usuarioService)
+    public IConfiguration _configuration;
+    public AuthController(IUsuarioService usuarioService, IConfiguration configuration)
     {
         _usuarioService = usuarioService;
+        _configuration = configuration;
     }
-    
+
     [HttpPost("login")]
-    public IActionResult validateUsuario(loginDto loginDto)
+    public IActionResult ValidateUsuario(loginDto loginDto)
     {
         ResponseDto response = _usuarioService.GetByEmail(loginDto);
+
+        var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
+        var email = loginDto.Username ?? "";
+
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, jwt?.Subject ?? ""),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer),
+            new Claim("email", email.ToString()),
+        };
+
+        var key = jwt != null ? new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key)) : null;
+
+        if (key == null)
+        {
+            return Unauthorized();
+        }
+
+        var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            jwt.Issuer,
+            jwt.Audience,
+            claims,
+            expires: DateTime.UtcNow.AddDays(7),
+            signingCredentials: signIn
+        );
+
+        response.Data = new
+        {
+            User = response.Data,
+            AccessToken = new JwtSecurityTokenHandler().WriteToken(token)
+        };
+
         return Ok(response);
     }
 
-
-    //public IActionResult Authenticate([FromBody] Object data)
-    //{
-    //    try
-    //    {
-    //        var token = JObject.Parse(json: data.ToString())["token"].ToString();
-
-    //        if (token == null)
-    //        {
-    //            return Ok(new
-    //            {
-    //                status = "200",
-    //                message = "token is null",
-    //                data = ""
-    //            });
-    //        }
-
-    //        JwtClaimsDto jwtClaims = _authService.DecodeJwtTokenAzure(token);
-
-    //        if (jwtClaims != null)
-    //        {
-    //            Usuario verifyUser = _usuarioService.ValidateUser(jwtClaims);
-
-    //            if (verifyUser == null)
-    //            {
-    //                return Ok(new
-    //                {
-    //                    status = "200",
-    //                    message = "Error creating user",
-    //                    data = ""
-    //                });
-    //            }
-
-    //            JwtAuthDto auth = _authService.createToken(verifyUser);
-
-    //            return Ok(new
-    //            {
-    //                status = "200",
-    //                message = "Successful login",
-    //                data = new
-    //                {
-    //                    access_token = auth.AccessToken,
-    //                    refresh_token = auth.RefreshToken,
-    //                }
-    //            });
-    //        }
-    //        else
-    //        {
-    //            return Ok(new
-    //            {
-    //                status = "200",
-    //                message = "The token is not valid",
-    //                data = ""
-    //            });
-    //        }
-    //    } catch (Exception ex)
-    //    {
-    //        return Ok(new
-    //        {
-    //            status = "200",
-    //            message = "Server error",
-    //            data = ex
-    //        });
-    //    }
-
-    //}
 
 }
 
