@@ -95,7 +95,7 @@ namespace supplierBackendAPIs.Controllers
             return Ok();
         }
 
-        [HttpGet("ReportDocument")]
+        [HttpPost("ReportDocument")]
         public IActionResult GetDocument(ReportDocumentDto reportDocument) {
            ResponseDto responseDto = _documentoService.reportDocument(reportDocument);
             return Ok(responseDto);
