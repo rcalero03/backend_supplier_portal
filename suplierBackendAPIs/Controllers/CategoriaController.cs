@@ -1,5 +1,6 @@
 ﻿using DomainLayer.Models;
 using DomainLayer.ModelsDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
 
@@ -7,6 +8,7 @@ namespace supplierBackendAPIs.Controllers
 {
     [Route("api/Categoria")]
     [ApiController]
+    [Authorize]
     public class CategoriaController : Controller
     {
       private readonly ICategoriaService _categoriaService;
@@ -53,10 +55,6 @@ namespace supplierBackendAPIs.Controllers
            ResponseDto response = _categoriaService.DeleteCategoria(id);
             return Ok(response);
         }
-
-
-
-
 
     }
 }
