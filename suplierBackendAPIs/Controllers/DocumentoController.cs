@@ -75,27 +75,13 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
-        [HttpPut("statusDocumentAproved/{Id}")]
-        public IActionResult updateStatusDocument(int Id)
+        [HttpPut("statusDocumentAproved")]
+        public IActionResult deleteDocumenStatus(int id)
         {
-            ResponseDto response = _documentoService.updateStatusDocumentAproved(Id);
+            ResponseDto response = _documentoService.updateStatusDocumentAproved(id);
             return Ok(response);
         }
 
-        [HttpPut("statusDocumentExpired/{Id}")]
-        public IActionResult updateStatusDocumentExpired(int Id)
-        {
-            _documentoService.updateDocumentStatusExpired(Id);
-            return Ok();
-
-        }
-
-        [HttpPut("documentToExpired/{Id}")]
-        public IActionResult documentToExpired(int Id)
-        {
-            _documentoService.DocumentToExpiredAsync(Id);
-            return Ok();
-        }
 
         [HttpPost("ReportDocument")]
         public IActionResult GetDocument(ReportDocumentDto reportDocument) {

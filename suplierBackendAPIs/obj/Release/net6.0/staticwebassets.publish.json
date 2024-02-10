@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "srcSZ5eSjGPafUYemEiGNiZEmKVfiubDUwR+fzzXC3g=",
+  "Source": "supplierBackendAPIs",
+  "BasePath": "_content/supplierBackendAPIs",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

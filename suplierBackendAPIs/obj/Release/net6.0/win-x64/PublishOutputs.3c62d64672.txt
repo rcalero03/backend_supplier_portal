@@ -8,6 +8,7 @@ C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_po
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\Azure.Identity.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\BouncyCastle.Cryptography.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\MailKit.dll
+C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\win-x64\PubTmp\Out\Microsoft.EntityFrameworkCore.dll

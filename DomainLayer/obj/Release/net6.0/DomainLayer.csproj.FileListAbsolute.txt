@@ -10,3 +10,15 @@ C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_po
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\DomainLayer\obj\Release\net6.0\refint\DomainLayer.dll
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.pdb
 C:\Users\User\Documents\Proyectos C#\backend_supplier_portal\backend_supplier_portal\DomainLayer\obj\Release\net6.0\ref\DomainLayer.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\bin\Release\net6.0\DomainLayer.deps.json
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\bin\Release\net6.0\DomainLayer.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\bin\Release\net6.0\DomainLayer.pdb
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.AssemblyInfo.cs
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\refint\DomainLayer.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\DomainLayer.pdb
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\DomainLayer\obj\Release\net6.0\ref\DomainLayer.dll

@@ -1,3 +1,6 @@
+using DomainLayer.Models;
+using Hangfire;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -5,6 +8,7 @@ using RepositoryLayer;
 using RepositoryLayer.Repository;
 using ServiceLayer.IServices;
 using ServiceLayer.Service;
+using System.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDev", 
-        builder =>builder.WithOrigins("http://localhost:4200")
+        builder =>builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local:8081")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
@@ -84,12 +88,36 @@ builder.Services.AddScoped<IReferenciaService, ReferenciaService>();
 //proveedor categoria
 builder.Services.AddScoped<IProveedorCategoriaService, ProveedorCategoriaService>();
 
-
+builder.Services.AddScoped<IJobService, JobService>();
+//
+builder.Services.AddHangfire(config =>
+{
+    config.UseMemoryStorage();
+});
 
 var app = builder.Build();
 app.UseCors("AllowAngularDev");
 
-//Configure the HTTP request pipeline.
+// Configurar Hangfire para procesar trabajos y el dashboard
+app.UseHangfireServer();
+app.UseHangfireDashboard();
+TimeZoneInfo timeZoneInfo = TimeZoneInfo.Utc;
+
+
+using (var serviceScope = app.Services.CreateScope())
+{
+   
+    var expresionCron = Cron.Daily();
+    var serviceProvider = serviceScope.ServiceProvider;
+    var jobService = serviceProvider.GetRequiredService<IJobService>();
+    RecurringJob.AddOrUpdate<IJobService>(
+        "EjecutarMiEndpoint",
+        x => jobService.ValidDocumentEmailAsync(),
+        expresionCron
+       
+       );
+}
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
