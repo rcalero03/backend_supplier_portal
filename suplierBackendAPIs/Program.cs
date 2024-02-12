@@ -20,14 +20,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// add cors
+//// add cors
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularDev", 
-        builder =>builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local:8081")
+    options.AddPolicy("AllowAngularDev",
+        builder => builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local:8081")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
+
 
 //
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -107,7 +108,7 @@ TimeZoneInfo timeZoneInfo = TimeZoneInfo.Utc;
 using (var serviceScope = app.Services.CreateScope())
 {
    
-    var expresionCron = Cron.Daily();
+    var expresionCron = Cron.MinuteInterval(40);
     var serviceProvider = serviceScope.ServiceProvider;
     var jobService = serviceProvider.GetRequiredService<IJobService>();
     RecurringJob.AddOrUpdate<IJobService>(
