@@ -53,7 +53,7 @@ namespace ServiceLayer.Service
                    if (dias <= 0)
                    {
                        Console.WriteLine("Documento ha expirado: " + dias.ToString());
-                      //_ = DocumentToExpiredAsync(documento.Id);
+                      _ = DocumentToExpiredAsync(documento.Id);
                    }
                    else if (dias > 0)
                    {
@@ -62,9 +62,7 @@ namespace ServiceLayer.Service
 
                        if (configuracion != null)
                        {
-                           Console.WriteLine("dias a expirar :" + dias.ToString());
-                           // Aquí deberías tener lógica para enviar un correo electrónico en lugar de escribir en la consola
-                           Console.WriteLine($"Enviar Email para {documento.Nombre}");
+                            _ = updateDocumentStatusExpired(documento.Id);
                        }
                    }
                }
@@ -76,15 +74,14 @@ namespace ServiceLayer.Service
         public async Task pruebaCorreo()
         {
             var to = "joseacajina85@gmail.com";
-            var url = "https://portaldeproveedoresv2.ccn.local:8081";
+            var url = "https://portaldeproveedoresv2.ccn.local";
             var from = "devopsproveedores@ccn.com.ni";
-            var body = "Estimado proveedor Heyling González, código- 5860 \r\n" +
-                "Le informamos que el documento “Constancia de no retención 2% julio 2022” cargado en la página web de proveedores, ha vencido, le \r\n" +
-                "solicitamos adjuntar el documento vigente, usando el siguiente vínculo: Adjuntar documento. \r\n" +
-                "**Nota: No corregir su documento puede generar demoras en el proceso de su pago. ** \r\n" +
-                "Este correo se ha generado en forma automática, por favor no responder. \r\n" +
-                "Atentamente, \r\n" +
-                "Grupo CCN ";
+            var body = "Estimado proveedor: " + "Roberto" + ", código-" + "0144-34-34-34" + "\n" +
+                        "Le informamos que el documento " + "CEDULA DE IDENTIDAD" + " cargado en la página web de proveedores, está a punto de vencer. \n" +
+                        "Le solicitamos adjuntar el documento vigente, usando el siguiente vínculo: " + url + "\n" +
+                        "**Nota: No corregir su documento puede generar demoras en el proceso de su pago.**\n" +
+                        "Este correo se ha generado en forma automática, por favor no responder.\n" +
+                        "Atentamente,\nGrupo CCN";
 
             var apiUrl = "https://sdesarrollo02.ccn.com.ni/mailapp/api/v2/Email";
 
@@ -149,10 +146,12 @@ namespace ServiceLayer.Service
                 var to = usuario.Email;
                 var url = "https://portaldeproveedoresv2.ccn.local:8081";
                 var from = "devopsproveedores@ccn.com.ni";
-                var body = "Estimado proveedor: " +usuario.Nombre+ ", código-"+usuario.UserIdAzure+"\r\nLe informamos que el documento "+documento?.CatalogoDocumento?.Nombre+" cargado en" +
-                    " la página web de proveedores,esta a punto e vencer, le\r\nsolicitamos adjuntar el documento vigente, usando el siguiente vínculo:"+url+"\r\n**Nota:" +
-                    " No corregir su documento puede generar demoras en el proceso de su pago. **\r\nEste correo se ha generado en forma automática, por favor no responder." +
-                    "\r\nAtentamente,\r\nGrupo CCN ";
+                var body = "Estimado proveedor: " + usuario.Nombre + ", código-" + usuario.UserIdAzure + "\n" +
+                           "Le informamos que el documento " + documento?.CatalogoDocumento?.Nombre + " cargado en la página web de proveedores, está a punto de vencer. \n" +
+                           "Le solicitamos adjuntar el documento vigente, usando el siguiente vínculo: " + url + "\n" +
+                           "**Nota: No corregir su documento puede generar demoras en el proceso de su pago.**\n" +
+                           "Este correo se ha generado en forma automática, por favor no responder.\n" +
+                           "Atentamente,\nGrupo CCN";
 
                 var apiUrl = "https://sdesarrollo02.ccn.com.ni/mailapp/api/v2/Email";
 
@@ -216,10 +215,12 @@ namespace ServiceLayer.Service
                 var to = usuario.Email;
                 var url = "https://portaldeproveedoresv2.ccn.local:8081";
                 var from = "devopsproveedores@ccn.com.ni";
-                var body = "Estimado proveedor: " + usuario.Nombre + ", código-" + usuario.UserIdAzure + "\r\n Le informamos que el documento " + documento?.CatalogoDocumento?.Nombre + " cargado en" +
-                    " la página web de proveedores, ha vencido , le\r\n solicitamos adjuntar el documento vigente, usando el siguiente vínculo:" + url + "\r\n **Nota:" +
-                    " No corregir su documento puede generar demoras en el proceso de su pago. **\r\n Este correo se ha generado en forma automática, por favor no responder." +
-                    "\r\n Atentamente,\r\n Grupo CCN ";
+                var body = "Estimado proveedor: " + usuario.Nombre + ", código-" + usuario.UserIdAzure + "\n" +
+                           "Le informamos que el documento " + documento?.CatalogoDocumento?.Nombre + " cargado en la página web de proveedores, está a punto de vencer. \n" +
+                           "Le solicitamos adjuntar el documento vigente, usando el siguiente vínculo: " + url + "\n" +
+                           "**Nota: No corregir su documento puede generar demoras en el proceso de su pago.**\n" +
+                           "Este correo se ha generado en forma automática, por favor no responder.\n" +
+                           "Atentamente,\nGrupo CCN"; ;
 
                 Console.WriteLine(body);
 

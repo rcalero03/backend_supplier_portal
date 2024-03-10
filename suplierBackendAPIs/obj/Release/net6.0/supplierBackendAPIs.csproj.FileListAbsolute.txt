@@ -234,3 +234,7 @@ C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBacke
 C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\supplierBackendAPIs.pdb
 C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\supplierBackendAPIs.genruntimeconfig.cache
 C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\obj\Release\net6.0\ref\supplierBackendAPIs.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\bin\Release\net6.0\Azure.Storage.Blobs.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\bin\Release\net6.0\Azure.Storage.Common.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\bin\Release\net6.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\User\Documents\Proyectos C#\backup\backend_supplier_portal\suplierBackendAPIs\bin\Release\net6.0\System.IO.Hashing.dll

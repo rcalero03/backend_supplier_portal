@@ -26,6 +26,11 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public IActionResult ValidateUsuario(loginDto loginDto)
     {
+        if(loginDto.Username == null || loginDto.Username=="")
+        {
+            return BadRequest("Error en el email vacio");
+        }
+
         ResponseDto response = _usuarioService.GetByEmail(loginDto);
 
         var jwt = _configuration.GetSection("Jwt").Get<Jwt>();

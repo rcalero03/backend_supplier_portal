@@ -1,8 +1,12 @@
-﻿using DomainLayer.Models;
+﻿using Azure;
+using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IServices;
+using supplierBackendAPIs.Utilities;
+using System.Diagnostics.Metrics;
 
 namespace supplierBackendAPIs.Controllers
 {
@@ -12,10 +16,15 @@ namespace supplierBackendAPIs.Controllers
     public class DocumentoController : Controller
     {
         public readonly IDocumentoService _documentoService;
+        public readonly IConfiguration _configuration;
 
-        public DocumentoController(IDocumentoService documentoService)
+
+
+        public DocumentoController(IDocumentoService documentoService, IConfiguration configuration)
         {
             _documentoService = documentoService;
+            _configuration = configuration;
+
         }
 
         [HttpGet]
@@ -54,6 +63,20 @@ namespace supplierBackendAPIs.Controllers
             return Ok(response);
         }
 
+        [HttpPost("uploadAzureDocumento")]
+        public async  Task<IActionResult> UploadAzureDocumento(IFormFile file)
+        {
+            AzureDocumentoDTO AzureConfig = new AzureDocumentoDTO();
+            var Azure = _configuration.GetSection("AzureBlobSettings").Get<AzureBlobSettings>();
+            AzureConfig.containerName = Azure.containerName;
+            AzureConfig.accountName = Azure.accountName;
+            AzureConfig.sasToken = Azure.sasToken;
+            AzureConfig.sasUrl = Azure.sasUrl;
+
+            ResponseDto response = await _documentoService.uploadAzureDocumento(file, AzureConfig);
+            return Ok(response);
+        }
+
         [HttpPut]
         public IActionResult UpdateDocumento(Documento documento)
         {
@@ -69,9 +92,9 @@ namespace supplierBackendAPIs.Controllers
         }
 
         [HttpPut("updateDocumenStatusRefused")]
-        public IActionResult updateDocumenStatus(StatusDocumentDto statusDocument)
+        public async Task<IActionResult> updateDocumenStatus(StatusDocumentDto statusDocument)
         {
-            ResponseDto response = _documentoService.updateDocumenStatusRefused(statusDocument);
+            ResponseDto response = await _documentoService.updateDocumenStatusRefusedAsync(statusDocument);
             return Ok(response);
         }
 

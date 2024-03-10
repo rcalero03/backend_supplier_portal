@@ -1,4 +1,4 @@
-using DomainLayer.Models;
+using Azure.Storage.Blobs;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,14 +20,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// add cors
+//// add cors
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularDev", 
-        builder =>builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local:8081")
+    options.AddPolicy("AllowAngularDev",
+        builder => builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local")
         .AllowAnyMethod()
         .AllowAnyHeader());
 });
+
 
 //
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -43,6 +44,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
+
+//Configuracion de build de blobstorage
+var blobServiceClient = new BlobServiceClient(builder.Configuration["AzureConection"]);
+builder.Services.AddSingleton(blobServiceClient);
+
 
 
 // call startup class
@@ -89,6 +95,7 @@ builder.Services.AddScoped<IReferenciaService, ReferenciaService>();
 builder.Services.AddScoped<IProveedorCategoriaService, ProveedorCategoriaService>();
 
 builder.Services.AddScoped<IJobService, JobService>();
+
 //
 builder.Services.AddHangfire(config =>
 {
@@ -99,7 +106,9 @@ var app = builder.Build();
 app.UseCors("AllowAngularDev");
 
 // Configurar Hangfire para procesar trabajos y el dashboard
+#pragma warning disable CS0618 // Type or member is obsolete
 app.UseHangfireServer();
+#pragma warning restore CS0618 // Type or member is obsolete
 app.UseHangfireDashboard();
 TimeZoneInfo timeZoneInfo = TimeZoneInfo.Utc;
 
@@ -107,7 +116,7 @@ TimeZoneInfo timeZoneInfo = TimeZoneInfo.Utc;
 using (var serviceScope = app.Services.CreateScope())
 {
    
-    var expresionCron = Cron.Daily();
+    var expresionCron = Cron.Daily(hour:10);
     var serviceProvider = serviceScope.ServiceProvider;
     var jobService = serviceProvider.GetRequiredService<IJobService>();
     RecurringJob.AddOrUpdate<IJobService>(

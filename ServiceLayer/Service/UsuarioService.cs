@@ -37,6 +37,18 @@ namespace ServiceLayer.Service
 
         public ResponseDto GetByEmail(loginDto login)
         {
+            //validar si el login.username es vacio
+            if(login.Username == "" ||  login.Username == null)
+            {
+                ResponseDto response = new ResponseDto();
+                response.Success = false;
+                response.Message = "El email viene vacio desde azure";
+                response.StatusCode = 401;
+                response.Data = login;
+                return response;
+            }
+
+
             if (_repository.GetAllAsQueryable().FirstOrDefault(x => x.Email == login.Username) != null)
             {
                 ResponseDto responseDto = new ResponseDto
@@ -72,95 +84,6 @@ namespace ServiceLayer.Service
                 return responseDto;
             }
         }
-
-       
-
-        //public Usuario? ValidateUser(JwtClaimsDto claims)
-        //{
-        //    ConfiguracionGeneralDto general = _configurationGeneralService.GetByCode("JWT");
-        //    if (general == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    var appName = general.Valor1;
-        //    var appId = general.Valor2;
-
-
-        //    if (appName == null || appId == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    if (appId != claims.AppId && appName != claims.AppDisplayName)
-        //    {
-        //        return null;
-        //    }
-
-        //    Usuario verifyUser = GetByEmail(claims.Email);
-        //    Estado estado = _estadoService.GetEstadoById(3);
-        //    Rol rol = _rolService.GetByCode("PRO");
-
-        //    if (verifyUser == null)
-        //    {
-        //        // create new user
-        //        verifyUser = new Usuario();
-        //        verifyUser.Email = claims.Email;
-        //        verifyUser.Nombre = claims.Name;
-        //        verifyUser.EstadoId = estado.Id;
-        //        verifyUser.UserIdAzure = appId;
-        //        verifyUser.FechaCreacion = DateTime.Now;
-
-        //        _repository.Insert(verifyUser);
-        //        _repository.SaveChange();
-
-        //        Usuario newUser = GetByEmail(claims.Email);
-
-        //        RolUsuario rolUsuario = new RolUsuario();
-        //        rolUsuario.UsuarioId = newUser.Id;
-        //        rolUsuario.RolId = rol.Id;
-
-        //        _repositoryRolUser.Insert(rolUsuario);
-        //        _repositoryRolUser.SaveChange();
-        //    }
-
-        //    return verifyUser;
-        //}
-
-        //public Usuario getByIdUsuario(int id)
-        //{
-        //    return _repository.GetById(id);
-        //}
-
-        //public string? DecodeJwtTokenAzure(string token)
-        //{
-        //    try
-        //    {
-        //        var tokenHandler = new JwtSecurityTokenHandler();
-        //        var jwtToken = tokenHandler.ReadJwtToken(token) as JwtSecurityToken;
-
-        //        if (jwtToken != null)
-        //        {
-        //            // Verificar si Claims es nulo antes de intentar acceder a él
-        //            if (jwtToken.Claims != null)
-        //            {
-        //                var emailClaim = jwtToken.Claims.FirstOrDefault(x => x.Type == "email");
-
-        //                if (emailClaim != null)
-        //                {
-        //                    return emailClaim.Value;
-        //                }
-        //            }
-        //        }
-        //        // Si llegamos aquí, es porque no se encontró el reclamo "email" o había otros problemas con el token.
-        //        return null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Error al decodificar el token: " + ex.Message);
-        //        return null;
-        //    }
-        //}
 
     }
 }

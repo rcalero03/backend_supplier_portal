@@ -46,25 +46,14 @@ namespace ServiceLayer.Service
         {
             try
             {
-                IEnumerable<Estado> estados = _repository.GetAll();
-                List<EstadoDto> estadoDto = new List<EstadoDto>();
-                foreach (var estado in estados)
-                {
-                    if(estado.Nombre == "Revisión" || estado.Nombre =="Aprobado" || estado.Nombre == "Rechazado" || estado.Nombre==" Expirado")
-                    {
-                        estadoDto.Add(new EstadoDto
-                        {
-                            Id=estado.Id,
-                            Nombre=estado.Nombre,
-                        });
-                    }
-                }
+                IEnumerable<Estado> estados = _repository.GetAllAsQueryable()
+                .Where(x => x.Nombre == "Revisión" || x.Nombre== "Aprobado" || x.Nombre== "Rechazado" || x.Nombre== "Expirado");
                 ResponseDto responseDto = new ResponseDto
                 {
                     Success = true,
                     Message = "Estados Encontrados",
                     StatusCode = 200,
-                    Data = estadoDto
+                    Data = estados
                 };
                 return responseDto;
             }catch(Exception ex)
