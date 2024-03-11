@@ -1,9 +1,11 @@
 ﻿using Azure;
+using Azure.Storage.Blobs.Models;
 using DomainLayer.Models;
 using DomainLayer.ModelsDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using ServiceLayer.IServices;
 using supplierBackendAPIs.Utilities;
 using System.Diagnostics.Metrics;
@@ -62,6 +64,21 @@ namespace supplierBackendAPIs.Controllers
             ResponseDto response = _documentoService.InsertDocumento(documento);
             return Ok(response);
         }
+
+        [HttpGet("dowloadFileAzure")]
+        public async Task<Stream> dowloadFileAzure(string file)
+        {
+            AzureDocumentoDTO AzureConfig = new AzureDocumentoDTO();
+            var Azure = _configuration.GetSection("AzureBlobSettings").Get<AzureBlobSettings>();
+            AzureConfig.containerName = Azure.containerName;
+            AzureConfig.accountName = Azure.accountName;
+            AzureConfig.sasToken = Azure.sasToken;
+            AzureConfig.sasUrl = Azure.sasUrl;
+
+            return await _documentoService.dowloadFileAure(file, AzureConfig);
+            
+        }
+
 
         [HttpPost("uploadAzureDocumento")]
         public async  Task<IActionResult> UploadAzureDocumento(IFormFile file)

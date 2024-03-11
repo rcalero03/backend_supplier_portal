@@ -260,17 +260,34 @@ namespace ServiceLayer.Service
                 return responseDto;
             }
         }
+        public async Task<Stream> dowloadFileAure(string file, AzureDocumentoDTO azureConfig)
+        {
+            try
+            {
+                var blobServiceClient = new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=grupoccn;AccountKey=c4Lh+t6HRfrg+Wmqo8CBBmtP+fliVz0I+A4w55mqAaLg9ikFYymp/adYRwdrGm39tVsOnehzDJKL+AStbBdGwg==;EndpointSuffix=core.windows.net");
+                var blobContainerClient = blobServiceClient.GetBlobContainerClient(azureConfig.containerName);
+                var blobCliente = blobContainerClient.GetBlobClient(file);
+                var response = await blobCliente.DownloadAsync();
+                return response.Value.Content;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
 
         public async Task<ResponseDto> uploadAzureDocumento(IFormFile file, AzureDocumentoDTO azureConfig)
         {
             try
             {
-          
                     Stream stream = file.OpenReadStream();
                     string fileName = DateTime.Now.ToString("yyyyMMddhhmmss") + "_"+ file.FileName ;
                     BlobContainerClient container = GetContainer(azureConfig.containerName);
                     BlobClient blobClient = container.GetBlobClient(fileName);
                      await blobClient.UploadAsync(stream);
+
+                    Uri blobUrl = blobClient.Uri;
+                    string url = blobUrl.ToString();
 
                 return new ResponseDto
                 {
@@ -384,8 +401,6 @@ namespace ServiceLayer.Service
                 return response;
             }
         }
-
-  
 
         public async Task<ResponseDto> updateDocumenStatusRefusedAsync(StatusDocumentDto statusDocument)
         {
