@@ -1273,7 +1273,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+<<<<<<< HEAD
           "Azure.Storage.Blobs": "12.19.1",
+=======
+>>>>>>> 10c6230b3a288710da157858bc25689d96f6ead6
           "Hangfire.AspNetCore": "1.8.9",
           "Hangfire.MemoryStorage": "1.8.0",
           "Microsoft.EntityFrameworkCore": "7.0.13",

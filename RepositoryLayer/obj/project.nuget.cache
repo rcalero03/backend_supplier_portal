@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "KH2CDIahdixH9BYpZRUkQQaOwDU5jIm7fdYOUthr9TzNiwMDzFmlo5rB+I4oN0E0/UF4Wt/R4bi6OUBhePL5+w==",
+=======
+  "dgSpecHash": "Taecn3uATeTeVAVeSv7l8yYz7miByBle8LRkS2ta4xgXAhdSO54nMCc17BaHLUDkVG73uz1m942z4IVgXdlNzw==",
+>>>>>>> 10c6230b3a288710da157858bc25689d96f6ead6
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Documents\\Proyectos C#\\backup\\backend_supplier_portal\\RepositoryLayer\\RepositoryLayer.csproj",
   "expectedPackageFiles": [

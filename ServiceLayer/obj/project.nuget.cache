@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "hq3ZoUly+CHVxaDVVPQPJMY9mhlMIaL7KThUavzAzEpss8rVSgCtuSEwaawValO7RjplHa8QGU+Hu45vLmJgzQ==",
+=======
+  "dgSpecHash": "CQWeHzhcGDzcp1KQBvUADFZVOvt3GUhxv61DR4cM9s/DQIcGYjBZWeWuHBkgJgySWJ10w4ruBEFoXvFb01ANYA==",
+>>>>>>> 10c6230b3a288710da157858bc25689d96f6ead6
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Documents\\Proyectos C#\\backup\\backend_supplier_portal\\ServiceLayer\\ServiceLayer.csproj",
   "expectedPackageFiles": [

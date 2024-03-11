@@ -23,10 +23,8 @@ builder.Services.AddSwaggerGen();
 //// add cors
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularDev",
-        builder => builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local")
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+   options.AddPolicy("AllowAngularDev",
+  builder => builder.WithOrigins("http://localhost:4200", "https://portaldeproveedoresv2.ccn.local").AllowAnyHeader());
 });
 
 
@@ -116,7 +114,11 @@ TimeZoneInfo timeZoneInfo = TimeZoneInfo.Utc;
 using (var serviceScope = app.Services.CreateScope())
 {
    
+<<<<<<< HEAD
     var expresionCron = Cron.Daily(hour:10);
+=======
+    var expresionCron = Cron.MinuteInterval(40);
+>>>>>>> 10c6230b3a288710da157858bc25689d96f6ead6
     var serviceProvider = serviceScope.ServiceProvider;
     var jobService = serviceProvider.GetRequiredService<IJobService>();
     RecurringJob.AddOrUpdate<IJobService>(

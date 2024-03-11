@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "4Ggu6aDZ4k485gHt/FpB4iW0VAJnbq9UV3xG8P2BZ0knBahak8iIjChksqsHNrO1BwGq7k6eEacmo6N1ONHh/g==",
+=======
+  "dgSpecHash": "+K1bFozxm89WPdS14FPycw2uDYu/mPjqu/w9krf7pb5tQEkJrWoRLDtW/6KGi0Cc5mCvTPLbzq3pJMYF8xFvSA==",
+>>>>>>> 10c6230b3a288710da157858bc25689d96f6ead6
   "success": true,
   "projectFilePath": "C:\\Users\\User\\Documents\\Proyectos C#\\backup\\backend_supplier_portal\\DomainLayer\\DomainLayer.csproj",
   "expectedPackageFiles": [
